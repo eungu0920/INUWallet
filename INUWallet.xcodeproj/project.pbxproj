@@ -15,6 +15,18 @@
 		28CA2432298AA4E6006F4242 /* INUWalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CA2431298AA4E6006F4242 /* INUWalletTests.swift */; };
 		28CA243C298AA4E7006F4242 /* INUWalletUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CA243B298AA4E7006F4242 /* INUWalletUITests.swift */; };
 		28CA243E298AA4E7006F4242 /* INUWalletUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CA243D298AA4E7006F4242 /* INUWalletUITestsLaunchTests.swift */; };
+		28CA2453298BBBA5006F4242 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CA2452298BBBA5006F4242 /* HomeViewController.swift */; };
+		28CA2457298BBBBD006F4242 /* NFTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CA2456298BBBBD006F4242 /* NFTViewController.swift */; };
+		28CA2459298BBBCB006F4242 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CA2458298BBBCB006F4242 /* MoreViewController.swift */; };
+		28CA245B298BBC02006F4242 /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CA245A298BBC02006F4242 /* WalletViewController.swift */; };
+		28CA245D298BBC56006F4242 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CA245C298BBC56006F4242 /* Models.swift */; };
+		28CA2461298BBD20006F4242 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CA2460298BBD20006F4242 /* LoginViewController.swift */; };
+		28CA2464298BC390006F4242 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CA2463298BC390006F4242 /* AuthenticationViewController.swift */; };
+		28CA2466298BC39B006F4242 /* NFTInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CA2465298BC39B006F4242 /* NFTInfoViewController.swift */; };
+		28CA2468298BC3BB006F4242 /* WalletInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CA2467298BC3BB006F4242 /* WalletInfoViewController.swift */; };
+		28CA246A298BC3DB006F4242 /* TokenInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CA2469298BC3DB006F4242 /* TokenInfoViewController.swift */; };
+		28CA246C298BC419006F4242 /* TokenSendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CA246B298BC419006F4242 /* TokenSendViewController.swift */; };
+		28CA246E298BC422006F4242 /* NFTSendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CA246D298BC422006F4242 /* NFTSendViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +59,18 @@
 		28CA2437298AA4E7006F4242 /* INUWalletUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = INUWalletUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		28CA243B298AA4E7006F4242 /* INUWalletUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INUWalletUITests.swift; sourceTree = "<group>"; };
 		28CA243D298AA4E7006F4242 /* INUWalletUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = INUWalletUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		28CA2452298BBBA5006F4242 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		28CA2456298BBBBD006F4242 /* NFTViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTViewController.swift; sourceTree = "<group>"; };
+		28CA2458298BBBCB006F4242 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
+		28CA245A298BBC02006F4242 /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
+		28CA245C298BBC56006F4242 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		28CA2460298BBD20006F4242 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		28CA2463298BC390006F4242 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
+		28CA2465298BC39B006F4242 /* NFTInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTInfoViewController.swift; sourceTree = "<group>"; };
+		28CA2467298BC3BB006F4242 /* WalletInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletInfoViewController.swift; sourceTree = "<group>"; };
+		28CA2469298BC3DB006F4242 /* TokenInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenInfoViewController.swift; sourceTree = "<group>"; };
+		28CA246B298BC419006F4242 /* TokenSendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenSendViewController.swift; sourceTree = "<group>"; };
+		28CA246D298BC422006F4242 /* NFTSendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTSendViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +159,7 @@
 		28CA244B298AA563006F4242 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				28CA245C298BBC56006F4242 /* Models.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -142,6 +167,7 @@
 		28CA244C298AA572006F4242 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				28CA2423298AA4E6006F4242 /* Assets.xcassets */,
 				28CA244D298AA62E006F4242 /* Storyboards */,
 			);
 			path = Views;
@@ -150,7 +176,6 @@
 		28CA244D298AA62E006F4242 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				28CA2423298AA4E6006F4242 /* Assets.xcassets */,
 				28CA2420298AA4E6006F4242 /* Main.storyboard */,
 				28CA2425298AA4E6006F4242 /* LaunchScreen.storyboard */,
 			);
@@ -160,8 +185,51 @@
 		28CA244E298AA651006F4242 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				28CA245F298BBD0A006F4242 /* Other */,
+				28CA244F298BBB66006F4242 /* Core Tabs */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		28CA244F298BBB66006F4242 /* Core Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				28CA2452298BBBA5006F4242 /* HomeViewController.swift */,
+				28CA245A298BBC02006F4242 /* WalletViewController.swift */,
+				28CA2456298BBBBD006F4242 /* NFTViewController.swift */,
+				28CA2458298BBBCB006F4242 /* MoreViewController.swift */,
+			);
+			path = "Core Tabs";
+			sourceTree = "<group>";
+		};
+		28CA245E298BBCFC006F4242 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				28CA2460298BBD20006F4242 /* LoginViewController.swift */,
+				28CA2463298BC390006F4242 /* AuthenticationViewController.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		28CA245F298BBD0A006F4242 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				28CA245E298BBCFC006F4242 /* Onboarding */,
+				28CA2462298BC34F006F4242 /* General */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		28CA2462298BC34F006F4242 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				28CA2465298BC39B006F4242 /* NFTInfoViewController.swift */,
+				28CA2467298BC3BB006F4242 /* WalletInfoViewController.swift */,
+				28CA2469298BC3DB006F4242 /* TokenInfoViewController.swift */,
+				28CA246B298BC419006F4242 /* TokenSendViewController.swift */,
+				28CA246D298BC422006F4242 /* NFTSendViewController.swift */,
+			);
+			path = General;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,8 +363,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28CA2459298BBBCB006F4242 /* MoreViewController.swift in Sources */,
+				28CA2457298BBBBD006F4242 /* NFTViewController.swift in Sources */,
 				28CA241B298AA4E6006F4242 /* AppDelegate.swift in Sources */,
+				28CA246C298BC419006F4242 /* TokenSendViewController.swift in Sources */,
 				28CA241D298AA4E6006F4242 /* SceneDelegate.swift in Sources */,
+				28CA2464298BC390006F4242 /* AuthenticationViewController.swift in Sources */,
+				28CA2461298BBD20006F4242 /* LoginViewController.swift in Sources */,
+				28CA246E298BC422006F4242 /* NFTSendViewController.swift in Sources */,
+				28CA2453298BBBA5006F4242 /* HomeViewController.swift in Sources */,
+				28CA2466298BC39B006F4242 /* NFTInfoViewController.swift in Sources */,
+				28CA246A298BC3DB006F4242 /* TokenInfoViewController.swift in Sources */,
+				28CA245B298BBC02006F4242 /* WalletViewController.swift in Sources */,
+				28CA245D298BBC56006F4242 /* Models.swift in Sources */,
+				28CA2468298BC3BB006F4242 /* WalletInfoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
