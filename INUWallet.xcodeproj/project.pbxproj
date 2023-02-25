@@ -13,6 +13,7 @@
 		2810A7D329A8D2F800F5BCD1 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2810A7D229A8D2F800F5BCD1 /* DatabaseManager.swift */; };
 		2810A7D529A8D76300F5BCD1 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2810A7D429A8D76300F5BCD1 /* AuthManager.swift */; };
 		2810A7D729A8D7AA00F5BCD1 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2810A7D629A8D7AA00F5BCD1 /* StorageManager.swift */; };
+		2810A81D29AA56A400F5BCD1 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2810A81C29AA56A400F5BCD1 /* Extension.swift */; };
 		28CA241B298AA4E6006F4242 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CA241A298AA4E6006F4242 /* AppDelegate.swift */; };
 		28CA241D298AA4E6006F4242 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CA241C298AA4E6006F4242 /* SceneDelegate.swift */; };
 		28CA2422298AA4E6006F4242 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28CA2420298AA4E6006F4242 /* Main.storyboard */; };
@@ -61,6 +62,7 @@
 		2810A7D229A8D2F800F5BCD1 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		2810A7D429A8D76300F5BCD1 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		2810A7D629A8D7AA00F5BCD1 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		2810A81C29AA56A400F5BCD1 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		28CA2417298AA4E6006F4242 /* INUWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = INUWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28CA241A298AA4E6006F4242 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28CA241C298AA4E6006F4242 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 				2810A7D229A8D2F800F5BCD1 /* DatabaseManager.swift */,
 				2810A7D629A8D7AA00F5BCD1 /* StorageManager.swift */,
 				2810A7D429A8D76300F5BCD1 /* AuthManager.swift */,
+				2810A81C29AA56A400F5BCD1 /* Extension.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -540,6 +543,7 @@
 				28CA246E298BC422006F4242 /* NFTSendViewController.swift in Sources */,
 				28CA2453298BBBA5006F4242 /* HomeViewController.swift in Sources */,
 				2810A7D129A8D12E00F5BCD1 /* RegistrationViewController.swift in Sources */,
+				2810A81D29AA56A400F5BCD1 /* Extension.swift in Sources */,
 				28CA2466298BC39B006F4242 /* NFTInfoViewController.swift in Sources */,
 				28CA246A298BC3DB006F4242 /* TokenInfoViewController.swift in Sources */,
 				28CA245B298BBC02006F4242 /* WalletViewController.swift in Sources */,

@@ -5,7 +5,7 @@
 //  Created by Gray on 2023/02/01.
 //
 
-import FirebaseCore
+import Firebase
 import UIKit
 
 @main

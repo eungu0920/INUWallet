@@ -4,6 +4,7 @@
 //
 //  Created by Gray on 2023/02/02.
 //
+// TODO: - 이메일에 @inu.ac.kr 적어놓기
 
 import UIKit
 
@@ -27,27 +28,36 @@ class LoginViewController: UIViewController {
         emailField.layer.cornerRadius = 8.0
         emailField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         emailField.leftViewMode = .always
+        emailField.borderStyle = .none
+        emailField.autocorrectionType = .no
         
         passwordField.layer.borderWidth = 1.0
         passwordField.layer.borderColor = UIColor.secondaryLabel.cgColor
         passwordField.layer.cornerRadius = 8.0
         passwordField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         passwordField.leftViewMode = .always
+        passwordField.borderStyle = .none
+        passwordField.isSecureTextEntry = true
         
         signInButton.layer.cornerRadius = 8.0
+        signInButton.setTitle("Sign In", for: .normal)
+        signInButton.setTitleColor(.white, for: .normal)
         
         //키보드 숨기기
         self.hideKeyboardWhenTappedAround()
     }
     
     @IBAction func didTapSigninButton(_ sender: Any) {
+        emailField.resignFirstResponder()
+        passwordField.resignFirstResponder()
+        
         guard let email = emailField.text, !email.isEmpty, email.contains("@"), email.contains(".") else {
             let message: String
             
             if emailField.text!.isEmpty {
                 message = "이메일을 입력 해 주세요."
             } else {
-                message = "이메일에 '@'와 '.'을 포함 해 주세요."
+                message = "이메일에 '@'와 '.'을 포함하여 입력 해 주세요."
             }
             
             self.emailField.becomeFirstResponder()
@@ -101,25 +111,11 @@ class LoginViewController: UIViewController {
     
 }
 
-extension UIViewController {
-    func hideKeyboardWhenTappedAround() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-    }
-    
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
-    
-}
-
 extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == self.emailField {
             self.passwordField.becomeFirstResponder()
         } else {
-            self.passwordField.resignFirstResponder()
             didTapSigninButton(self)
         }
         return true
