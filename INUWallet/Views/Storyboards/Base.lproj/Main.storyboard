@@ -53,8 +53,30 @@
                     <view key="view" contentMode="scaleToFill" id="w7v-U4-GQ4">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello World!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HJr-J9-BiY">
+                                <rect key="frame" x="150" y="415.66666666666669" width="93" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qrj-PM-kr1">
+                                <rect key="frame" x="151.66666666666666" y="456.66666666666669" width="90" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Sign Out"/>
+                                <connections>
+                                    <action selector="didTapSignOut:" destination="h4j-Gt-bXT" eventType="touchUpInside" id="CfV-CX-a39"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="atY-zg-fYu"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="qrj-PM-kr1" firstAttribute="top" secondItem="HJr-J9-BiY" secondAttribute="bottom" constant="20" id="3af-tm-LQ5"/>
+                            <constraint firstItem="HJr-J9-BiY" firstAttribute="centerX" secondItem="w7v-U4-GQ4" secondAttribute="centerX" id="CuY-U9-fmj"/>
+                            <constraint firstItem="HJr-J9-BiY" firstAttribute="centerY" secondItem="w7v-U4-GQ4" secondAttribute="centerY" id="VRW-yu-nvq"/>
+                            <constraint firstItem="qrj-PM-kr1" firstAttribute="centerX" secondItem="w7v-U4-GQ4" secondAttribute="centerX" id="bw4-5X-ef1"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="d3v-De-vsc"/>
                 </viewController>
@@ -215,7 +237,6 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="New User? Create an Account"/>
                                         <connections>
-                                            <action selector="didTapCreateButton:" destination="ScV-2D-EGR" eventType="touchUpInside" id="lIb-EZ-Nnc"/>
                                             <segue destination="mgM-vI-FUl" kind="presentation" modalPresentationStyle="fullScreen" id="Bg6-7a-kxA"/>
                                         </connections>
                                     </button>

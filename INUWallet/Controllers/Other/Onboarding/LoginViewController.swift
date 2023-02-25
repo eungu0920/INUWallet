@@ -51,7 +51,8 @@ class LoginViewController: UIViewController {
         emailField.resignFirstResponder()
         passwordField.resignFirstResponder()
         
-        guard let email = emailField.text, !email.isEmpty, email.contains("@"), email.contains(".") else {
+        guard let email = emailField.text, !email.isEmpty, email.contains("@"), email.contains(".")
+        else {
             let message: String
             
             if emailField.text!.isEmpty {
@@ -73,8 +74,8 @@ class LoginViewController: UIViewController {
             return
         }
         
-        guard let password = passwordField.text, !password.isEmpty else {
-            
+        guard let password = passwordField.text, !password.isEmpty
+        else {
             self.passwordField.becomeFirstResponder()
             
             let alert = UIAlertController(title: "Password Error",
@@ -104,11 +105,6 @@ class LoginViewController: UIViewController {
             }
         }
     }
-    
-    @IBAction func didTapCreateButton(_ sender: Any) {
-        
-    }
-    
 }
 
 extension LoginViewController: UITextFieldDelegate {

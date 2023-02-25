@@ -80,7 +80,8 @@ class RegistrationViewController: UIViewController {
         repeatPasswordField.resignFirstResponder()
         usernameField.resignFirstResponder()
         
-        guard let username = usernameField.text, !username.isEmpty else {
+        guard let username = usernameField.text, !username.isEmpty
+        else {
             let alert = UIAlertController(title: "Username Error",
                                           message: "이름을 입력 해 주세요.",
                                           preferredStyle: .alert)
@@ -94,7 +95,8 @@ class RegistrationViewController: UIViewController {
             return
         }
         
-        guard let email = emailField.text, !email.isEmpty, email.contains("@"), email.contains(".") else {
+        guard let email = emailField.text, !email.isEmpty, email.contains("@"), email.contains(".")
+        else {
             let massage: String
             
             if emailField.text!.isEmpty {
@@ -117,7 +119,8 @@ class RegistrationViewController: UIViewController {
         }
         
         guard let password = passwordField.text, !password.isEmpty,
-              let passwordCheck = repeatPasswordField.text, !passwordCheck.isEmpty, password == passwordCheck else {
+              let passwordCheck = repeatPasswordField.text, !passwordCheck.isEmpty, password == passwordCheck
+        else {
             let massage: String
             
             if passwordField.text!.isEmpty {
@@ -140,6 +143,16 @@ class RegistrationViewController: UIViewController {
             self.present(alert, animated: true)
             
             return
+        }
+        
+        AuthManager.shared.registerNewUser(username: username, email: email, password: password) { registered in
+            DispatchQueue.main.async {
+                if registered {
+                    self.dismiss(animated: true, completion: nil)
+                } else {
+                    
+                }
+            }
         }
         print("Create an Account")
     }
