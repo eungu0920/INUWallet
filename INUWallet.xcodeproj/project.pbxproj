@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05B6D4880B01023A59A2C1B5 /* Pods_INUWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B3DB7950332060AC22E10A6 /* Pods_INUWallet.framework */; };
+		2810A7CF29A8CE0600F5BCD1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2810A7CE29A8CE0600F5BCD1 /* GoogleService-Info.plist */; };
+		2810A7D129A8D12E00F5BCD1 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2810A7D029A8D12E00F5BCD1 /* RegistrationViewController.swift */; };
+		2810A7D329A8D2F800F5BCD1 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2810A7D229A8D2F800F5BCD1 /* DatabaseManager.swift */; };
+		2810A7D529A8D76300F5BCD1 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2810A7D429A8D76300F5BCD1 /* AuthManager.swift */; };
+		2810A7D729A8D7AA00F5BCD1 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2810A7D629A8D7AA00F5BCD1 /* StorageManager.swift */; };
 		28CA241B298AA4E6006F4242 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CA241A298AA4E6006F4242 /* AppDelegate.swift */; };
 		28CA241D298AA4E6006F4242 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CA241C298AA4E6006F4242 /* SceneDelegate.swift */; };
 		28CA2422298AA4E6006F4242 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28CA2420298AA4E6006F4242 /* Main.storyboard */; };
@@ -27,6 +33,8 @@
 		28CA246A298BC3DB006F4242 /* TokenInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CA2469298BC3DB006F4242 /* TokenInfoViewController.swift */; };
 		28CA246C298BC419006F4242 /* TokenSendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CA246B298BC419006F4242 /* TokenSendViewController.swift */; };
 		28CA246E298BC422006F4242 /* NFTSendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CA246D298BC422006F4242 /* NFTSendViewController.swift */; };
+		5725C1B48FC12A43148548FF /* Pods_INUWallet_INUWalletUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBD1D2172E23925E195A7B48 /* Pods_INUWallet_INUWalletUITests.framework */; };
+		CEE3131DE814189C984219D0 /* Pods_INUWalletTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63CF0630EB47BB995F20F978 /* Pods_INUWalletTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +55,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		167F98BA59E6C9BCE1E77835 /* Pods-INUWallet-INUWalletUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-INUWallet-INUWalletUITests.debug.xcconfig"; path = "Target Support Files/Pods-INUWallet-INUWalletUITests/Pods-INUWallet-INUWalletUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		2810A7CE29A8CE0600F5BCD1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2810A7D029A8D12E00F5BCD1 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		2810A7D229A8D2F800F5BCD1 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		2810A7D429A8D76300F5BCD1 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		2810A7D629A8D7AA00F5BCD1 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		28CA2417298AA4E6006F4242 /* INUWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = INUWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28CA241A298AA4E6006F4242 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28CA241C298AA4E6006F4242 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +85,14 @@
 		28CA2469298BC3DB006F4242 /* TokenInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenInfoViewController.swift; sourceTree = "<group>"; };
 		28CA246B298BC419006F4242 /* TokenSendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenSendViewController.swift; sourceTree = "<group>"; };
 		28CA246D298BC422006F4242 /* NFTSendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTSendViewController.swift; sourceTree = "<group>"; };
+		2A010F61074E8A9AB27959D2 /* Pods-INUWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-INUWallet.release.xcconfig"; path = "Target Support Files/Pods-INUWallet/Pods-INUWallet.release.xcconfig"; sourceTree = "<group>"; };
+		3B3DB7950332060AC22E10A6 /* Pods_INUWallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_INUWallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		477F2120BA849268CC249722 /* Pods-INUWalletTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-INUWalletTests.debug.xcconfig"; path = "Target Support Files/Pods-INUWalletTests/Pods-INUWalletTests.debug.xcconfig"; sourceTree = "<group>"; };
+		63CF0630EB47BB995F20F978 /* Pods_INUWalletTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_INUWalletTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9129753CF83D8A5D763AED4 /* Pods-INUWallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-INUWallet.debug.xcconfig"; path = "Target Support Files/Pods-INUWallet/Pods-INUWallet.debug.xcconfig"; sourceTree = "<group>"; };
+		CA009C5242705CB8F1B837DC /* Pods-INUWalletTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-INUWalletTests.release.xcconfig"; path = "Target Support Files/Pods-INUWalletTests/Pods-INUWalletTests.release.xcconfig"; sourceTree = "<group>"; };
+		DB83417BBDF14826CF1794B0 /* Pods-INUWallet-INUWalletUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-INUWallet-INUWalletUITests.release.xcconfig"; path = "Target Support Files/Pods-INUWallet-INUWalletUITests/Pods-INUWallet-INUWalletUITests.release.xcconfig"; sourceTree = "<group>"; };
+		FBD1D2172E23925E195A7B48 /* Pods_INUWallet_INUWalletUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_INUWallet_INUWalletUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05B6D4880B01023A59A2C1B5 /* Pods_INUWallet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEE3131DE814189C984219D0 /* Pods_INUWalletTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +116,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5725C1B48FC12A43148548FF /* Pods_INUWallet_INUWalletUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,6 +130,8 @@
 				28CA2430298AA4E6006F4242 /* INUWalletTests */,
 				28CA243A298AA4E7006F4242 /* INUWalletUITests */,
 				28CA2418298AA4E6006F4242 /* Products */,
+				C5650CC420B92D128C576FC2 /* Pods */,
+				778CCFE1D7D50265D099BD28 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -150,8 +177,12 @@
 		28CA244A298AA548006F4242 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2810A7CE29A8CE0600F5BCD1 /* GoogleService-Info.plist */,
 				28CA241A298AA4E6006F4242 /* AppDelegate.swift */,
 				28CA241C298AA4E6006F4242 /* SceneDelegate.swift */,
+				2810A7D229A8D2F800F5BCD1 /* DatabaseManager.swift */,
+				2810A7D629A8D7AA00F5BCD1 /* StorageManager.swift */,
+				2810A7D429A8D76300F5BCD1 /* AuthManager.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -207,6 +238,7 @@
 			children = (
 				28CA2460298BBD20006F4242 /* LoginViewController.swift */,
 				28CA2463298BC390006F4242 /* AuthenticationViewController.swift */,
+				2810A7D029A8D12E00F5BCD1 /* RegistrationViewController.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -232,6 +264,29 @@
 			path = General;
 			sourceTree = "<group>";
 		};
+		778CCFE1D7D50265D099BD28 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3B3DB7950332060AC22E10A6 /* Pods_INUWallet.framework */,
+				FBD1D2172E23925E195A7B48 /* Pods_INUWallet_INUWalletUITests.framework */,
+				63CF0630EB47BB995F20F978 /* Pods_INUWalletTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C5650CC420B92D128C576FC2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B9129753CF83D8A5D763AED4 /* Pods-INUWallet.debug.xcconfig */,
+				2A010F61074E8A9AB27959D2 /* Pods-INUWallet.release.xcconfig */,
+				167F98BA59E6C9BCE1E77835 /* Pods-INUWallet-INUWalletUITests.debug.xcconfig */,
+				DB83417BBDF14826CF1794B0 /* Pods-INUWallet-INUWalletUITests.release.xcconfig */,
+				477F2120BA849268CC249722 /* Pods-INUWalletTests.debug.xcconfig */,
+				CA009C5242705CB8F1B837DC /* Pods-INUWalletTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -239,9 +294,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 28CA2441298AA4E7006F4242 /* Build configuration list for PBXNativeTarget "INUWallet" */;
 			buildPhases = (
+				CA05647090F5C0D99806B5F7 /* [CP] Check Pods Manifest.lock */,
 				28CA2413298AA4E6006F4242 /* Sources */,
 				28CA2414298AA4E6006F4242 /* Frameworks */,
 				28CA2415298AA4E6006F4242 /* Resources */,
+				BFC4E1109F7659BA9861F851 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -256,6 +313,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 28CA2444298AA4E7006F4242 /* Build configuration list for PBXNativeTarget "INUWalletTests" */;
 			buildPhases = (
+				3906E3C75EEF325B85370F76 /* [CP] Check Pods Manifest.lock */,
 				28CA2429298AA4E6006F4242 /* Sources */,
 				28CA242A298AA4E6006F4242 /* Frameworks */,
 				28CA242B298AA4E6006F4242 /* Resources */,
@@ -274,9 +332,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 28CA2447298AA4E7006F4242 /* Build configuration list for PBXNativeTarget "INUWalletUITests" */;
 			buildPhases = (
+				6C02FC94DD78A124AECB0924 /* [CP] Check Pods Manifest.lock */,
 				28CA2433298AA4E7006F4242 /* Sources */,
 				28CA2434298AA4E7006F4242 /* Frameworks */,
 				28CA2435298AA4E7006F4242 /* Resources */,
+				3422C9E2FF5A48BB74E30490 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -337,6 +397,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				28CA2427298AA4E6006F4242 /* LaunchScreen.storyboard in Resources */,
+				2810A7CF29A8CE0600F5BCD1 /* GoogleService-Info.plist in Resources */,
 				28CA2424298AA4E6006F4242 /* Assets.xcassets in Resources */,
 				28CA2422298AA4E6006F4242 /* Main.storyboard in Resources */,
 			);
@@ -358,20 +419,127 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3422C9E2FF5A48BB74E30490 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-INUWallet-INUWalletUITests/Pods-INUWallet-INUWalletUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-INUWallet-INUWalletUITests/Pods-INUWallet-INUWalletUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-INUWallet-INUWalletUITests/Pods-INUWallet-INUWalletUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3906E3C75EEF325B85370F76 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-INUWalletTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6C02FC94DD78A124AECB0924 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-INUWallet-INUWalletUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BFC4E1109F7659BA9861F851 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-INUWallet/Pods-INUWallet-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-INUWallet/Pods-INUWallet-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-INUWallet/Pods-INUWallet-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CA05647090F5C0D99806B5F7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-INUWallet-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		28CA2413298AA4E6006F4242 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2810A7D329A8D2F800F5BCD1 /* DatabaseManager.swift in Sources */,
 				28CA2459298BBBCB006F4242 /* MoreViewController.swift in Sources */,
 				28CA2457298BBBBD006F4242 /* NFTViewController.swift in Sources */,
+				2810A7D729A8D7AA00F5BCD1 /* StorageManager.swift in Sources */,
 				28CA241B298AA4E6006F4242 /* AppDelegate.swift in Sources */,
 				28CA246C298BC419006F4242 /* TokenSendViewController.swift in Sources */,
 				28CA241D298AA4E6006F4242 /* SceneDelegate.swift in Sources */,
 				28CA2464298BC390006F4242 /* AuthenticationViewController.swift in Sources */,
+				2810A7D529A8D76300F5BCD1 /* AuthManager.swift in Sources */,
 				28CA2461298BBD20006F4242 /* LoginViewController.swift in Sources */,
 				28CA246E298BC422006F4242 /* NFTSendViewController.swift in Sources */,
 				28CA2453298BBBA5006F4242 /* HomeViewController.swift in Sources */,
+				2810A7D129A8D12E00F5BCD1 /* RegistrationViewController.swift in Sources */,
 				28CA2466298BC39B006F4242 /* NFTInfoViewController.swift in Sources */,
 				28CA246A298BC3DB006F4242 /* TokenInfoViewController.swift in Sources */,
 				28CA245B298BBC02006F4242 /* WalletViewController.swift in Sources */,
@@ -548,6 +716,7 @@
 		};
 		28CA2442298AA4E7006F4242 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B9129753CF83D8A5D763AED4 /* Pods-INUWallet.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -576,6 +745,7 @@
 		};
 		28CA2443298AA4E7006F4242 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2A010F61074E8A9AB27959D2 /* Pods-INUWallet.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -604,6 +774,7 @@
 		};
 		28CA2445298AA4E7006F4242 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 477F2120BA849268CC249722 /* Pods-INUWalletTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -624,6 +795,7 @@
 		};
 		28CA2446298AA4E7006F4242 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA009C5242705CB8F1B837DC /* Pods-INUWalletTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -644,6 +816,7 @@
 		};
 		28CA2448298AA4E7006F4242 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 167F98BA59E6C9BCE1E77835 /* Pods-INUWallet-INUWalletUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -662,6 +835,7 @@
 		};
 		28CA2449298AA4E7006F4242 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DB83417BBDF14826CF1794B0 /* Pods-INUWallet-INUWalletUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
