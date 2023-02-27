@@ -23,8 +23,17 @@ public class AuthManager {
                         completion(false)
                         return
                     }
+                    /*
+                    guard let user = result?.user else { return }
+                    
+                    let data = ["email": email,
+                                "username": username]
+                    */
                     // Insert into Database
-                    DatabaseManager.shared.insertNewUser(with: email, username: username) { inserted in
+                    
+                    guard let uid = Auth.auth().currentUser?.uid else { return }
+                    
+                    DatabaseManager.shared.insertNewUser(with: email, username: username, uid: uid) { inserted in
                         if inserted {
                             completion(true)
                             return
@@ -65,5 +74,9 @@ public class AuthManager {
             completion(false)
             return
         }
+    }
+    
+    public func shareUid() -> String {
+        return Auth.auth().currentUser!.uid
     }
 }

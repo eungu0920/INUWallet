@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+struct User {
+    let username: String
+    let walletAddress: String
+    let walletPassword: String
+    let profilePhoto: URL
+}

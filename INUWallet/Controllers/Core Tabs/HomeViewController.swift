@@ -29,7 +29,7 @@ class HomeViewController: UIViewController {
             else {
                 return
             }
-    
+            
             loginVC.modalPresentationStyle = .fullScreen
             self.present(loginVC, animated: false)
 //            let loginVC = LoginViewController()

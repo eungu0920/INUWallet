@@ -6,8 +6,8 @@
 //
 // TODO: - 이메일에 @inu.ac.kr 적어놓기
 
-import UIKit
 import FirebaseAuth
+import UIKit
 
 class LoginViewController: UIViewController {
     @IBOutlet weak var emailField: UITextField!

@@ -5,8 +5,8 @@
 //  Created by Gray on 2023/02/27.
 //
 
-import UIKit
 import HDWalletKit
+import UIKit
 
 class CreateWalletViewController: UIViewController {
     @IBOutlet weak var textView_1: UITextView!
@@ -24,6 +24,9 @@ class CreateWalletViewController: UIViewController {
     @IBOutlet weak var generateButton: UIButton!
     @IBOutlet weak var cautionLabel: UILabel!
     @IBOutlet weak var createButton: UIButton!
+    @IBOutlet weak var walletPasswordField: UITextField!
+    @IBOutlet weak var repeatPasswordField: UITextField!
+    @IBOutlet weak var bottomStackView: UIStackView!
     
     var textViewArr: [UITextView] = []
     
@@ -91,12 +94,28 @@ class CreateWalletViewController: UIViewController {
         textViewArr.append(textView_12)
         
         generateButton.setTitle("Generate", for: .normal)
-        
-        cautionLabel.alpha = 0
-        
         createButton.setTitle("Create", for: .normal)
-        createButton.alpha = 0
+        
+        walletPasswordField.layer.borderWidth = 1.0
+        walletPasswordField.layer.borderColor = UIColor.secondaryLabel.cgColor
+        walletPasswordField.layer.cornerRadius = 8.0
+        walletPasswordField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
+        walletPasswordField.leftViewMode = .always
+        walletPasswordField.borderStyle = .none
+        walletPasswordField.isSecureTextEntry = true
+        
+        repeatPasswordField.layer.borderWidth = 1.0
+        repeatPasswordField.layer.borderColor = UIColor.secondaryLabel.cgColor
+        repeatPasswordField.layer.cornerRadius = 8.0
+        repeatPasswordField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
+        repeatPasswordField.leftViewMode = .always
+        repeatPasswordField.borderStyle = .none
+        repeatPasswordField.isSecureTextEntry = true
+        
+        bottomStackView.alpha = 0.0
     }
+    
+    var userAddress: String = ""
     
     @IBAction func didTapGenerateButton(_ sender: Any) {
         let mnemonic = Mnemonic.create()
@@ -108,14 +127,35 @@ class CreateWalletViewController: UIViewController {
             index += 1
         }
         
-        cautionLabel.alpha = 1.0
-        createButton.alpha = 1.0
+        bottomStackView.alpha = 1.0
         
         let seed = Mnemonic.createSeed(mnemonic: mnemonic)
         print(seed.toHexString())
+        
+        let wallet = Wallet(seed: seed, coin: .ethereum)
+        print(wallet)
+        
+        let firstAccount = wallet.generateAccount(at: 0)
+        print("address: \(firstAccount.address)")
+        print("rawPrivateKey: \(firstAccount.rawPrivateKey)")
+        print("privateKey: \(firstAccount.privateKey)")
+        print("rawPublicKey: \(firstAccount.rawPublicKey)")
+        
+        userAddress = firstAccount.address
+        
     }
     
     @IBAction func didTapCreateButton(_ sender: Any) {
+        
+        DatabaseManager.shared.saveWalletAddress(address: userAddress) { error in
+            if error == nil {
+                print("save success")
+                return
+            } else {
+                return
+            }
+        }
+        
         for textView in textViewArr {
             print(textView.text)
         }

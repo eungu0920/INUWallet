@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="b8C-n2-2yu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ReP-Ur-c2W">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
@@ -789,38 +789,57 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="NsW-Rx-GB9">
-                                <rect key="frame" x="15" y="528" width="363" height="110.66666666666663"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="NsW-Rx-GB9">
+                                <rect key="frame" x="15" y="498.00000000000006" width="363" height="205.66666666666669"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EMh-bs-oyW">
-                                        <rect key="frame" x="0.0" y="0.0" width="363" height="40.666666666666664"/>
+                                        <rect key="frame" x="17.666666666666657" y="0.0" width="328" height="40.666666666666664"/>
                                         <string key="text">시드문구를 휴대폰 또는 PC에 보관하지 마십시오.
 다음 문구를 적었으면 생성하기버튼을 누르세요.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" systemColor="systemRedColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ReQ-dh-cVC">
-                                        <rect key="frame" x="15" y="70.666666666666629" width="333" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="HNj-xJ-LNd"/>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="IpX-iC-l1J"/>
-                                        </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Button">
-                                            <color key="baseBackgroundColor" red="0.64705882349999999" green="0.64705882349999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="didTapCreateButton:" destination="b8C-n2-2yu" eventType="touchUpInside" id="Az3-mw-Lua"/>
-                                        </connections>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xSL-wX-f39">
+                                        <rect key="frame" x="15" y="65.666666666666629" width="333" height="140"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Wallet password..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="szU-Fj-b4H">
+                                                <rect key="frame" x="0.0" y="0.0" width="333" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="vaO-gA-VaP"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Repeat password for verification..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="huZ-Za-xuZ">
+                                                <rect key="frame" x="0.0" y="50" width="333" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="8vQ-lF-ejC"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ReQ-dh-cVC">
+                                                <rect key="frame" x="0.0" y="100" width="333" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="HNj-xJ-LNd"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="IpX-iC-l1J"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Button">
+                                                    <color key="baseBackgroundColor" red="0.64705882349999999" green="0.64705882349999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="didTapCreateButton:" destination="b8C-n2-2yu" eventType="touchUpInside" id="Az3-mw-Lua"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="EMh-bs-oyW" firstAttribute="top" secondItem="NsW-Rx-GB9" secondAttribute="top" id="4x1-wi-hzp"/>
-                                    <constraint firstItem="ReQ-dh-cVC" firstAttribute="leading" secondItem="NsW-Rx-GB9" secondAttribute="leading" constant="15" id="ibn-Bo-1fu"/>
-                                    <constraint firstAttribute="trailing" secondItem="ReQ-dh-cVC" secondAttribute="trailing" constant="15" id="l6m-cc-xl8"/>
-                                    <constraint firstItem="EMh-bs-oyW" firstAttribute="leading" secondItem="NsW-Rx-GB9" secondAttribute="leading" id="svT-dg-WnT"/>
-                                    <constraint firstAttribute="trailing" secondItem="EMh-bs-oyW" secondAttribute="trailing" id="uKq-DO-pm6"/>
+                                    <constraint firstAttribute="trailing" secondItem="xSL-wX-f39" secondAttribute="trailing" constant="15" id="O7W-yh-jfz"/>
+                                    <constraint firstItem="xSL-wX-f39" firstAttribute="leading" secondItem="NsW-Rx-GB9" secondAttribute="leading" constant="15" id="RGC-DJ-oGM"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -833,7 +852,7 @@
                             <constraint firstItem="Jhh-kW-U9G" firstAttribute="top" secondItem="twA-hR-mBC" secondAttribute="top" id="HQ9-7X-6R9"/>
                             <constraint firstItem="fE8-LD-bst" firstAttribute="top" secondItem="mpG-Bd-6g6" secondAttribute="top" id="XSr-hX-yQ9"/>
                             <constraint firstItem="mpG-Bd-6g6" firstAttribute="trailing" secondItem="2ln-v1-4qr" secondAttribute="trailing" constant="30" id="XVZ-fZ-z2d"/>
-                            <constraint firstItem="NsW-Rx-GB9" firstAttribute="top" secondItem="2ln-v1-4qr" secondAttribute="bottom" constant="60" id="ZlH-af-Gz2"/>
+                            <constraint firstItem="NsW-Rx-GB9" firstAttribute="top" secondItem="2ln-v1-4qr" secondAttribute="bottom" constant="30" id="ZlH-af-Gz2"/>
                             <constraint firstItem="fE8-LD-bst" firstAttribute="centerX" secondItem="twA-hR-mBC" secondAttribute="centerX" id="aMu-4C-ush"/>
                             <constraint firstItem="2ln-v1-4qr" firstAttribute="leading" secondItem="mpG-Bd-6g6" secondAttribute="leading" constant="30" id="gYI-kk-9do"/>
                             <constraint firstItem="mpG-Bd-6g6" firstAttribute="trailing" secondItem="NsW-Rx-GB9" secondAttribute="trailing" constant="15" id="hq5-ro-fdw"/>
@@ -842,9 +861,11 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bottomStackView" destination="NsW-Rx-GB9" id="jvC-OL-NMO"/>
                         <outlet property="cautionLabel" destination="EMh-bs-oyW" id="eRv-FT-mF1"/>
                         <outlet property="createButton" destination="ReQ-dh-cVC" id="huL-3Q-nJY"/>
                         <outlet property="generateButton" destination="sbg-UY-BU3" id="yNF-dS-Y0p"/>
+                        <outlet property="repeatPasswordField" destination="huZ-Za-xuZ" id="vg6-Hd-MmR"/>
                         <outlet property="textView_1" destination="j3u-I6-HgE" id="0eO-nQ-nTe"/>
                         <outlet property="textView_10" destination="WgG-1G-Mjt" id="86Q-ND-Obg"/>
                         <outlet property="textView_11" destination="2do-6R-nGw" id="JjG-GE-XlV"/>
@@ -857,6 +878,7 @@
                         <outlet property="textView_7" destination="EzF-wY-BFj" id="2fZ-AO-fvb"/>
                         <outlet property="textView_8" destination="bqA-Qb-FR1" id="DEh-vA-Hre"/>
                         <outlet property="textView_9" destination="uvG-E2-6zc" id="Obq-dk-uEc"/>
+                        <outlet property="walletPasswordField" destination="szU-Fj-b4H" id="7K0-tb-Fap"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Qq-nC-DMZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
