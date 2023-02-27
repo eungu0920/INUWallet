@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		05B6D4880B01023A59A2C1B5 /* Pods_INUWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B3DB7950332060AC22E10A6 /* Pods_INUWallet.framework */; };
+		280435E529AC7DEB009F090E /* CreateWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280435E429AC7DEB009F090E /* CreateWalletViewController.swift */; };
+		280435E829AC933D009F090E /* Web3 in Frameworks */ = {isa = PBXBuildFile; productRef = 280435E729AC933D009F090E /* Web3 */; };
+		280435EA29AC933D009F090E /* Web3ContractABI in Frameworks */ = {isa = PBXBuildFile; productRef = 280435E929AC933D009F090E /* Web3ContractABI */; };
+		280435EC29AC933D009F090E /* Web3PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 280435EB29AC933D009F090E /* Web3PromiseKit */; };
 		2810A7CF29A8CE0600F5BCD1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2810A7CE29A8CE0600F5BCD1 /* GoogleService-Info.plist */; };
 		2810A7D129A8D12E00F5BCD1 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2810A7D029A8D12E00F5BCD1 /* RegistrationViewController.swift */; };
 		2810A7D329A8D2F800F5BCD1 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2810A7D229A8D2F800F5BCD1 /* DatabaseManager.swift */; };
@@ -57,6 +61,7 @@
 
 /* Begin PBXFileReference section */
 		167F98BA59E6C9BCE1E77835 /* Pods-INUWallet-INUWalletUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-INUWallet-INUWalletUITests.debug.xcconfig"; path = "Target Support Files/Pods-INUWallet-INUWalletUITests/Pods-INUWallet-INUWalletUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		280435E429AC7DEB009F090E /* CreateWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateWalletViewController.swift; sourceTree = "<group>"; };
 		2810A7CE29A8CE0600F5BCD1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2810A7D029A8D12E00F5BCD1 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		2810A7D229A8D2F800F5BCD1 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
@@ -102,7 +107,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				280435EA29AC933D009F090E /* Web3ContractABI in Frameworks */,
 				05B6D4880B01023A59A2C1B5 /* Pods_INUWallet.framework in Frameworks */,
+				280435EC29AC933D009F090E /* Web3PromiseKit in Frameworks */,
+				280435E829AC933D009F090E /* Web3 in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,6 +250,7 @@
 				28CA2460298BBD20006F4242 /* LoginViewController.swift */,
 				28CA2463298BC390006F4242 /* AuthenticationViewController.swift */,
 				2810A7D029A8D12E00F5BCD1 /* RegistrationViewController.swift */,
+				280435E429AC7DEB009F090E /* CreateWalletViewController.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -308,6 +317,11 @@
 			dependencies = (
 			);
 			name = INUWallet;
+			packageProductDependencies = (
+				280435E729AC933D009F090E /* Web3 */,
+				280435E929AC933D009F090E /* Web3ContractABI */,
+				280435EB29AC933D009F090E /* Web3PromiseKit */,
+			);
 			productName = INUWallet;
 			productReference = 28CA2417298AA4E6006F4242 /* INUWallet.app */;
 			productType = "com.apple.product-type.application";
@@ -383,6 +397,9 @@
 				Base,
 			);
 			mainGroup = 28CA240E298AA4E6006F4242;
+			packageReferences = (
+				280435E629AC933D009F090E /* XCRemoteSwiftPackageReference "Web3" */,
+			);
 			productRefGroup = 28CA2418298AA4E6006F4242 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -544,6 +561,7 @@
 				28CA2453298BBBA5006F4242 /* HomeViewController.swift in Sources */,
 				2810A7D129A8D12E00F5BCD1 /* RegistrationViewController.swift in Sources */,
 				2810A81D29AA56A400F5BCD1 /* Extension.swift in Sources */,
+				280435E529AC7DEB009F090E /* CreateWalletViewController.swift in Sources */,
 				28CA2466298BC39B006F4242 /* NFTInfoViewController.swift in Sources */,
 				28CA246A298BC3DB006F4242 /* TokenInfoViewController.swift in Sources */,
 				28CA245B298BBC02006F4242 /* WalletViewController.swift in Sources */,
@@ -896,6 +914,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		280435E629AC933D009F090E /* XCRemoteSwiftPackageReference "Web3" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Boilertalk/Web3.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.8.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		280435E729AC933D009F090E /* Web3 */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 280435E629AC933D009F090E /* XCRemoteSwiftPackageReference "Web3" */;
+			productName = Web3;
+		};
+		280435E929AC933D009F090E /* Web3ContractABI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 280435E629AC933D009F090E /* XCRemoteSwiftPackageReference "Web3" */;
+			productName = Web3ContractABI;
+		};
+		280435EB29AC933D009F090E /* Web3PromiseKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 280435E629AC933D009F090E /* XCRemoteSwiftPackageReference "Web3" */;
+			productName = Web3PromiseKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 28CA240F298AA4E6006F4242 /* Project object */;
 }

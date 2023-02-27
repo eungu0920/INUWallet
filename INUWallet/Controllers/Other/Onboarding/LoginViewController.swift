@@ -7,6 +7,7 @@
 // TODO: - 이메일에 @inu.ac.kr 적어놓기
 
 import UIKit
+import FirebaseAuth
 
 class LoginViewController: UIViewController {
     @IBOutlet weak var emailField: UITextField!
@@ -45,6 +46,18 @@ class LoginViewController: UIViewController {
         
         //키보드 숨기기
         self.hideKeyboardWhenTappedAround()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("LoginVCWillAppear")
+        
+        if Auth.auth().currentUser == nil {
+            print("doesn't exist current user")
+        } else {
+            dismiss(animated: false, completion: nil)
+            print("There is current user")
+        }
     }
     
     @IBAction func didTapSigninButton(_ sender: Any) {
@@ -105,6 +118,20 @@ class LoginViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func didTapCreateButton(_ sender: Any) {
+//        guard let pvc = self.presentingViewController else { return }
+        
+        guard let RegistrationVC = self.storyboard?.instantiateViewController(withIdentifier: "RegistrationViewController") else { return }
+        RegistrationVC.modalPresentationStyle = .fullScreen
+        present(RegistrationVC, animated: true, completion: nil)
+        
+//        self.dismiss(animated: true) {
+//        }
+    }
+    
+    
+    
 }
 
 extension LoginViewController: UITextFieldDelegate {

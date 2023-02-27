@@ -11,6 +11,8 @@
 import UIKit
 
 class RegistrationViewController: UIViewController {
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
@@ -19,7 +21,6 @@ class RegistrationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Create an account"
         swipeRecognizer()
         
         usernameField.delegate = self
@@ -148,7 +149,10 @@ class RegistrationViewController: UIViewController {
         AuthManager.shared.registerNewUser(username: username, email: email, password: password) { registered in
             DispatchQueue.main.async {
                 if registered {
-                    self.dismiss(animated: true, completion: nil)
+                    guard let CreateWalletVC = self.storyboard?.instantiateViewController(withIdentifier: "CreateWalletViewController") else { return }
+                    CreateWalletVC.modalPresentationStyle = .fullScreen
+                    
+                    self.present(CreateWalletVC, animated: true, completion: nil)
                 } else {
                     
                 }
