@@ -7,6 +7,9 @@ target 'INUWallet' do
 
 pod 'Appirater'
 
+# HDWalletKit
+pod 'HDWalletKit'
+
 # Firebase
 pod 'Firebase/Core'
 pod 'Firebase/Auth'

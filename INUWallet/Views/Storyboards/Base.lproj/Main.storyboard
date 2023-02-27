@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ReP-Ur-c2W">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="b8C-n2-2yu">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
@@ -453,15 +453,6 @@
                                 <color key="textColor" systemColor="secondaryLabelColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1MH-vv-vqe">
-                                <rect key="frame" x="15.999999999999996" y="64.333333333333329" width="39.666666666666657" height="34.333333333333329"/>
-                                <color key="tintColor" systemColor="secondaryLabelColor"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="chevron.backward" catalog="system"/>
-                                <connections>
-                                    <action selector="didTapBackButton:" destination="awX-t3-Yq3" eventType="touchUpInside" id="wII-Ga-eyr"/>
-                                </connections>
-                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="2ln-v1-4qr">
                                 <rect key="frame" x="30" y="134" width="333" height="334"/>
                                 <subviews>
@@ -798,25 +789,61 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="NsW-Rx-GB9">
+                                <rect key="frame" x="15" y="528" width="363" height="110.66666666666663"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EMh-bs-oyW">
+                                        <rect key="frame" x="0.0" y="0.0" width="363" height="40.666666666666664"/>
+                                        <string key="text">시드문구를 휴대폰 또는 PC에 보관하지 마십시오.
+다음 문구를 적었으면 생성하기버튼을 누르세요.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" systemColor="systemRedColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ReQ-dh-cVC">
+                                        <rect key="frame" x="15" y="70.666666666666629" width="333" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="HNj-xJ-LNd"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="IpX-iC-l1J"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Button">
+                                            <color key="baseBackgroundColor" red="0.64705882349999999" green="0.64705882349999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="didTapCreateButton:" destination="b8C-n2-2yu" eventType="touchUpInside" id="Az3-mw-Lua"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="EMh-bs-oyW" firstAttribute="top" secondItem="NsW-Rx-GB9" secondAttribute="top" id="4x1-wi-hzp"/>
+                                    <constraint firstItem="ReQ-dh-cVC" firstAttribute="leading" secondItem="NsW-Rx-GB9" secondAttribute="leading" constant="15" id="ibn-Bo-1fu"/>
+                                    <constraint firstAttribute="trailing" secondItem="ReQ-dh-cVC" secondAttribute="trailing" constant="15" id="l6m-cc-xl8"/>
+                                    <constraint firstItem="EMh-bs-oyW" firstAttribute="leading" secondItem="NsW-Rx-GB9" secondAttribute="leading" id="svT-dg-WnT"/>
+                                    <constraint firstAttribute="trailing" secondItem="EMh-bs-oyW" secondAttribute="trailing" id="uKq-DO-pm6"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mpG-Bd-6g6"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="Jhh-kW-U9G" secondAttribute="bottom" id="0Nh-D8-2e6"/>
                             <constraint firstItem="2ln-v1-4qr" firstAttribute="top" secondItem="fE8-LD-bst" secondAttribute="bottom" constant="30" id="1Mf-st-Joy"/>
-                            <constraint firstItem="1MH-vv-vqe" firstAttribute="centerY" secondItem="fE8-LD-bst" secondAttribute="centerY" id="1oj-rY-yre"/>
-                            <constraint firstItem="1MH-vv-vqe" firstAttribute="leading" secondItem="mpG-Bd-6g6" secondAttribute="leading" constant="16" id="CxD-VL-hVg"/>
+                            <constraint firstItem="NsW-Rx-GB9" firstAttribute="leading" secondItem="mpG-Bd-6g6" secondAttribute="leading" constant="15" id="EGz-bX-ws2"/>
                             <constraint firstItem="Jhh-kW-U9G" firstAttribute="top" secondItem="twA-hR-mBC" secondAttribute="top" id="HQ9-7X-6R9"/>
-                            <constraint firstItem="fE8-LD-bst" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1MH-vv-vqe" secondAttribute="trailing" constant="73.329999999999998" id="ULg-2k-9BB"/>
                             <constraint firstItem="fE8-LD-bst" firstAttribute="top" secondItem="mpG-Bd-6g6" secondAttribute="top" id="XSr-hX-yQ9"/>
                             <constraint firstItem="mpG-Bd-6g6" firstAttribute="trailing" secondItem="2ln-v1-4qr" secondAttribute="trailing" constant="30" id="XVZ-fZ-z2d"/>
+                            <constraint firstItem="NsW-Rx-GB9" firstAttribute="top" secondItem="2ln-v1-4qr" secondAttribute="bottom" constant="60" id="ZlH-af-Gz2"/>
                             <constraint firstItem="fE8-LD-bst" firstAttribute="centerX" secondItem="twA-hR-mBC" secondAttribute="centerX" id="aMu-4C-ush"/>
                             <constraint firstItem="2ln-v1-4qr" firstAttribute="leading" secondItem="mpG-Bd-6g6" secondAttribute="leading" constant="30" id="gYI-kk-9do"/>
+                            <constraint firstItem="mpG-Bd-6g6" firstAttribute="trailing" secondItem="NsW-Rx-GB9" secondAttribute="trailing" constant="15" id="hq5-ro-fdw"/>
                             <constraint firstItem="Jhh-kW-U9G" firstAttribute="trailing" secondItem="mpG-Bd-6g6" secondAttribute="trailing" id="kAb-ej-PGJ"/>
                             <constraint firstItem="Jhh-kW-U9G" firstAttribute="leading" secondItem="mpG-Bd-6g6" secondAttribute="leading" id="wzt-ij-GSN"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cautionLabel" destination="EMh-bs-oyW" id="eRv-FT-mF1"/>
+                        <outlet property="createButton" destination="ReQ-dh-cVC" id="huL-3Q-nJY"/>
                         <outlet property="generateButton" destination="sbg-UY-BU3" id="yNF-dS-Y0p"/>
                         <outlet property="textView_1" destination="j3u-I6-HgE" id="0eO-nQ-nTe"/>
                         <outlet property="textView_10" destination="WgG-1G-Mjt" id="86Q-ND-Obg"/>
@@ -869,6 +896,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
