@@ -62,23 +62,21 @@ public class DatabaseManager {
         
     }
     
-    public func showWalletAddress(completion: @escaping (String) -> Void) {
+    public func showWalletAddress(completion: @escaping (String?) -> Void) {
         let uid = AuthManager.shared.shareUid()
         
         database.child("users/\(uid)/address").getData { error, snapshot in
             guard error == nil else {
                 print(error!.localizedDescription)
-                print("ERROR")
                 return
             }
-//            address = "1234"
-//            print(address)
-            let address = snapshot?.value as? String
-            completion(address!)
             
-//            print(address)
+            guard let address = snapshot?.value as? String else {
+                completion(nil)
+                return
+            }
+            completion(address)
         }
-//        print(address)
     }
     
 }

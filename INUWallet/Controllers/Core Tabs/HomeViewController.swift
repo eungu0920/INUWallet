@@ -10,11 +10,6 @@ import UIKit
 
 class HomeViewController: UIViewController {
     @IBOutlet weak var walletLabel: UILabel!
-    @IBOutlet weak var signOutButton: UIButton!
-    @IBOutlet weak var privateKeyLabel: UILabel!
-    @IBOutlet weak var publicKeyLabel: UILabel!
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +19,6 @@ class HomeViewController: UIViewController {
         super.viewDidAppear(animated)
         // 로그인이 되어있는지 확인함
         handleNotAuthenticated()
-        showWalletAddress()
     }
     
     private func handleNotAuthenticated() {
@@ -43,50 +37,5 @@ class HomeViewController: UIViewController {
 //            present(loginVC, animated: false)
         }
     }
-    
-    @IBAction func didTapSignOut(_ sender: Any) {
-        let actionSheet = UIAlertController(title: "Sign Out",
-                                            message: "Are you sure you want to sign out?",
-                                            preferredStyle: .actionSheet)
-        actionSheet.addAction(UIAlertAction(title: "Cancle",
-                                            style: .cancel,
-                                            handler: nil))
-        actionSheet.addAction(UIAlertAction(title: "Sign Out",
-                                            style: .destructive,
-                                            handler: { _ in
-            AuthManager.shared.signOut(completion: { success in
-                DispatchQueue.main.async {
-                    if success {
-                        guard let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController")
-                        else {
-                            return
-                        }
-                        
-                        loginVC.modalPresentationStyle = .fullScreen
-                        self.present(loginVC, animated: false) {
-                            self.navigationController?.popToRootViewController(animated: false)
-                            self.tabBarController?.selectedIndex = 0
-                        }
-                    } else {
-                        // error occurred
-                        fatalError("Could not sign out user")
-                    }
-                }
-            })
-        }))
-        
-        self.present(actionSheet, animated: true)
-    }
-    
-    private func showWalletAddress() {
-        let address = UserDefaults.standard.value(forKey: "Address") as? String
-        let privateKey = UserDefaults.standard.value(forKey: "PrivateKey") as? String
-        let publicKey = UserDefaults.standard.value(forKey: "PublicKey") as? String
-        print(address)
-        walletLabel.text = address
-        privateKeyLabel.text = privateKey
-        publicKeyLabel.text = publicKey
-    }
-    
     
 }
