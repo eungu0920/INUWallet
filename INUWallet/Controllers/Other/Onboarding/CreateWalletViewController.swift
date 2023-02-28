@@ -136,29 +136,29 @@ class CreateWalletViewController: UIViewController {
         print(wallet)
         
         let firstAccount = wallet.generateAccount(at: 0)
+        let privateKey = firstAccount.rawPrivateKey
+        let publicKey = firstAccount.rawPublicKey
+        
         print("address: \(firstAccount.address)")
         print("rawPrivateKey: \(firstAccount.rawPrivateKey)")
-        print("privateKey: \(firstAccount.privateKey)")
         print("rawPublicKey: \(firstAccount.rawPublicKey)")
         
         userAddress = firstAccount.address
+        UserDefaults.standard.set(userAddress, forKey: "Address")
+        UserDefaults.standard.set(privateKey, forKey: "PrivateKey")
+        UserDefaults.standard.set(publicKey, forKey: "PublicKey")
         
     }
     
     @IBAction func didTapCreateButton(_ sender: Any) {
         
-        DatabaseManager.shared.saveWalletAddress(address: userAddress) { error in
-            if error == nil {
-                print("save success")
-                return
-            } else {
-                return
-            }
-        }
+        DatabaseManager.shared.saveWalletAddress(address: userAddress)
         
-        for textView in textViewArr {
-            print(textView.text)
-        }
+        self.view.window?.rootViewController?.dismiss(animated: false, completion: {
+            let homeVC = HomeViewController()
+            homeVC.modalPresentationStyle = .fullScreen
+            self.present(homeVC, animated: true, completion: nil)
+        })
         
     }
     

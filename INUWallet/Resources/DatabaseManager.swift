@@ -32,7 +32,7 @@ public class DatabaseManager {
 //        }
 //
 //    }
-    
+
     public func insertNewUser(with email: String, username: String, uid: String, completion: @escaping (Bool) -> Void) {
         
         database.child("users").child(uid).setValue(["username": username, "email": email]) { error, _ in
@@ -47,19 +47,38 @@ public class DatabaseManager {
         
     }
     
-    public func saveWalletAddress(address: String, completion: @escaping (Bool) -> Void) {
-        
+    public func saveWalletAddress(address: String) {
         let uid = AuthManager.shared.shareUid()
         
-        database.child("users/\(uid)/address").setValue(address) { error, _ in
-            if error == nil {
-                completion(true)
-                return
-            } else {
-                completion(false)
+//        database.child("users/\(uid)/address").setValue(address) { error, _ in
+//            if error == nil {
+//                return
+//            } else {
+//                return
+//            }
+//        }
+        
+        database.child("users/\(uid)/address").setValue(address)
+        
+    }
+    
+    public func showWalletAddress(completion: @escaping (String) -> Void) {
+        let uid = AuthManager.shared.shareUid()
+        
+        database.child("users/\(uid)/address").getData { error, snapshot in
+            guard error == nil else {
+                print(error!.localizedDescription)
+                print("ERROR")
                 return
             }
+//            address = "1234"
+//            print(address)
+            let address = snapshot?.value as? String
+            completion(address!)
+            
+//            print(address)
         }
+//        print(address)
     }
     
 }

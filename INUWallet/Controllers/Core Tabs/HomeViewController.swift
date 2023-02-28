@@ -9,16 +9,22 @@ import FirebaseAuth
 import UIKit
 
 class HomeViewController: UIViewController {
-
+    @IBOutlet weak var walletLabel: UILabel!
+    @IBOutlet weak var signOutButton: UIButton!
+    @IBOutlet weak var privateKeyLabel: UILabel!
+    @IBOutlet weak var publicKeyLabel: UILabel!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         // 로그인이 되어있는지 확인함
         handleNotAuthenticated()
+        showWalletAddress()
     }
     
     private func handleNotAuthenticated() {
@@ -70,6 +76,16 @@ class HomeViewController: UIViewController {
         }))
         
         self.present(actionSheet, animated: true)
+    }
+    
+    private func showWalletAddress() {
+        let address = UserDefaults.standard.value(forKey: "Address") as? String
+        let privateKey = UserDefaults.standard.value(forKey: "PrivateKey") as? String
+        let publicKey = UserDefaults.standard.value(forKey: "PublicKey") as? String
+        print(address)
+        walletLabel.text = address
+        privateKeyLabel.text = privateKey
+        publicKeyLabel.text = publicKey
     }
     
     
