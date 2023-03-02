@@ -4,7 +4,6 @@
 //
 //  Created by Gray on 2023/02/27.
 //
-
 import HDWalletKit
 import UIKit
 
@@ -138,11 +137,11 @@ class CreateWalletViewController: UIViewController {
         let firstAccount = wallet.generateAccount(at: 0)
         let privateKey = firstAccount.rawPrivateKey
         let publicKey = firstAccount.rawPublicKey
-        
+
         print("address: \(firstAccount.address)")
         print("rawPrivateKey: \(firstAccount.rawPrivateKey)")
         print("rawPublicKey: \(firstAccount.rawPublicKey)")
-        
+
         userAddress = firstAccount.address
         UserDefaults.standard.set(userAddress, forKey: "Address")
         UserDefaults.standard.set(privateKey, forKey: "PrivateKey")

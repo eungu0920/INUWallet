@@ -10,6 +10,7 @@ pod 'Appirater'
 # HDWalletKit
 pod 'HDWalletKit'
 
+
 # Firebase
 pod 'Firebase/Core'
 pod 'Firebase/Auth'
@@ -21,7 +22,6 @@ pod 'Firebase/Storage'
   # Pods for INUWallet
 
   target 'INUWalletTests' do
-    inherit! :search_paths
     # Pods for testing
   end
 
