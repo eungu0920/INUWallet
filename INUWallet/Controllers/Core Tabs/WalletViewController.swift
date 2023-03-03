@@ -55,9 +55,13 @@ class WalletViewController: UIViewController {
     
     
     @IBAction func didTapSendButton(_ sender: Any) {
-        showWalletBalance()
-        //sendEthToAnother()
-        pleaseSendEth()
+//        showWalletBalance()
+//        //sendEthToAnother()
+//        pleaseSendEth()
+        let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "SendTokenViewController") as! SendTokenViewController
+        nextVC.modalPresentationStyle = .fullScreen
+        self.present(nextVC, animated: true)
+        
         print("send")
     }
     
@@ -130,7 +134,8 @@ class WalletViewController: UIViewController {
          
     }
     
-    
+    // MARK: - 이더리움 보내는 코드
+    // TODO: 1. estimate gas로 gasPrice, maxFeePerGas 등 요금 견적 내기
     private func sendEthToAnother() {
 //        // Ethereum Network
 //        let web3 = Web3(rpcURL: "https://rpc.ankr.com/eth")
@@ -175,6 +180,8 @@ class WalletViewController: UIViewController {
         
     }
     
+    // MARK: - 토큰 보내는 코드
+    // TODO: 1. 여기도 마찬가지로 estimate gas로 요금 자동으로 추정하기
     
     private func pleaseSendEth() {
         let web3 = Web3(rpcURL: "https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161")

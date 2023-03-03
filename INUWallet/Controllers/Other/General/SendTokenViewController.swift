@@ -7,15 +7,19 @@
 
 import UIKit
 
-class TokenSendViewController: UIViewController {
-
+class SendTokenViewController: UIViewController {
+    @IBOutlet weak var backButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        backButton.setTitle("", for: .normal)
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func didTapCloseButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     /*
     // MARK: - Navigation
 

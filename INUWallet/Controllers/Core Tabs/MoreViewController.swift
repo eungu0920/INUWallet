@@ -9,10 +9,13 @@ import UIKit
 
 class MoreViewController: UIViewController {
     @IBOutlet weak var signOutButton: UIButton!
+        
+    let backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: MoreViewController.self, action: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.navigationItem.backBarButtonItem = backBarButtonItem
     }
     
     

@@ -15,6 +15,7 @@
 		2810A7D529A8D76300F5BCD1 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2810A7D429A8D76300F5BCD1 /* AuthManager.swift */; };
 		2810A7D729A8D7AA00F5BCD1 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2810A7D629A8D7AA00F5BCD1 /* StorageManager.swift */; };
 		2810A81D29AA56A400F5BCD1 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2810A81C29AA56A400F5BCD1 /* Extension.swift */; };
+		28672F2E29B1C77F008D5732 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28672F2D29B1C77F008D5732 /* SettingViewController.swift */; };
 		289CA51A29B0986C0045E006 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289CA51929B0986C0045E006 /* Wallet.swift */; };
 		289CA57029B0BBA20045E006 /* Web3 in Frameworks */ = {isa = PBXBuildFile; productRef = 289CA56F29B0BBA20045E006 /* Web3 */; };
 		289CA57229B0BBA20045E006 /* Web3ContractABI in Frameworks */ = {isa = PBXBuildFile; productRef = 289CA57129B0BBA20045E006 /* Web3ContractABI */; };
@@ -37,7 +38,7 @@
 		28CA2466298BC39B006F4242 /* NFTInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CA2465298BC39B006F4242 /* NFTInfoViewController.swift */; };
 		28CA2468298BC3BB006F4242 /* WalletInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CA2467298BC3BB006F4242 /* WalletInfoViewController.swift */; };
 		28CA246A298BC3DB006F4242 /* TokenInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CA2469298BC3DB006F4242 /* TokenInfoViewController.swift */; };
-		28CA246C298BC419006F4242 /* TokenSendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CA246B298BC419006F4242 /* TokenSendViewController.swift */; };
+		28CA246C298BC419006F4242 /* SendTokenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CA246B298BC419006F4242 /* SendTokenViewController.swift */; };
 		28CA246E298BC422006F4242 /* NFTSendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CA246D298BC422006F4242 /* NFTSendViewController.swift */; };
 		5725C1B48FC12A43148548FF /* Pods_INUWallet_INUWalletUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBD1D2172E23925E195A7B48 /* Pods_INUWallet_INUWalletUITests.framework */; };
 		CAF5E540AD4EDA370EFA81CE /* Pods_INUWallet_INUWalletTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5577DD78C9E5FC5FE12F77DA /* Pods_INUWallet_INUWalletTests.framework */; };
@@ -69,6 +70,7 @@
 		2810A7D429A8D76300F5BCD1 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		2810A7D629A8D7AA00F5BCD1 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		2810A81C29AA56A400F5BCD1 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		28672F2D29B1C77F008D5732 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		289CA51929B0986C0045E006 /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
 		28CA2417298AA4E6006F4242 /* INUWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = INUWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28CA241A298AA4E6006F4242 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -92,7 +94,7 @@
 		28CA2465298BC39B006F4242 /* NFTInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTInfoViewController.swift; sourceTree = "<group>"; };
 		28CA2467298BC3BB006F4242 /* WalletInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletInfoViewController.swift; sourceTree = "<group>"; };
 		28CA2469298BC3DB006F4242 /* TokenInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenInfoViewController.swift; sourceTree = "<group>"; };
-		28CA246B298BC419006F4242 /* TokenSendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenSendViewController.swift; sourceTree = "<group>"; };
+		28CA246B298BC419006F4242 /* SendTokenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendTokenViewController.swift; sourceTree = "<group>"; };
 		28CA246D298BC422006F4242 /* NFTSendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTSendViewController.swift; sourceTree = "<group>"; };
 		2A010F61074E8A9AB27959D2 /* Pods-INUWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-INUWallet.release.xcconfig"; path = "Target Support Files/Pods-INUWallet/Pods-INUWallet.release.xcconfig"; sourceTree = "<group>"; };
 		3B3DB7950332060AC22E10A6 /* Pods_INUWallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_INUWallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -275,8 +277,9 @@
 				28CA2465298BC39B006F4242 /* NFTInfoViewController.swift */,
 				28CA2467298BC3BB006F4242 /* WalletInfoViewController.swift */,
 				28CA2469298BC3DB006F4242 /* TokenInfoViewController.swift */,
-				28CA246B298BC419006F4242 /* TokenSendViewController.swift */,
+				28CA246B298BC419006F4242 /* SendTokenViewController.swift */,
 				28CA246D298BC422006F4242 /* NFTSendViewController.swift */,
+				28672F2D29B1C77F008D5732 /* SettingViewController.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -573,11 +576,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				2810A7D329A8D2F800F5BCD1 /* DatabaseManager.swift in Sources */,
+				28672F2E29B1C77F008D5732 /* SettingViewController.swift in Sources */,
 				28CA2459298BBBCB006F4242 /* MoreViewController.swift in Sources */,
 				28CA2457298BBBBD006F4242 /* NFTViewController.swift in Sources */,
 				2810A7D729A8D7AA00F5BCD1 /* StorageManager.swift in Sources */,
 				28CA241B298AA4E6006F4242 /* AppDelegate.swift in Sources */,
-				28CA246C298BC419006F4242 /* TokenSendViewController.swift in Sources */,
+				28CA246C298BC419006F4242 /* SendTokenViewController.swift in Sources */,
 				28CA241D298AA4E6006F4242 /* SceneDelegate.swift in Sources */,
 				28CA2464298BC390006F4242 /* AuthenticationViewController.swift in Sources */,
 				2810A7D529A8D76300F5BCD1 /* AuthManager.swift in Sources */,
