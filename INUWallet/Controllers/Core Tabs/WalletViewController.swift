@@ -18,13 +18,22 @@ import Web3ContractABI
 
 class WalletViewController: UIViewController {
     @IBOutlet weak var myWalletView: UIView!
+    @IBOutlet weak var myTokenView: UIView!
+    
+    @IBOutlet weak var walletAddressButton: UIButton!
     @IBOutlet weak var walletAddressLabel: UILabel!
-    @IBOutlet weak var walletAddressTextView: UITextView!
     @IBOutlet weak var walletBalanceLabel: UILabel!
     
     var wei_18: Double = 1000000000000000000
     
     //    var testAddress: String = ""
+    
+//    private let spinner: UIActivityIndicatorView = {
+//        let spinner = UIActivityIndicatorView(style: .medium)
+//        spinner.hidesWhenStopped = true
+//        spinner.tintColor = .label
+//        return spinner
+//    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,23 +41,30 @@ class WalletViewController: UIViewController {
         myWalletView.layer.cornerRadius = 15.0
         myWalletView.layer.shadowColor = UIColor.black.cgColor
         myWalletView.layer.shadowOffset = CGSize(width: 0, height: 2)
-        myWalletView.layer.shadowOpacity = 0.2
+        myWalletView.layer.shadowOpacity = 0.4
         myWalletView.layer.shadowRadius = 15.0
         
-        // 이거 여백 TextView 여백 없애기
-        walletAddressTextView.textContainerInset = UIEdgeInsets(top: 0,
-                                                                left: -walletAddressTextView.textContainer.lineFragmentPadding,
-                                                                bottom: 0,
-                                                                right: 0)
+        myTokenView.layer.cornerRadius = 15.0
+        myTokenView.layer.shadowColor = UIColor.black.cgColor
+        myTokenView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        myTokenView.layer.shadowOpacity = 0.4
+        myTokenView.layer.shadowRadius = 15.0
         
+        
+        // 이거 여백 TextView 여백 없애기
+//        walletAddressTextView.textContainerInset = UIEdgeInsets(top: 0,
+//                                                                left: -walletAddressTextView.textContainer.lineFragmentPadding,
+//                                                                bottom: 0,
+//                                                                right: 0)
+        walletAddressButton.setTitle("", for: .normal)
+        walletAddressButton.setImage(.none, for: .normal)
         getWalletAddress()
-//        showWalletBalance()
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // 뷰가 켜질 때 마다 잔액 새로고침
-//        getWalletAddress()
         
         // TODO: 1. 나중에 시간날 때 balance 소수점 자르기?
     }
@@ -75,7 +91,27 @@ class WalletViewController: UIViewController {
             guard let address = address else {
                 return
             }
-            self.walletAddressTextView.text = address
+            
+            let start = address.startIndex
+            let end = address.endIndex
+            
+            var reduceAddress = ""
+        
+            for i in 0...7 {
+                reduceAddress.append(address[address.index(start, offsetBy: i)])
+            }
+            
+            reduceAddress.append("...")
+            
+            for i in stride(from: -8, through: -1, by: 1) {
+                reduceAddress.append(address[address.index(end, offsetBy: i)])
+            }
+            
+            self.walletAddressButton.setTitle(reduceAddress, for: .normal)
+            let imageConfig = UIImage.SymbolConfiguration(scale: .small)
+            self.walletAddressButton.setImage(UIImage(systemName: "rectangle.on.rectangle", withConfiguration: imageConfig), for: .normal)
+            
+//            self.walletAddressButton.setTitle(reduceAddress, for: .normal)
         }
     }
     

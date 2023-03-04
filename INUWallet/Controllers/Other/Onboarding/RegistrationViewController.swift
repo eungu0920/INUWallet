@@ -66,6 +66,8 @@ class RegistrationViewController: UIViewController {
         signupButton.setTitle("Sign Up", for: .normal)
         signupButton.setTitleColor(.white, for: .normal)
         
+        backButton.setTitle("", for: .normal)
+        
         self.hideKeyboardWhenTappedAround()
     }
     
