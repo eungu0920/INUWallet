@@ -18,10 +18,6 @@ class NFTViewController: UIViewController {
     }
     
     
-    @IBAction func didTapGetNFTInfo(_ sender: Any) {
-        getNFTInfo()
-    }
-    
     private func getNFTInfo() {
 //        // Ethereum Network
 //        let web3 = Web3(rpcURL: "https://rpc.ankr.com/eth")

@@ -25,6 +25,8 @@ class SettingViewController: UIViewController {
         tableView.dataSource = self
         tableView.frame = .zero
         
+        
+        
     }
     
     private var data = [[SettingCellModel]]()
@@ -130,6 +132,8 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = data[indexPath.section][indexPath.row].title
+//        cell.textLabel?.textColor = UIColor.red
+        cell.textLabel?.textColor = UIColor(cgColor: CGColor(genericCMYKCyan: 1.0, magenta: 0.8, yellow: 0, black: 0.05, alpha: 1))
         cell.accessoryType = .disclosureIndicator
         return cell
     }

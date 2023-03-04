@@ -8,49 +8,14 @@
 import UIKit
 
 class MoreViewController: UIViewController {
-    @IBOutlet weak var signOutButton: UIButton!
         
+    // Setting Button 누르면 다음 화면에서 BarButton 이름 바꿔주기
     let backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: MoreViewController.self, action: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationItem.backBarButtonItem = backBarButtonItem
-    }
-    
-    
-    @IBAction func didTapSignOutButton(_ sender: Any) {
-        let actionSheet = UIAlertController(title: "Sign Out",
-                                            message: "Are you sure you want to sign out?",
-                                            preferredStyle: .actionSheet)
-        actionSheet.addAction(UIAlertAction(title: "Cancle",
-                                            style: .cancel,
-                                            handler: nil))
-        actionSheet.addAction(UIAlertAction(title: "Sign Out",
-                                            style: .destructive,
-                                            handler: { _ in
-            AuthManager.shared.signOut(completion: { success in
-                DispatchQueue.main.async {
-                    if success {
-                        guard let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController")
-                        else {
-                            return
-                        }
-                        
-                        loginVC.modalPresentationStyle = .fullScreen
-                        self.present(loginVC, animated: false) {
-                            self.navigationController?.popToRootViewController(animated: false)
-                            self.tabBarController?.selectedIndex = 0
-                        }
-                    } else {
-                        // error occurred
-                        fatalError("Could not sign out user")
-                    }
-                }
-            })
-        }))
-        
-        self.present(actionSheet, animated: true)
     }
     
 }
