@@ -148,6 +148,8 @@ class RegistrationViewController: UIViewController {
             return
         }
         
+        UserDefaults.standard.set(username, forKey: "Username")
+        
         AuthManager.shared.registerNewUser(username: username, email: email, password: password) { registered in
             DispatchQueue.main.async {
                 if registered {

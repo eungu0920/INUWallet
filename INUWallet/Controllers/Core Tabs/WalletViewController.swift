@@ -20,11 +20,15 @@ class WalletViewController: UIViewController {
     @IBOutlet weak var myWalletView: UIView!
     @IBOutlet weak var myTokenView: UIView!
     
+    
+    @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var walletAddressButton: UIButton!
-    @IBOutlet weak var walletAddressLabel: UILabel!
     @IBOutlet weak var walletBalanceLabel: UILabel!
     
-    var wei_18: Double = 1000000000000000000
+    @IBOutlet weak var INUTokenBalanceLabel: UILabel!
+    
+    
+    let wei_18: Double = 1000000000000000000
     
     //    var testAddress: String = ""
     
@@ -56,10 +60,13 @@ class WalletViewController: UIViewController {
 //                                                                left: -walletAddressTextView.textContainer.lineFragmentPadding,
 //                                                                bottom: 0,
 //                                                                right: 0)
-        walletAddressButton.setTitle("", for: .normal)
-        walletAddressButton.setImage(.none, for: .normal)
+//        walletAddressButton.setTitle("", for: .normal)
+//        walletAddressButton.setImage(.none, for: .normal)
+        
+        usernameLabel.text = UserDefaults.standard.value(forKey: "Username") as? String
+        
         getWalletAddress()
-
+        showWalletBalance()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,14 +78,11 @@ class WalletViewController: UIViewController {
     
     
     @IBAction func didTapSendButton(_ sender: Any) {
-//        showWalletBalance()
-//        //sendEthToAnother()
-//        pleaseSendEth()
+        
         let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "SendTokenViewController") as! SendTokenViewController
         nextVC.modalPresentationStyle = .fullScreen
         self.present(nextVC, animated: true)
         
-        print("send")
     }
     
     @IBAction func didTapReceiveButton(_ sender: Any) {
@@ -128,45 +132,35 @@ class WalletViewController: UIViewController {
 //                // Polygon Network
 //                let web3 = Web3(rpcURL: "https://polygon-rpc.com/")
         
+        // INU Token Contract Address : 0xc5E38262b06B1dba1aE63D06F538Da0E51B59e10
+        let contractAddress = try! EthereumAddress(hex: "0xc5E38262b06B1dba1aE63D06F538Da0E51B59e10", eip55: true)
+        let contract = web3.eth.Contract(type: GenericERC20Contract.self, address: contractAddress)
+        
         DatabaseManager.shared.showWalletAddress { address in
             guard let address = address else {
                 return
             }
+            
             // 이더리움 수량 가져오기
             firstly {
-                try web3.eth.getBalance(address: EthereumAddress(hex: "0xf0dd0689C7c53c98ffC873C5487A27FCd1a7ab39", eip55: true), block: .latest)
+                try web3.eth.getBalance(address: EthereumAddress(hex: address, eip55: true), block: .latest)
             }.done { outputs in
                 let balance = Double(outputs.quantity) / self.wei_18
-                self.walletBalanceLabel.text = "잔액: \(balance) ETH"
+                self.walletBalanceLabel.text = "\(balance) ETH"
             }.catch { error in
-                print("ERROR!!! : \(error)")
+                print("ERROR: \(error)")
+            }
+            
+            // INU Token 수량 가져오기
+            firstly {
+                try contract.balanceOf(address: EthereumAddress(hex: address, eip55: true)).call()
+            }.done { outputs in
+                print(outputs.values)
+                self.INUTokenBalanceLabel.text = "\(outputs["_balance"] as! BigUInt) INU"
+            }.catch { error in
+                print("ERROR: \(error)")
             }
         }
-        
-        
-         firstly {
-         web3.clientVersion()
-         }.done { version in
-         print("version: \(version)")
-         }.catch { error in
-         print("ERROR")
-         }
-         
-         firstly {
-         web3.net.version()
-         }.done { version in
-         print("net version: \(version)")
-         }.catch { error in
-         print("ERROR")
-         }
-         
-         firstly {
-         web3.net.peerCount()
-         }.done { ethereumQuantity in
-         print("ether Quantity : \(ethereumQuantity.quantity)")
-         }.catch { error in
-         print("ERROR")
-         }
          
     }
     

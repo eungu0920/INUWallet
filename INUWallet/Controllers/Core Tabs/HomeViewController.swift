@@ -17,13 +17,17 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        myAddressButton.tintColor = UIColor(cgColor: CGColor(genericCMYKCyan: 1.0, magenta: 0.8, yellow: 0, black: 0.05, alpha: 1))
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         greatingView.layer.cornerRadius = 8.0
         announceView.layer.cornerRadius = 8.0
         tokenListView.layer.cornerRadius = 8.0
         myAddressButton.layer.cornerRadius = 8.0
-        
-//        myAddressButton.tintColor = UIColor(cgColor: CGColor(genericCMYKCyan: 1.0, magenta: 0.8, yellow: 0, black: 0.05, alpha: 1))
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
