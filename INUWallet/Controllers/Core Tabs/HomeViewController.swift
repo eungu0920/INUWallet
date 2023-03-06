@@ -9,10 +9,21 @@ import FirebaseAuth
 import UIKit
 
 class HomeViewController: UIViewController {
-    @IBOutlet weak var walletLabel: UILabel!
+    @IBOutlet weak var greatingView: UIView!
+    @IBOutlet weak var announceView: UIView!
+    @IBOutlet weak var tokenListView: UIView!
+    @IBOutlet weak var myAddressButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        greatingView.layer.cornerRadius = 8.0
+        announceView.layer.cornerRadius = 8.0
+        tokenListView.layer.cornerRadius = 8.0
+        myAddressButton.layer.cornerRadius = 8.0
+        
+//        myAddressButton.tintColor = UIColor(cgColor: CGColor(genericCMYKCyan: 1.0, magenta: 0.8, yellow: 0, black: 0.05, alpha: 1))
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {

@@ -5,6 +5,8 @@
 //  Created by Gray on 2023/03/03.
 //
 
+/*
+
 import SafariServices
 import UIKit
 
@@ -143,3 +145,5 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         data[indexPath.section][indexPath.row].handler()
     }
 }
+
+*/
