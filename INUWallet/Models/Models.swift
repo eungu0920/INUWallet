@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct User {
     let username: String
@@ -27,10 +28,24 @@ struct User {
 
 struct Users {
     var user: [User]
-    
-    
 }
 
+struct NFTInfo {
+    let name: String
+    let tokenID: String
+    let imageName: String
+    
+//    let tokenURL: URL
+    var image: UIImage? {
+        return UIImage(named: "\(imageName).png")
+    }
+    
+    init(name: String, tokenID: String, imageName: String) {
+        self.name = name
+        self.tokenID = tokenID
+        self.imageName = imageName
+    }
+}
 
 /*
  userdefault로 저장 - 임시

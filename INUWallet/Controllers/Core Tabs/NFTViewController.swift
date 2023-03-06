@@ -11,13 +11,36 @@ import Web3PromiseKit
 import Web3ContractABI
 
 class NFTViewController: UIViewController {
-
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    let model = NFTInfoModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        
+    }
+    
+    // MARK: - 스크롤 시에 탭바랑 네비게이션 뷰의 색깔이 의도적인 색이 아님... 블러를 약하게 주고싶음 나중에 방법 찾기
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.navigationBar.setBackgroundImage(UIImage(named: "effectView.png"), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
+        
+        tabBarController?.tabBar.shadowImage = UIImage()
+        tabBarController?.tabBar.backgroundImage = UIImage(named: "effectView.png")
+        tabBarController?.tabBar.isTranslucent = true
+//        navigationController?.navigationBar.isTranslucent = false
+//        tabBarController?.tabBar.isTranslucent = false
     }
     
     
+
     private func getNFTInfo() {
 //        // Ethereum Network
 //        let web3 = Web3(rpcURL: "https://rpc.ankr.com/eth")
@@ -65,8 +88,104 @@ class NFTViewController: UIViewController {
     }
 }
 
+extension NFTViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return model.numOfNFTInfoList
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GridCell", for: indexPath) as? GridCell else {
+            return UICollectionViewCell()
+        }
+        let NFTInfo = model.nftInfo(at: indexPath.item)
+        cell.imageView.layer.cornerRadius = 8.0
+        cell.update(info: NFTInfo)
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("clicked")
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.frame.width
+        let height = collectionView.frame.height
+        let itemPerRow: CGFloat = 3
+        let itemSpacing: CGFloat = 5
+        let sectionInset: CGFloat = 5
+        
+        let textAreaHeight: CGFloat = 38
+        
+        let cellWidth: CGFloat = (width - itemSpacing * (itemPerRow - 1) - sectionInset * 2) / itemPerRow
+        let cellHeight: CGFloat = cellWidth + textAreaHeight
+        
+        return CGSize(width: cellWidth, height: cellHeight)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        let sectionInsets = UIEdgeInsets(top: 3, left: 5, bottom: 5, right: 5)
+        
+        return sectionInsets
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 5
+    }
+    
+}
 
-public class GenericERC721cnt: StaticContract, ERC721Contract, AnnotatedERC721 {
+class NFTInfoModel {
+    let NFTInfoList: [NFTInfo] = [
+        NFTInfo(name: "WonderPals", tokenID: "#3804", imageName: "WonderPal #3804"),
+        NFTInfo(name: "Doodles", tokenID: "316", imageName: "Doodles #316"),
+        NFTInfo(name: "MetaKongz", tokenID: "#3695", imageName: "Kongz #3695"),
+        NFTInfo(name: "Bored Ape Yacht Club", tokenID: "#7971", imageName: "BAYC #7971"),
+        NFTInfo(name: "Project Spoon DAO", tokenID: "#789", imageName: "Spoon #789"),
+        NFTInfo(name: "Pop Art Cats by Matt Chessco", tokenID: "#6055", imageName: "Pop Art Cats #6055"),
+        NFTInfo(name: "SuperCatman", tokenID: "#10", imageName: "SuperCatman #10"),
+        NFTInfo(name: "Azuki", tokenID: "#5558", imageName: "Azuki #5558"),
+        NFTInfo(name: "MetaKongz", tokenID: "#231", imageName: "Kongz #5675"),
+        NFTInfo(name: "INU", tokenID: "#4963", imageName: "Studying"),
+        NFTInfo(name: "Minimen official", tokenID: "#2691", imageName: "Minimen #3006"),
+        NFTInfo(name: "metakongz", tokenID: "#4159", imageName: "Kongz #7291"),
+        NFTInfo(name: "INU Torchlight", tokenID: "#231", imageName: ""),
+        NFTInfo(name: "INU Computer Science", tokenID: "#1", imageName: ""),
+        NFTInfo(name: "INU Sport", tokenID: "#9999", imageName: ""),
+        NFTInfo(name: "INU Freshman", tokenID: "#181", imageName: ""),
+        NFTInfo(name: "INU Torchlight", tokenID: "232#", imageName: ""),
+        NFTInfo(name: "INU Computer Science", tokenID: "#4963", imageName: ""),
+        NFTInfo(name: "INU Sport", tokenID: "#2691", imageName: "")
+    ]
+    
+    var numOfNFTInfoList: Int {
+        return NFTInfoList.count
+    }
+    
+    func nftInfo(at index: Int) -> NFTInfo {
+        return NFTInfoList[index]
+    }
+}
+
+class GridCell: UICollectionViewCell {
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var tokenIDLabel: UILabel!
+    
+    func update(info: NFTInfo) {
+//        imageView.image = UIImage(named: "Studying")
+        imageView.image = info.image
+        nameLabel.text = info.name
+        tokenIDLabel.text = info.tokenID
+        self.layer.cornerRadius = 8.0
+    }
+}
+
+class GenericERC721cnt: StaticContract, ERC721Contract, AnnotatedERC721 {
     public func tokenURI() -> Web3ContractABI.SolidityInvocation {
         let inputs = [SolidityFunctionParameter(name: "_tokenId", type: .uint256)]
         let outputs = [SolidityFunctionParameter(name: "_tokenURI", type: .string)]
