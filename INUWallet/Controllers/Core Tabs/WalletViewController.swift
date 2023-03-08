@@ -20,7 +20,6 @@ class WalletViewController: UIViewController {
     @IBOutlet weak var myWalletView: UIView!
     @IBOutlet weak var myTokenView: UIView!
     
-    
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var walletAddressButton: UIButton!
     @IBOutlet weak var walletBalanceLabel: UILabel!
@@ -29,8 +28,6 @@ class WalletViewController: UIViewController {
     
     
     let wei_18: Double = 1000000000000000000
-    
-    //    var testAddress: String = ""
     
 //    private let spinner: UIActivityIndicatorView = {
 //        let spinner = UIActivityIndicatorView(style: .medium)
@@ -47,13 +44,15 @@ class WalletViewController: UIViewController {
         myWalletView.layer.shadowOffset = CGSize(width: 0, height: 2)
         myWalletView.layer.shadowOpacity = 0.4
         myWalletView.layer.shadowRadius = 15.0
-        
+
         myTokenView.layer.cornerRadius = 15.0
         myTokenView.layer.shadowColor = UIColor.black.cgColor
         myTokenView.layer.shadowOffset = CGSize(width: 0, height: 2)
         myTokenView.layer.shadowOpacity = 0.4
         myTokenView.layer.shadowRadius = 15.0
         
+        usernameLabel.text = UserDefaults.standard.value(forKey: "Username") as? String
+        print("WalletViewDidLoad")
         
         // 이거 여백 TextView 여백 없애기
 //        walletAddressTextView.textContainerInset = UIEdgeInsets(top: 0,
@@ -63,33 +62,38 @@ class WalletViewController: UIViewController {
 //        walletAddressButton.setTitle("", for: .normal)
 //        walletAddressButton.setImage(.none, for: .normal)
         
-        usernameLabel.text = UserDefaults.standard.value(forKey: "Username") as? String
         
-        getWalletAddress()
-        showWalletBalance()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // 뷰가 켜질 때 마다 잔액 새로고침
-        
         // TODO: 1. 나중에 시간날 때 balance 소수점 자르기?
+        print("WalletViewWillAppear")
+        
+        // SendTokenViewController, TxResultViewController에서 navigationBar를 감춰놨으므로 뷰가 나타나기전에 true 시켜줌
+        // TODO: push, pop 할 때 애니메이션 변경하기
+        self.navigationController?.navigationBar.isHidden = false
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        getWalletAddress()
+        showWalletBalance()
     }
     
     
     @IBAction func didTapSendButton(_ sender: Any) {
-        
         let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "SendTokenViewController") as! SendTokenViewController
-        nextVC.modalPresentationStyle = .fullScreen
-        self.present(nextVC, animated: true)
-        
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
     @IBAction func didTapReceiveButton(_ sender: Any) {
-        sendEthToAnother()
     }
     
-    
+    // 지갑주소를 받아와서 앞과 뒤 각각 8자리씩 가져옴
     private func getWalletAddress() {
         DatabaseManager.shared.showWalletAddress { address in
             guard let address = address else {
@@ -115,13 +119,12 @@ class WalletViewController: UIViewController {
             let imageConfig = UIImage.SymbolConfiguration(scale: .small)
             self.walletAddressButton.setImage(UIImage(systemName: "rectangle.on.rectangle", withConfiguration: imageConfig), for: .normal)
             
-//            self.walletAddressButton.setTitle(reduceAddress, for: .normal)
+            self.walletAddressButton.setTitle(reduceAddress, for: .normal)
         }
     }
     
     
     // MARK: - Web3 frameworks
-    
     private func showWalletBalance() {
 //        //Ethereum Network
 //        let web3 = Web3(rpcURL: "https://rpc.ankr.com/eth")
@@ -156,58 +159,11 @@ class WalletViewController: UIViewController {
                 try contract.balanceOf(address: EthereumAddress(hex: address, eip55: true)).call()
             }.done { outputs in
                 print(outputs.values)
-                self.INUTokenBalanceLabel.text = "\(outputs["_balance"] as! BigUInt) INU"
+                self.INUTokenBalanceLabel.text = "\(outputs["_balance"] as! BigUInt / BigUInt(self.wei_18)) INU"
             }.catch { error in
                 print("ERROR: \(error)")
             }
         }
-         
-    }
-    
-    // MARK: - 이더리움 보내는 코드
-    // TODO: 1. estimate gas로 gasPrice, maxFeePerGas 등 요금 견적 내기
-    private func sendEthToAnother() {
-//        // Ethereum Network
-//        let web3 = Web3(rpcURL: "https://rpc.ankr.com/eth")
-        
-        // Goerli Testnet
-        let web3 = Web3(rpcURL: "https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161")
-        
-        let privateKey = try! EthereumPrivateKey(hexPrivateKey: "0xf6252aed5d5197f488d129ce42bd30db0a75b6c09fa660a09bb64fcf96b942e8")
-        
-        firstly {
-            web3.eth.getTransactionCount(address: privateKey.address, block: .latest)
-        }.then { nonce in
-            let tx = try EthereumTransaction(
-                nonce: nonce,
-                gasPrice: EthereumQuantity(quantity: 150.gwei),
-                maxFeePerGas: EthereumQuantity(quantity: 150.gwei),
-                maxPriorityFeePerGas: EthereumQuantity(quantity: 1500000000),
-                gasLimit: EthereumQuantity(quantity: 21000),
-//                from: EthereumAddress(hex: "", eip55: true),
-                to: EthereumAddress(hex: "0x1d48aE7ab364767F32fEd28788Ec8B235CcF3d59", eip55: true),
-                value: EthereumQuantity(quantity: 1000000000000000),
-//                data: <#T##EthereumData#>,
-                accessList: [:],
-                transactionType: .eip1559
-            )
-            /*
-            let tx = try EthereumTransaction(
-                nonce: nonce,
-                gasPrice: EthereumQuantity(quantity: 150.gwei),
-                to: EthereumAddress(hex: "0x1d48aE7ab364767F32fEd28788Ec8B235CcF3d59", eip55: true),
-                value: EthereumQuantity(quantity: 1000.gwei)
-            )
-             */
-            return try tx.sign(with: privateKey, chainId: 5).promise
-        }.then { tx in
-            web3.eth.sendRawTransaction(transaction: tx)
-        }.done { hash in
-            print(hash.hex())
-        }.catch { error in
-            print(error)
-        }
-        
     }
     
     // MARK: - 토큰 보내는 코드
@@ -254,6 +210,5 @@ class WalletViewController: UIViewController {
         }.catch { error in
             print(error)
         }
-        
     }
 }

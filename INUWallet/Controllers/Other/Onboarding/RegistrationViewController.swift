@@ -76,7 +76,6 @@ class RegistrationViewController: UIViewController {
     }
     
     // MARK: - 회원가입
-    
     @IBAction func didTapCreateAccountButton(_ sender: Any) {
         emailField.resignFirstResponder()
         passwordField.resignFirstResponder()
@@ -165,7 +164,6 @@ class RegistrationViewController: UIViewController {
         print("Create an Account")
     }
     
-    
     // MARK: - 오른쪽으로 스와이프 했을 때 뒤로가기
     // TODO: 애니매이션이 아래로 내려가는데 오른쪽에서 왼쪽으로 넘어가게 바꾸기
     func swipeRecognizer() {
@@ -185,7 +183,6 @@ class RegistrationViewController: UIViewController {
             }
         }
     }
-    
 }
 
 extension RegistrationViewController: UITextFieldDelegate {

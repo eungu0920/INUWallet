@@ -18,9 +18,6 @@ class MoreViewController: UIViewController {
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var profileView: UIView!
     
-    // Setting Button 누르면 다음 화면에서 BarButton 이름 바꿔주기
-//    let backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: MoreViewController.self, action: nil)
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,7 +28,6 @@ class MoreViewController: UIViewController {
         tableView.frame = .zero
         
         userImageView.layer.cornerRadius = 10.0 // userImageView.frame.height / 2 -> 원형 프로필
-//        self.navigationItem.backBarButtonItem = backBarButtonItem
         
         profileView.layer.cornerRadius = 8.0
     }
@@ -139,7 +135,6 @@ extension MoreViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = data[indexPath.section][indexPath.row].title
-//        cell.textLabel?.textColor = UIColor.red
         cell.textLabel?.textColor = UIColor(cgColor: CGColor(genericCMYKCyan: 1.0, magenta: 0.8, yellow: 0, black: 0.05, alpha: 1))
         cell.accessoryType = .disclosureIndicator
         return cell

@@ -120,17 +120,10 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func didTapCreateButton(_ sender: Any) {
-//        guard let pvc = self.presentingViewController else { return }
-        
         guard let RegistrationVC = self.storyboard?.instantiateViewController(withIdentifier: "RegistrationViewController") else { return }
         RegistrationVC.modalPresentationStyle = .fullScreen
         present(RegistrationVC, animated: true, completion: nil)
-        
-//        self.dismiss(animated: true) {
-//        }
     }
-    
-    
     
 }
 

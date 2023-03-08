@@ -146,21 +146,16 @@ class CreateWalletViewController: UIViewController {
         UserDefaults.standard.set(userAddress, forKey: "Address")
         UserDefaults.standard.set(privateKey, forKey: "PrivateKey")
         UserDefaults.standard.set(publicKey, forKey: "PublicKey")
-        
     }
     
     @IBAction func didTapCreateButton(_ sender: Any) {
-        
         DatabaseManager.shared.saveWalletAddress(address: userAddress)
         
+        // TODO: - HomewViewController로 되돌아 갈 때 뷰 계층 구조가 꼬이는 것으로 확인 됨. 다른 방식으로 수정해야할 듯
         self.view.window?.rootViewController?.dismiss(animated: false, completion: {
             let homeVC = HomeViewController()
             homeVC.modalPresentationStyle = .fullScreen
             self.present(homeVC, animated: true, completion: nil)
         })
-        
     }
-    
-    
-
 }

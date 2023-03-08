@@ -23,6 +23,8 @@ class SendTokenViewController: UIViewController {
     
     let wei_18: Double = 1000000000000000000
     let wei_9: Double = 1000000000
+    var txResult: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,23 +36,26 @@ class SendTokenViewController: UIViewController {
         toAddressTextField.delegate = self
         gasPriceTextField.delegate = self
     
-        
         getWalletBalance()
         
         self.hideKeyboardWhenTappedAround()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.navigationBar.isHidden = true
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
     @IBAction func didTapCloseButton(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: false)
     }
     
     @IBAction func didTapSendButton(_ sender: Any) {
         ethTextField.resignFirstResponder()
         toAddressTextField.resignFirstResponder()
         gasPriceTextField.resignFirstResponder()
-        
-        var str: String = "0.001"
-        var double: Double = Double(str)!
         
         // TODO: 각 textField 입력 양식 맞추기 (ETH: 숫자, Address: 주소, Gas Price: 기본 1.5, 1.5이상)
         let ethAmount = BigUInt(Double(ethTextField.text!)! * wei_18)
@@ -80,14 +85,14 @@ class SendTokenViewController: UIViewController {
     }
     
     private func getWalletBalance() {
-        //        //Ethereum Network
-        //        let web3 = Web3(rpcURL: "https://rpc.ankr.com/eth")
+//        //Ethereum Network
+//        let web3 = Web3(rpcURL: "https://rpc.ankr.com/eth")
         
         // Goerli Testnet
         let web3 = Web3(rpcURL: "https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161")
         
-        //        // Polygon Network
-        //        let web3 = Web3(rpcURL: "https://polygon-rpc.com/")
+//        // Polygon Network
+//        let web3 = Web3(rpcURL: "https://polygon-rpc.com/")
         
         // MARK: INU Token Contract Address : 0xc5E38262b06B1dba1aE63D06F538Da0E51B59e10
 //        let contractAddress = try! EthereumAddress(hex: "0xc5E38262b06B1dba1aE63D06F538Da0E51B59e10", eip55: true)
@@ -141,18 +146,20 @@ class SendTokenViewController: UIViewController {
         }.then { tx in
             web3.eth.sendRawTransaction(transaction: tx)
         }.done { hash in
+            // MARK: - NavigationViewController의 push 이용
             let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "TxResultViewController") as! TxResultViewController
             nextVC.txResult = hash.hex()
-            nextVC.modalTransitionStyle = .crossDissolve
-            nextVC.modalPresentationStyle = .overCurrentContext
-            self.present(nextVC, animated: true, completion: nil)
+            self.navigationController?.pushViewController(nextVC, animated: true)
         }.catch { error in
             let alert = UIAlertController(title: "ERROR",
                                           message: error.localizedDescription,
                                           preferredStyle: .alert)
             
             print(error.localizedDescription)
+            // 결과 -> The operation couldn’t be completed. (Web3.RPCResponse<Web3.EthereumData>.Error error 1.)
             print(error)
+            // 결과 -> Error(code: -32000, message: "insufficient funds for gas * price + value")
+            // MARK: 나는 Error에서 message만 가져오고싶다...
             
             alert.addAction(UIAlertAction(title: "확인",
                                           style: .cancel,

@@ -20,14 +20,13 @@ class NFTViewController: UIViewController {
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        
-        
     }
     
     // MARK: - 스크롤 시에 탭바랑 네비게이션 뷰의 색깔이 의도적인 색이 아님... 블러를 약하게 주고싶음 나중에 방법 찾기
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        // MARK: - collectionViewCell들을 스크롤 할 때 navigationBar, tabBar 부분이 투명화 되는 현상 + Backgroundcolor와 맞지 않아서 해당 코드로 변경함
         navigationController?.navigationBar.setBackgroundImage(UIImage(named: "effectView.png"), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
@@ -35,12 +34,9 @@ class NFTViewController: UIViewController {
         tabBarController?.tabBar.shadowImage = UIImage()
         tabBarController?.tabBar.backgroundImage = UIImage(named: "effectView.png")
         tabBarController?.tabBar.isTranslucent = true
-//        navigationController?.navigationBar.isTranslucent = false
-//        tabBarController?.tabBar.isTranslucent = false
     }
     
-    
-
+    // MARK: - NFT metadata를 가져올 때 쓰는 방법
     private func getNFTInfo() {
 //        // Ethereum Network
 //        let web3 = Web3(rpcURL: "https://rpc.ankr.com/eth")
@@ -110,7 +106,6 @@ extension NFTViewController: UICollectionViewDelegate, UICollectionViewDataSourc
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.frame.width
-        let height = collectionView.frame.height
         let itemPerRow: CGFloat = 3
         let itemSpacing: CGFloat = 5
         let sectionInset: CGFloat = 5

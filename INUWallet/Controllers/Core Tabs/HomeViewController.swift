@@ -16,9 +16,6 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        myAddressButton.tintColor = UIColor(cgColor: CGColor(genericCMYKCyan: 1.0, magenta: 0.8, yellow: 0, black: 0.05, alpha: 1))
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,13 +41,8 @@ class HomeViewController: UIViewController {
             else {
                 return
             }
-            
             loginVC.modalPresentationStyle = .fullScreen
             self.present(loginVC, animated: false)
-//            let loginVC = LoginViewController()
-//            loginVC.modalPresentationStyle = .fullScreen
-//            present(loginVC, animated: false)
         }
     }
-    
 }
