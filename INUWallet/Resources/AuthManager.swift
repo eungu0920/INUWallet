@@ -78,7 +78,6 @@ public class AuthManager {
     
     public func shareUid() -> String {
         let uid = Auth.auth().currentUser?.uid as? String ?? ""
-        print(uid)
         return uid
     }
 }

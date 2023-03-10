@@ -47,11 +47,12 @@ class NFTViewController: UIViewController {
 //        // Polygon Network
 //        let web3 = Web3(rpcURL: "https://polygon-rpc.com/")
         
-        let contractAddress = try! EthereumAddress(hex: "0xeE5f71552a27F294D2fb34b4fBa7Df33339Bb25b", eip55: true)
+        // MARK: - INU NFT Contract : 0x6A83BEc46edc16BE070b458b9ad2384323C3C52e
+        let contractAddress = try! EthereumAddress(hex: "0x6957838d5e3087Ac5eb417873903465f672174d1", eip55: true)
         let contract = web3.eth.Contract(type: GenericERC721cnt.self, address: contractAddress)
         
         firstly {
-            try contract.tokenURI(tokenId: 1).call()
+            try contract.tokenURI(tokenId: 0).call()
         }.done { outputs in
             var jsonDataURL: String = String(describing: outputs["_tokenURI"] ?? "")
             
@@ -101,7 +102,7 @@ extension NFTViewController: UICollectionViewDelegate, UICollectionViewDataSourc
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("clicked")
+        getNFTInfo()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

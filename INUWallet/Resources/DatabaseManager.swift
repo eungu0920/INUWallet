@@ -44,7 +44,6 @@ public class DatabaseManager {
                 return
             }
         }
-        
     }
     
     public func saveWalletAddress(address: String) {

@@ -158,7 +158,6 @@ class WalletViewController: UIViewController {
             firstly {
                 try contract.balanceOf(address: EthereumAddress(hex: address, eip55: true)).call()
             }.done { outputs in
-                print(outputs.values)
                 self.INUTokenBalanceLabel.text = "\(outputs["_balance"] as! BigUInt / BigUInt(self.wei_18)) INU"
             }.catch { error in
                 print("ERROR: \(error)")
