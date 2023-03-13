@@ -47,8 +47,11 @@ class NFTViewController: UIViewController {
 //        // Polygon Network
 //        let web3 = Web3(rpcURL: "https://polygon-rpc.com/")
         
+//        // Mumbai Testnet
+//        let web3 = Web3(rpcURL: "https://rpc-mumbai.maticvigil.com")
+        
         // MARK: - INU NFT Contract : 0x6A83BEc46edc16BE070b458b9ad2384323C3C52e
-        let contractAddress = try! EthereumAddress(hex: "0x6957838d5e3087Ac5eb417873903465f672174d1", eip55: true)
+        let contractAddress = try! EthereumAddress(hex: "0x1DB21eD8E466453D601603424bb561858B478c24", eip55: true)
         let contract = web3.eth.Contract(type: GenericERC721cnt.self, address: contractAddress)
         
         firstly {
@@ -180,6 +183,36 @@ class GridCell: UICollectionViewCell {
         self.layer.cornerRadius = 8.0
     }
 }
+
+//class GenericERC721cnt: StaticContract, ERC721Contract, AnnotatedERC721 {
+//    public func tokenURI() -> Web3ContractABI.SolidityInvocation {
+//        let inputs = [SolidityFunctionParameter(name: "_tokenId", type: .uint256)]
+//        let outputs = [SolidityFunctionParameter(name: "_tokenURI", type: .string)]
+//        let method = SolidityConstantFunction(name: "tokenURI", inputs: inputs, outputs: outputs, handler: self)
+//        return method.invoke()
+//    }
+//
+//    public func tokenURI(tokenId: BigUInt) -> Web3ContractABI.SolidityInvocation {
+//        let inputs = [SolidityFunctionParameter(name: "_tokenId", type: .uint256)]
+//        let outputs = [SolidityFunctionParameter(name: "_tokenURI", type: .string)]
+//        let method = SolidityConstantFunction(name: "tokenURI", inputs: inputs, outputs: outputs, handler: self)
+//        return method.invoke(tokenId)
+//    }
+//
+//    public var address: EthereumAddress?
+//    public let eth: Web3.Eth
+//
+//    open var constructor: SolidityConstructor?
+//
+//    open var events: [SolidityEvent] {
+//        return [GenericERC721Contract.Transfer, GenericERC721Contract.Approval]
+//    }
+//
+//    public required init(address: EthereumAddress?, eth: Web3.Eth) {
+//        self.address = address
+//        self.eth = eth
+//    }
+//}
 
 class GenericERC721cnt: StaticContract, ERC721Contract, AnnotatedERC721 {
     public func tokenURI() -> Web3ContractABI.SolidityInvocation {
