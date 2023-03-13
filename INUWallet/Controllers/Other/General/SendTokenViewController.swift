@@ -6,9 +6,8 @@
 //
 
 import UIKit
-import Web3
-import Web3PromiseKit
-import Web3ContractABI
+import web3swift
+import Web3Core
 
 class SendTokenViewController: UIViewController {
     @IBOutlet weak var backButton: UIButton!
@@ -24,6 +23,9 @@ class SendTokenViewController: UIViewController {
     let wei_18: Double = 1000000000000000000
     let wei_9: Double = 1000000000
     var txResult: String = ""
+    
+    let provider = Web3.InfuraGoerliWeb3()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

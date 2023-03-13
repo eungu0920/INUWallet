@@ -15,11 +15,9 @@
 		2810A7D529A8D76300F5BCD1 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2810A7D429A8D76300F5BCD1 /* AuthManager.swift */; };
 		2810A7D729A8D7AA00F5BCD1 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2810A7D629A8D7AA00F5BCD1 /* StorageManager.swift */; };
 		2810A81D29AA56A400F5BCD1 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2810A81C29AA56A400F5BCD1 /* Extension.swift */; };
+		284F13A929BF49E9004D6410 /* web3swift in Frameworks */ = {isa = PBXBuildFile; productRef = 284F13A829BF49E9004D6410 /* web3swift */; };
 		28672F3629B634B1008D5732 /* TxResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28672F3529B634B1008D5732 /* TxResultViewController.swift */; };
 		289CA51A29B0986C0045E006 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289CA51929B0986C0045E006 /* Wallet.swift */; };
-		289CA57029B0BBA20045E006 /* Web3 in Frameworks */ = {isa = PBXBuildFile; productRef = 289CA56F29B0BBA20045E006 /* Web3 */; };
-		289CA57229B0BBA20045E006 /* Web3ContractABI in Frameworks */ = {isa = PBXBuildFile; productRef = 289CA57129B0BBA20045E006 /* Web3ContractABI */; };
-		289CA57429B0BBA20045E006 /* Web3PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 289CA57329B0BBA20045E006 /* Web3PromiseKit */; };
 		28CA241B298AA4E6006F4242 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CA241A298AA4E6006F4242 /* AppDelegate.swift */; };
 		28CA241D298AA4E6006F4242 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CA241C298AA4E6006F4242 /* SceneDelegate.swift */; };
 		28CA2422298AA4E6006F4242 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28CA2420298AA4E6006F4242 /* Main.storyboard */; };
@@ -113,10 +111,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				289CA57229B0BBA20045E006 /* Web3ContractABI in Frameworks */,
 				05B6D4880B01023A59A2C1B5 /* Pods_INUWallet.framework in Frameworks */,
-				289CA57429B0BBA20045E006 /* Web3PromiseKit in Frameworks */,
-				289CA57029B0BBA20045E006 /* Web3 in Frameworks */,
+				284F13A929BF49E9004D6410 /* web3swift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,9 +324,7 @@
 			);
 			name = INUWallet;
 			packageProductDependencies = (
-				289CA56F29B0BBA20045E006 /* Web3 */,
-				289CA57129B0BBA20045E006 /* Web3ContractABI */,
-				289CA57329B0BBA20045E006 /* Web3PromiseKit */,
+				284F13A829BF49E9004D6410 /* web3swift */,
 			);
 			productName = INUWallet;
 			productReference = 28CA2417298AA4E6006F4242 /* INUWallet.app */;
@@ -409,7 +403,7 @@
 			);
 			mainGroup = 28CA240E298AA4E6006F4242;
 			packageReferences = (
-				289CA56E29B0BBA20045E006 /* XCRemoteSwiftPackageReference "Web3" */,
+				284F13A729BF49E9004D6410 /* XCRemoteSwiftPackageReference "web3swift" */,
 			);
 			productRefGroup = 28CA2418298AA4E6006F4242 /* Products */;
 			projectDirPath = "";
@@ -948,31 +942,21 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		289CA56E29B0BBA20045E006 /* XCRemoteSwiftPackageReference "Web3" */ = {
+		284F13A729BF49E9004D6410 /* XCRemoteSwiftPackageReference "web3swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Boilertalk/Web3.swift";
+			repositoryURL = "https://github.com/web3swift-team/web3swift#send-ether";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		289CA56F29B0BBA20045E006 /* Web3 */ = {
+		284F13A829BF49E9004D6410 /* web3swift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 289CA56E29B0BBA20045E006 /* XCRemoteSwiftPackageReference "Web3" */;
-			productName = Web3;
-		};
-		289CA57129B0BBA20045E006 /* Web3ContractABI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 289CA56E29B0BBA20045E006 /* XCRemoteSwiftPackageReference "Web3" */;
-			productName = Web3ContractABI;
-		};
-		289CA57329B0BBA20045E006 /* Web3PromiseKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 289CA56E29B0BBA20045E006 /* XCRemoteSwiftPackageReference "Web3" */;
-			productName = Web3PromiseKit;
+			package = 284F13A729BF49E9004D6410 /* XCRemoteSwiftPackageReference "web3swift" */;
+			productName = web3swift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
