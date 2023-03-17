@@ -15,8 +15,9 @@
 		2810A7D529A8D76300F5BCD1 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2810A7D429A8D76300F5BCD1 /* AuthManager.swift */; };
 		2810A7D729A8D7AA00F5BCD1 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2810A7D629A8D7AA00F5BCD1 /* StorageManager.swift */; };
 		2810A81D29AA56A400F5BCD1 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2810A81C29AA56A400F5BCD1 /* Extension.swift */; };
+		284F13F029C166F0004D6410 /* SendINUTokenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284F13EF29C166F0004D6410 /* SendINUTokenViewController.swift */; };
+		284F13FB29C467AF004D6410 /* RegisteUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284F13FA29C467AF004D6410 /* RegisteUserInfoViewController.swift */; };
 		28672F3629B634B1008D5732 /* TxResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28672F3529B634B1008D5732 /* TxResultViewController.swift */; };
-		289CA51A29B0986C0045E006 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289CA51929B0986C0045E006 /* Wallet.swift */; };
 		289CA57029B0BBA20045E006 /* Web3 in Frameworks */ = {isa = PBXBuildFile; productRef = 289CA56F29B0BBA20045E006 /* Web3 */; };
 		289CA57229B0BBA20045E006 /* Web3ContractABI in Frameworks */ = {isa = PBXBuildFile; productRef = 289CA57129B0BBA20045E006 /* Web3ContractABI */; };
 		289CA57429B0BBA20045E006 /* Web3PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 289CA57329B0BBA20045E006 /* Web3PromiseKit */; };
@@ -70,8 +71,9 @@
 		2810A7D429A8D76300F5BCD1 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		2810A7D629A8D7AA00F5BCD1 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		2810A81C29AA56A400F5BCD1 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		284F13EF29C166F0004D6410 /* SendINUTokenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendINUTokenViewController.swift; sourceTree = "<group>"; };
+		284F13FA29C467AF004D6410 /* RegisteUserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisteUserInfoViewController.swift; sourceTree = "<group>"; };
 		28672F3529B634B1008D5732 /* TxResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxResultViewController.swift; sourceTree = "<group>"; };
-		289CA51929B0986C0045E006 /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
 		28CA2417298AA4E6006F4242 /* INUWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = INUWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28CA241A298AA4E6006F4242 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28CA241C298AA4E6006F4242 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -208,7 +210,6 @@
 			isa = PBXGroup;
 			children = (
 				28CA245C298BBC56006F4242 /* Models.swift */,
-				289CA51929B0986C0045E006 /* Wallet.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -258,6 +259,7 @@
 				28CA2463298BC390006F4242 /* AuthenticationViewController.swift */,
 				2810A7D029A8D12E00F5BCD1 /* RegistrationViewController.swift */,
 				280435E429AC7DEB009F090E /* CreateWalletViewController.swift */,
+				284F13FA29C467AF004D6410 /* RegisteUserInfoViewController.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -277,9 +279,10 @@
 				28CA2465298BC39B006F4242 /* NFTInfoViewController.swift */,
 				28CA2467298BC3BB006F4242 /* WalletInfoViewController.swift */,
 				28CA2469298BC3DB006F4242 /* TokenInfoViewController.swift */,
-				28CA246B298BC419006F4242 /* SendTokenViewController.swift */,
 				28CA246D298BC422006F4242 /* NFTSendViewController.swift */,
 				28672F3529B634B1008D5732 /* TxResultViewController.swift */,
+				28CA246B298BC419006F4242 /* SendTokenViewController.swift */,
+				284F13EF29C166F0004D6410 /* SendINUTokenViewController.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -578,6 +581,7 @@
 				2810A7D329A8D2F800F5BCD1 /* DatabaseManager.swift in Sources */,
 				28672F3629B634B1008D5732 /* TxResultViewController.swift in Sources */,
 				28CA2459298BBBCB006F4242 /* MoreViewController.swift in Sources */,
+				284F13FB29C467AF004D6410 /* RegisteUserInfoViewController.swift in Sources */,
 				28CA2457298BBBBD006F4242 /* NFTViewController.swift in Sources */,
 				2810A7D729A8D7AA00F5BCD1 /* StorageManager.swift in Sources */,
 				28CA241B298AA4E6006F4242 /* AppDelegate.swift in Sources */,
@@ -586,12 +590,12 @@
 				28CA2464298BC390006F4242 /* AuthenticationViewController.swift in Sources */,
 				2810A7D529A8D76300F5BCD1 /* AuthManager.swift in Sources */,
 				28CA2461298BBD20006F4242 /* LoginViewController.swift in Sources */,
+				284F13F029C166F0004D6410 /* SendINUTokenViewController.swift in Sources */,
 				28CA246E298BC422006F4242 /* NFTSendViewController.swift in Sources */,
 				28CA2453298BBBA5006F4242 /* HomeViewController.swift in Sources */,
 				2810A7D129A8D12E00F5BCD1 /* RegistrationViewController.swift in Sources */,
 				2810A81D29AA56A400F5BCD1 /* Extension.swift in Sources */,
 				280435E529AC7DEB009F090E /* CreateWalletViewController.swift in Sources */,
-				289CA51A29B0986C0045E006 /* Wallet.swift in Sources */,
 				28CA2466298BC39B006F4242 /* NFTInfoViewController.swift in Sources */,
 				28CA246A298BC3DB006F4242 /* TokenInfoViewController.swift in Sources */,
 				28CA245B298BBC02006F4242 /* WalletViewController.swift in Sources */,

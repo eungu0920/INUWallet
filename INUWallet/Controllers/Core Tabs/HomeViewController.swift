@@ -33,6 +33,10 @@ class HomeViewController: UIViewController {
         handleNotAuthenticated()
     }
     
+    @IBAction func didTapButton(_ sender: Any) {
+        getDiploma()
+    }
+    
     private func handleNotAuthenticated() {
         // Check auth status
         if Auth.auth().currentUser == nil {
@@ -45,4 +49,22 @@ class HomeViewController: UIViewController {
             self.present(loginVC, animated: false)
         }
     }
+    
+    private func getDiploma() {
+
+        DatabaseManager.shared.getGraduate { graduate in
+            guard let graduate = graduate else {
+                return
+            }
+            
+            print(graduate)
+            
+            if graduate == "true" {
+                
+            }
+        }
+        
+        
+    }
+    
 }

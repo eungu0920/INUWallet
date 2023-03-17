@@ -86,6 +86,16 @@ class NFTViewController: UIViewController {
             print(error)
         }
     }
+    
+    // MARK: - ERC1155 mint
+    private func mint() {
+        let web3 = Web3(rpcURL: "https://rpc-mumbai.maticvigil.com")
+        
+        let contractAddress = try! EthereumAddress(hex: "0x17e8b0fbcca5f42c20e672bd69553998569c83fe", eip55: true)
+        
+
+    }
+    
 }
 
 extension NFTViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

@@ -9,21 +9,24 @@ import Foundation
 import UIKit
 
 struct User {
-    let username: String
-    let email: String
     let uid: String
+    let walletAddress: String
+    let email: String
+    let username: String
+    
+    let name: String
+    let studentID: Int
+    let department: String
+    let grade: Int
+    let graduate: Bool = false
+    
     let walletPassword: String
     let profilePhoto: URL
     
-    let walletAddress: String
     let privateKey: String
     let publicKey: String
     
     var users: [User] = []
-    
-    public func createNewUser() {
-        var user: User
-    }
 }
 
 struct Users {

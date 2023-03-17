@@ -93,6 +93,11 @@ class WalletViewController: UIViewController {
     @IBAction func didTapReceiveButton(_ sender: Any) {
     }
     
+    @IBAction func didTapSendINUButton(_ sender: Any) {
+        let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "SendINUTokenViewController") as! SendINUTokenViewController
+        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
     // 지갑주소를 받아와서 앞과 뒤 각각 8자리씩 가져옴
     private func getWalletAddress() {
         DatabaseManager.shared.showWalletAddress { address in

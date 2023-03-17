@@ -64,7 +64,6 @@ class RegistrationViewController: UIViewController {
         
         signupButton.layer.cornerRadius = 8.0
         signupButton.setTitle("Sign Up", for: .normal)
-        signupButton.setTitleColor(.white, for: .normal)
         
         backButton.setTitle("", for: .normal)
         
@@ -152,10 +151,10 @@ class RegistrationViewController: UIViewController {
         AuthManager.shared.registerNewUser(username: username, email: email, password: password) { registered in
             DispatchQueue.main.async {
                 if registered {
-                    guard let CreateWalletVC = self.storyboard?.instantiateViewController(withIdentifier: "CreateWalletViewController") else { return }
-                    CreateWalletVC.modalPresentationStyle = .fullScreen
+                    guard let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "RegisteUserInfoViewController") else { return }
+                    nextVC.modalPresentationStyle = .fullScreen
                     
-                    self.present(CreateWalletVC, animated: true, completion: nil)
+                    self.present(nextVC, animated: true, completion: nil)
                 } else {
                     
                 }

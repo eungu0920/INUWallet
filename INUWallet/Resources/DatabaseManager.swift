@@ -61,6 +61,17 @@ public class DatabaseManager {
         
     }
     
+    public func insertUserInfo(name: String, studentID: String, department: String, grade: String) {
+        let uid = AuthManager.shared.shareUid()
+    
+        database.child("users/\(uid)/name").setValue(name)
+        database.child("users/\(uid)/studentID").setValue(studentID)
+        database.child("users/\(uid)/department").setValue(department)
+        database.child("users/\(uid)/grade").setValue(grade)
+        database.child("users/\(uid)/graduate").setValue("false")
+        
+    }
+    
     public func showWalletAddress(completion: @escaping (String?) -> Void) {
         let uid = AuthManager.shared.shareUid()
         
@@ -75,6 +86,23 @@ public class DatabaseManager {
                 return
             }
             completion(address)
+        }
+    }
+    
+    public func getGraduate(completion: @escaping (String?) -> Void) {
+        let uid = AuthManager.shared.shareUid()
+        
+        database.child("users/\(uid)/graduate").getData { error, snapshot in
+            guard error == nil else {
+                print(error!.localizedDescription)
+                return
+            }
+            
+            guard let graduate = snapshot?.value as? String else {
+                completion(nil)
+                return
+            }
+            completion(graduate)
         }
     }
     
