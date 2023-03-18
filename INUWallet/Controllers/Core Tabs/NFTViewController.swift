@@ -36,19 +36,63 @@ class NFTViewController: UIViewController {
         tabBarController?.tabBar.isTranslucent = true
     }
     
+    // MARK: - NFT safeMint
+    private func NFTMint() {
+        // Mumbai Testnet
+        let web3 = Web3(rpcURL: "https://rpc-mumbai.maticvigil.com")
+        
+        let contractAddress = try! EthereumAddress(hex: "0x1DB21eD8E466453D601603424bb561858B478c24", eip55: true)
+        let abi = """
+[{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"approved","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"operator","type":"address"},{"indexed":false,"internalType":"bool","name":"approved","type":"bool"}],"name":"ApprovalForAll","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Transfer","type":"event"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"approve","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"getApproved","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"operator","type":"address"}],"name":"isApprovedForAll","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"ownerOf","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"safeMint","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"},{"internalType":"bytes","name":"data","type":"bytes"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"operator","type":"address"},{"internalType":"bool","name":"approved","type":"bool"}],"name":"setApprovalForAll","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes4","name":"interfaceId","type":"bytes4"}],"name":"supportsInterface","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"index","type":"uint256"}],"name":"tokenByIndex","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"uint256","name":"index","type":"uint256"}],"name":"tokenOfOwnerByIndex","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"tokenURI","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"transferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"}]
+"""
+        let contractJsonABI = abi.data(using: .utf8)!
+        let contract = try! web3.eth.Contract(json: contractJsonABI, abiKey: nil, address: contractAddress)
+        
+        firstly {
+            try web3.eth.getTransactionCount(address: EthereumAddress(hex: "0xEc2058c9AA75f370B6d12Caf5BE220bEe883D7Bf", eip55: true), block: .latest)
+        }.done { nonce in
+            guard let transaction = contract["safeMint"]?(try EthereumAddress(hex: "0x1d48aE7ab364767F32fEd28788Ec8B235CcF3d59", eip55: true), 5).createTransaction(
+                nonce: nonce,
+                gasPrice: EthereumQuantity(quantity: 150.gwei),
+                maxFeePerGas: EthereumQuantity(quantity: 150.gwei),
+                maxPriorityFeePerGas: EthereumQuantity(quantity: 150.gwei),
+                gasLimit: EthereumQuantity(quantity: 200000),
+                from: nil,
+                value: EthereumQuantity(quantity: 0),
+                accessList: [:],
+                transactionType: .legacy
+            ) else {
+                return
+            }
+            let signedTx = try transaction.sign(with: EthereumPrivateKey(hexPrivateKey: "b68c77757faf5580cf9037044fc5e3a6f1f5e18093cfb154e4938bedcf634ecf"), chainId: 80001)
+            
+            firstly {
+                web3.eth.sendRawTransaction(transaction: signedTx)
+            }.done { txHash in
+                print(txHash.hex())
+            }.catch { error in
+                print(error)
+            }
+            
+        }.catch { error in
+            print(error)
+        }
+        
+    }
+    
     // MARK: - NFT metadata를 가져올 때 쓰는 방법
     private func getNFTInfo() {
 //        // Ethereum Network
 //        let web3 = Web3(rpcURL: "https://rpc.ankr.com/eth")
         
-        // Goerli Testnet
-        let web3 = Web3(rpcURL: "https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161")
+//        // Goerli Testnet
+//        let web3 = Web3(rpcURL: "https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161")
         
 //        // Polygon Network
 //        let web3 = Web3(rpcURL: "https://polygon-rpc.com/")
         
-//        // Mumbai Testnet
-//        let web3 = Web3(rpcURL: "https://rpc-mumbai.maticvigil.com")
+        // Mumbai Testnet
+        let web3 = Web3(rpcURL: "https://rpc-mumbai.maticvigil.com")
         
         // MARK: - INU NFT Contract : 0x6A83BEc46edc16BE070b458b9ad2384323C3C52e
         let contractAddress = try! EthereumAddress(hex: "0x1DB21eD8E466453D601603424bb561858B478c24", eip55: true)
@@ -115,7 +159,9 @@ extension NFTViewController: UICollectionViewDelegate, UICollectionViewDataSourc
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        getNFTInfo()
+//        getNFTInfo()
+        NFTMint()
+        print("NFT_safeMint")
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

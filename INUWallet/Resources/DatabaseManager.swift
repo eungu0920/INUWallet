@@ -106,4 +106,20 @@ public class DatabaseManager {
         }
     }
     
+    public func getUserInfo(completion: @escaping (NSDictionary?) -> Void) {
+        let uid = AuthManager.shared.shareUid()
+        
+        database.child("users").observeSingleEvent(of: .value, with: { snapshot in
+            let userDataSnapshot = snapshot.childSnapshot(forPath: uid)
+            let userItem = userDataSnapshot.value as? NSDictionary
+            
+            guard let userInfo = userItem else {
+                completion(nil)
+                return
+            }
+            print(userInfo)
+            completion(userInfo)
+        })
+    }
+    
 }

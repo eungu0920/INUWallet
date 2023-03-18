@@ -14,6 +14,8 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var tokenListView: UIView!
     @IBOutlet weak var myAddressButton: UIButton!
     
+    var user = User()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -34,7 +36,7 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func didTapButton(_ sender: Any) {
-        getDiploma()
+        getUserInfo()
     }
     
     private func handleNotAuthenticated() {
@@ -50,20 +52,23 @@ class HomeViewController: UIViewController {
         }
     }
     
-    private func getDiploma() {
-
-        DatabaseManager.shared.getGraduate { graduate in
-            guard let graduate = graduate else {
+    private func getUserInfo() {
+        DatabaseManager.shared.getUserInfo { userInfo in
+            guard let userInfo = userInfo else {
                 return
             }
             
-            print(graduate)
-            
-            if graduate == "true" {
-                
+            self.user.name = userInfo["name"] as! String
+            self.user.studentID = userInfo["studentID"] as! String
+            self.user.department = userInfo["department"] as! String
+            self.user.grade = userInfo["grade"] as! String
+            if userInfo["graduate"] as! String == "false" {
+                self.user.graduate = false
+            } else {
+                self.user.graduate = true
             }
+            print(self.user)
         }
-        
         
     }
     

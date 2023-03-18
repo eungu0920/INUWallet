@@ -30,7 +30,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7UJ-dg-ucy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-372" y="179"/>
+            <point key="canvasLocation" x="1" y="179"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="pCF-Kd-qJO">
@@ -395,7 +395,7 @@ collectionview horizontal scroll</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FDf-ii-sY4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-373.28244274809157" y="874.64788732394368"/>
+            <point key="canvasLocation" x="1" y="875"/>
         </scene>
         <!--Send Token View Controller-->
         <scene sceneID="LLC-cZ-aes">
@@ -549,7 +549,7 @@ collectionview horizontal scroll</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W0H-Z2-nA9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-755" y="1556"/>
+            <point key="canvasLocation" x="-404" y="1556"/>
         </scene>
         <!--Tx Result View Controller-->
         <scene sceneID="VPm-rX-FPM">
@@ -644,7 +644,7 @@ collectionview horizontal scroll</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W2g-Pv-Lcd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-373" y="2243"/>
+            <point key="canvasLocation" x="-21" y="2243"/>
         </scene>
         <!--NFT-->
         <scene sceneID="RVx-R5-jy3">
@@ -730,7 +730,7 @@ collectionview horizontal scroll</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TtC-Ni-vd5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="400.76335877862596" y="874.64788732394368"/>
+            <point key="canvasLocation" x="1010" y="875"/>
         </scene>
         <!--NFT-->
         <scene sceneID="WQb-kr-RpL">
@@ -751,7 +751,7 @@ collectionview horizontal scroll</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SJI-2G-nLA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="402" y="179"/>
+            <point key="canvasLocation" x="1011" y="179"/>
         </scene>
         <!--더보기-->
         <scene sceneID="ft8-he-Qzj">
@@ -772,7 +772,7 @@ collectionview horizontal scroll</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KW0-TQ-K5v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1179" y="179"/>
+            <point key="canvasLocation" x="1808" y="179"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="vMO-GC-Nrd">
@@ -1031,6 +1031,21 @@ collectionview horizontal scroll</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kfF-Y7-nzR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1941" y="1556"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Ud2-J1-92K">
+            <objects>
+                <viewController id="4Nn-Sc-SgS" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XQO-SY-k7q">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="wJh-bG-zgA"/>
+                        <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Inv-g4-jbx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1150" y="1556"/>
         </scene>
         <!--Create Wallet View Controller-->
         <scene sceneID="Mqi-UG-nzc">
@@ -1631,7 +1646,7 @@ collectionview horizontal scroll</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KKG-9J-R20" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1178" y="875"/>
+            <point key="canvasLocation" x="1807" y="875"/>
         </scene>
         <!--SendINU Token View Controller-->
         <scene sceneID="Jjh-G5-FOo">
@@ -1776,7 +1791,7 @@ collectionview horizontal scroll</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OFg-dk-A37" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="54" y="1556"/>
+            <point key="canvasLocation" x="405" y="1556"/>
         </scene>
     </scenes>
     <resources>

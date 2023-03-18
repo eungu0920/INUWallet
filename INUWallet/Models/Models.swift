@@ -9,28 +9,21 @@ import Foundation
 import UIKit
 
 struct User {
-    let uid: String
-    let walletAddress: String
-    let email: String
-    let username: String
+    var uid: String = ""
+    var walletAddress: String = ""
+    var email: String = ""
+    var username: String = ""
     
-    let name: String
-    let studentID: Int
-    let department: String
-    let grade: Int
-    let graduate: Bool = false
+    var name: String = ""
+    var studentID: String = ""
+    var department: String = ""
+    var grade: String = ""
+    var graduate: Bool?
     
-    let walletPassword: String
-    let profilePhoto: URL
+    var walletPassword: String = ""
     
-    let privateKey: String
-    let publicKey: String
-    
-    var users: [User] = []
-}
-
-struct Users {
-    var user: [User]
+    var privateKey: String = ""
+    var publicKey: String = ""
 }
 
 struct NFTInfo {

@@ -26,7 +26,6 @@ class WalletViewController: UIViewController {
     
     @IBOutlet weak var INUTokenBalanceLabel: UILabel!
     
-    
     let wei_18: Double = 1000000000000000000
     
 //    private let spinner: UIActivityIndicatorView = {
@@ -61,8 +60,6 @@ class WalletViewController: UIViewController {
 //                                                                right: 0)
 //        walletAddressButton.setTitle("", for: .normal)
 //        walletAddressButton.setImage(.none, for: .normal)
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
