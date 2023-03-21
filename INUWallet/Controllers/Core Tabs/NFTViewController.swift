@@ -44,6 +44,7 @@ class NFTViewController: UIViewController {
         
         let contractAddress = try! EthereumAddress(hex: "0x1DB21eD8E466453D601603424bb561858B478c24", eip55: true)
         let abi = abiModel.diplomaNFTABI
+
         let contractJsonABI = abi.data(using: .utf8)!
         let contract = try! web3.eth.Contract(json: contractJsonABI, abiKey: nil, address: contractAddress)
         

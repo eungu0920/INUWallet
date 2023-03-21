@@ -10,7 +10,9 @@ import UIKit
 
 public class DrawDiploma {
     
-    public func createDiploma(image: UIImage) -> UIImage {
+    var diplomaImage = UIImage()
+    
+    public func createDiploma(image: UIImage, userInfo: User) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(image.size, false, 0.0)
         
         image.draw(in: CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height))
@@ -29,7 +31,20 @@ public class DrawDiploma {
         let diplomaNumberTextField: String = "학사 제 \(diplomaNumber) 호"
         
         // MARK: - Name
-        let nameTextField: String = "횃    불    이"
+//        let nameTextField: String = "횃    불    이"
+        let name: String = userInfo.name
+        var nameTextField: String = ""
+        
+        let count: Int = name.count
+        var startCount: Int = 1
+        
+        for i in name {
+            nameTextField += String(i)
+            if startCount != count {
+                nameTextField += "    "
+                startCount += 1
+            }
+        }
         
         // MARK: - Birthdate
         let birthdateTextField: String = "1996. 09. 20."
@@ -75,6 +90,8 @@ public class DrawDiploma {
         
         UIGraphicsEndImageContext()
         
+        diplomaImage = newImage ?? UIImage()
+        
         StorageManager.shared.uploadDiploma(image: newImage ?? UIImage(), path: " ") { url in
             if let url = url {
                  print("url: \(url)")
@@ -85,6 +102,11 @@ public class DrawDiploma {
     }
     
     public func uploadDiploma() {
-        
+        StorageManager.shared.uploadDiploma(image: diplomaImage, path: " ") { url in
+            if let url = url {
+                print("url: \(url)")
+            }
+        }
     }
+    
 }

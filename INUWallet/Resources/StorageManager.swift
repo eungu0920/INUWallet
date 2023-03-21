@@ -19,40 +19,33 @@ public class StorageManager {
         case failedToGetDownloadUrl
     }
     
-    public func downloadURL(for path: String, completion: @escaping (Result<Data, Error>) -> Void) {
-        let gsReference = storage.reference(forURL: "gs://inuwallet.appspot.com/Diploma/test.png")
-        let httpsReference = storage.reference(forURL: "https://firebasestorage.googleapis.com/v0/b/inuwallet.appspot.com/o/Diploma%2FDefaultDiploma.png?alt=media&token=2ae0f878-2c2c-4127-9af6-24591d0c3ecc")
-        let megaByte = Int64(1 * 1024 * 1024)
-        httpsReference.getData(maxSize: megaByte) { data, error in
-            guard let imageData = data else {
+    public func downloadURL(for path: String, completion: @escaping (Result<URL, Error>) -> Void) {
+        let gsReference = storage.reference(forURL: "gs://inuwallet.appspot.com/Diploma/").child(path)
+        gsReference.downloadURL { url, error in
+            guard let url = url, error == nil else {
                 completion(.failure(StorageErrors.failedToGetDownloadUrl))
                 return
             }
-            completion(.success(imageData))
+            completion(.success(url))
         }
-//        gsReference.downloadURL { url, error in
-//            guard let url = url, error == nil else {
-//                completion(.failure(StorageErrors.failedToGetDownloadUrl))
-//                return
-//            }
-//            completion(.success(url))
-//        }
     }
     
-    public func uploadDiploma(image: UIImage, path: String, completion: (URL?) -> Void) {
-        guard let imageData = image.pngData() else {
+    public func uploadDiploma(image: UIImage, path: String, completion: @escaping (URL?) -> Void) {
+        guard let imageData = image.jpegData(compressionQuality: 0.6) else {
             return
         }
+        let metaData = StorageMetadata()
+        metaData.contentType = "image/jpeg"
+        
         let imageName = "test"
-        let firebaseRefernce = storage.reference().child("\(imageName)")
-        firebaseRefernce.putData(imageData, metadata: nil) { metadata, error in
-            guard let metadata = metadata else {
-                return
+        
+        print("uploaing...")
+        let firebaseRefernce = storage.reference(forURL: "gs://inuwallet.appspot.com/Diploma/assets/").child("\(imageName)")
+        
+        firebaseRefernce.putData(imageData, metadata: metaData) { metadata, error in
+            firebaseRefernce.downloadURL { url, _ in
+                completion(url)
             }
         }
-        
-        
-        
     }
-    
 }
