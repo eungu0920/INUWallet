@@ -70,6 +70,24 @@ class HomeViewController: UIViewController {
             print(self.user)
         }
         
+        guard let graduate = self.user.graduate else {
+            return
+        }
+        
+        if graduate == true {
+            let alert = UIAlertController(title: "졸업요건 불충족",
+                                          message: "졸업 요건이 불충족 되어 졸업증서를 받을 수 없습니다.",
+                                          preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "확인",
+                                          style: .cancel,
+                                          handler: nil))
+            present(alert, animated: true)
+        } else {
+            let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "MintDiplomaViewController") as! MintDiplomaViewController
+            nextVC.user = self.user
+            self.navigationController?.pushViewController(nextVC, animated: true)
+        }
+        
     }
     
 }

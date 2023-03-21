@@ -17,6 +17,7 @@
 		2810A81D29AA56A400F5BCD1 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2810A81C29AA56A400F5BCD1 /* Extension.swift */; };
 		284F13F029C166F0004D6410 /* SendINUTokenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284F13EF29C166F0004D6410 /* SendINUTokenViewController.swift */; };
 		284F13FB29C467AF004D6410 /* RegisteUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284F13FA29C467AF004D6410 /* RegisteUserInfoViewController.swift */; };
+		284F13FD29C5F4A6004D6410 /* Diploma.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284F13FC29C5F4A6004D6410 /* Diploma.swift */; };
 		28672F3629B634B1008D5732 /* TxResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28672F3529B634B1008D5732 /* TxResultViewController.swift */; };
 		289CA57029B0BBA20045E006 /* Web3 in Frameworks */ = {isa = PBXBuildFile; productRef = 289CA56F29B0BBA20045E006 /* Web3 */; };
 		289CA57229B0BBA20045E006 /* Web3ContractABI in Frameworks */ = {isa = PBXBuildFile; productRef = 289CA57129B0BBA20045E006 /* Web3ContractABI */; };
@@ -41,6 +42,10 @@
 		28CA246A298BC3DB006F4242 /* TokenInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CA2469298BC3DB006F4242 /* TokenInfoViewController.swift */; };
 		28CA246C298BC419006F4242 /* SendTokenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CA246B298BC419006F4242 /* SendTokenViewController.swift */; };
 		28CA246E298BC422006F4242 /* NFTSendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CA246D298BC422006F4242 /* NFTSendViewController.swift */; };
+		28F0EC7329C87330005D29F1 /* MintDiplomaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F0EC7229C87330005D29F1 /* MintDiplomaViewController.swift */; };
+		28F0EC7829C9C4CE005D29F1 /* NanumMyeongjoExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 28F0EC7529C9C4CE005D29F1 /* NanumMyeongjoExtraBold.otf */; };
+		28F0EC7929C9C4CE005D29F1 /* NanumMyeongjo.otf in Resources */ = {isa = PBXBuildFile; fileRef = 28F0EC7629C9C4CE005D29F1 /* NanumMyeongjo.otf */; };
+		28F0EC7A29C9C4CE005D29F1 /* NanumMyeongjoBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 28F0EC7729C9C4CE005D29F1 /* NanumMyeongjoBold.otf */; };
 		5725C1B48FC12A43148548FF /* Pods_INUWallet_INUWalletUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBD1D2172E23925E195A7B48 /* Pods_INUWallet_INUWalletUITests.framework */; };
 		CAF5E540AD4EDA370EFA81CE /* Pods_INUWallet_INUWalletTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5577DD78C9E5FC5FE12F77DA /* Pods_INUWallet_INUWalletTests.framework */; };
 /* End PBXBuildFile section */
@@ -73,6 +78,7 @@
 		2810A81C29AA56A400F5BCD1 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		284F13EF29C166F0004D6410 /* SendINUTokenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendINUTokenViewController.swift; sourceTree = "<group>"; };
 		284F13FA29C467AF004D6410 /* RegisteUserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisteUserInfoViewController.swift; sourceTree = "<group>"; };
+		284F13FC29C5F4A6004D6410 /* Diploma.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diploma.swift; sourceTree = "<group>"; };
 		28672F3529B634B1008D5732 /* TxResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxResultViewController.swift; sourceTree = "<group>"; };
 		28CA2417298AA4E6006F4242 /* INUWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = INUWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28CA241A298AA4E6006F4242 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -98,6 +104,10 @@
 		28CA2469298BC3DB006F4242 /* TokenInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenInfoViewController.swift; sourceTree = "<group>"; };
 		28CA246B298BC419006F4242 /* SendTokenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendTokenViewController.swift; sourceTree = "<group>"; };
 		28CA246D298BC422006F4242 /* NFTSendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTSendViewController.swift; sourceTree = "<group>"; };
+		28F0EC7229C87330005D29F1 /* MintDiplomaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MintDiplomaViewController.swift; sourceTree = "<group>"; };
+		28F0EC7529C9C4CE005D29F1 /* NanumMyeongjoExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumMyeongjoExtraBold.otf; sourceTree = "<group>"; };
+		28F0EC7629C9C4CE005D29F1 /* NanumMyeongjo.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumMyeongjo.otf; sourceTree = "<group>"; };
+		28F0EC7729C9C4CE005D29F1 /* NanumMyeongjoBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumMyeongjoBold.otf; sourceTree = "<group>"; };
 		2A010F61074E8A9AB27959D2 /* Pods-INUWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-INUWallet.release.xcconfig"; path = "Target Support Files/Pods-INUWallet/Pods-INUWallet.release.xcconfig"; sourceTree = "<group>"; };
 		3B3DB7950332060AC22E10A6 /* Pods_INUWallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_INUWallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		477F2120BA849268CC249722 /* Pods-INUWalletTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-INUWalletTests.debug.xcconfig"; path = "Target Support Files/Pods-INUWalletTests/Pods-INUWalletTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -195,6 +205,7 @@
 		28CA244A298AA548006F4242 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				28F0EC7429C9C4BF005D29F1 /* Font */,
 				2810A7CE29A8CE0600F5BCD1 /* GoogleService-Info.plist */,
 				28CA241A298AA4E6006F4242 /* AppDelegate.swift */,
 				28CA241C298AA4E6006F4242 /* SceneDelegate.swift */,
@@ -202,6 +213,7 @@
 				2810A7D629A8D7AA00F5BCD1 /* StorageManager.swift */,
 				2810A7D429A8D76300F5BCD1 /* AuthManager.swift */,
 				2810A81C29AA56A400F5BCD1 /* Extension.swift */,
+				284F13FC29C5F4A6004D6410 /* Diploma.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -283,8 +295,19 @@
 				28672F3529B634B1008D5732 /* TxResultViewController.swift */,
 				28CA246B298BC419006F4242 /* SendTokenViewController.swift */,
 				284F13EF29C166F0004D6410 /* SendINUTokenViewController.swift */,
+				28F0EC7229C87330005D29F1 /* MintDiplomaViewController.swift */,
 			);
 			path = General;
+			sourceTree = "<group>";
+		};
+		28F0EC7429C9C4BF005D29F1 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				28F0EC7629C9C4CE005D29F1 /* NanumMyeongjo.otf */,
+				28F0EC7729C9C4CE005D29F1 /* NanumMyeongjoBold.otf */,
+				28F0EC7529C9C4CE005D29F1 /* NanumMyeongjoExtraBold.otf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 		778CCFE1D7D50265D099BD28 /* Frameworks */ = {
@@ -432,6 +455,9 @@
 			files = (
 				28CA2427298AA4E6006F4242 /* LaunchScreen.storyboard in Resources */,
 				2810A7CF29A8CE0600F5BCD1 /* GoogleService-Info.plist in Resources */,
+				28F0EC7829C9C4CE005D29F1 /* NanumMyeongjoExtraBold.otf in Resources */,
+				28F0EC7929C9C4CE005D29F1 /* NanumMyeongjo.otf in Resources */,
+				28F0EC7A29C9C4CE005D29F1 /* NanumMyeongjoBold.otf in Resources */,
 				28CA2424298AA4E6006F4242 /* Assets.xcassets in Resources */,
 				28CA2422298AA4E6006F4242 /* Main.storyboard in Resources */,
 			);
@@ -584,6 +610,7 @@
 				284F13FB29C467AF004D6410 /* RegisteUserInfoViewController.swift in Sources */,
 				28CA2457298BBBBD006F4242 /* NFTViewController.swift in Sources */,
 				2810A7D729A8D7AA00F5BCD1 /* StorageManager.swift in Sources */,
+				284F13FD29C5F4A6004D6410 /* Diploma.swift in Sources */,
 				28CA241B298AA4E6006F4242 /* AppDelegate.swift in Sources */,
 				28CA246C298BC419006F4242 /* SendTokenViewController.swift in Sources */,
 				28CA241D298AA4E6006F4242 /* SceneDelegate.swift in Sources */,
@@ -591,6 +618,7 @@
 				2810A7D529A8D76300F5BCD1 /* AuthManager.swift in Sources */,
 				28CA2461298BBD20006F4242 /* LoginViewController.swift in Sources */,
 				284F13F029C166F0004D6410 /* SendINUTokenViewController.swift in Sources */,
+				28F0EC7329C87330005D29F1 /* MintDiplomaViewController.swift in Sources */,
 				28CA246E298BC422006F4242 /* NFTSendViewController.swift in Sources */,
 				28CA2453298BBBA5006F4242 /* HomeViewController.swift in Sources */,
 				2810A7D129A8D12E00F5BCD1 /* RegistrationViewController.swift in Sources */,

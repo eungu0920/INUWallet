@@ -1032,20 +1032,104 @@ collectionview horizontal scroll</string>
             </objects>
             <point key="canvasLocation" x="-1941" y="1556"/>
         </scene>
-        <!--View Controller-->
+        <!--Mint Diploma View Controller-->
         <scene sceneID="Ud2-J1-92K">
             <objects>
-                <viewController id="4Nn-Sc-SgS" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MintDiplomaViewController" id="4Nn-Sc-SgS" customClass="MintDiplomaViewController" customModule="INUWallet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XQO-SY-k7q">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BhV-QF-vT3">
+                                <rect key="frame" x="25" y="139" width="343" height="300"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="nbk-x4-GKz">
+                                        <rect key="frame" x="20" y="50.333333333333336" width="303" height="126.33333333333331"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I2x-YV-08L">
+                                                <rect key="frame" x="0.0" y="0.0" width="303" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zhH-tA-fZx">
+                                                <rect key="frame" x="0.0" y="35.333333333333314" width="303" height="20.333333333333329"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yu0-yz-0qf">
+                                                <rect key="frame" x="0.0" y="70.666666666666657" width="303" height="20.333333333333329"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a8Y-xx-XMb">
+                                                <rect key="frame" x="0.0" y="105.99999999999997" width="303" height="20.333333333333329"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이름, 학번, 학과, 학년을 확인 해 주세요." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qcE-BT-oOu">
+                                        <rect key="frame" x="20" y="9.9999999999999982" width="303" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kgc-ec-C8b">
+                                        <rect key="frame" x="20" y="191.66666666666669" width="303" height="34.333333333333343"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="졸업 증서 받기"/>
+                                        <connections>
+                                            <action selector="didTapButton:" destination="4Nn-Sc-SgS" eventType="touchUpInside" id="G8K-TK-YqA"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="qcE-BT-oOu" secondAttribute="trailing" constant="20" id="BZg-HM-r8r"/>
+                                    <constraint firstItem="qcE-BT-oOu" firstAttribute="top" secondItem="BhV-QF-vT3" secondAttribute="top" constant="10" id="BZu-w7-gr9"/>
+                                    <constraint firstItem="qcE-BT-oOu" firstAttribute="leading" secondItem="BhV-QF-vT3" secondAttribute="leading" constant="20" id="CFw-wi-9bo"/>
+                                    <constraint firstItem="Kgc-ec-C8b" firstAttribute="top" secondItem="nbk-x4-GKz" secondAttribute="bottom" constant="15" id="Czj-ER-RJy"/>
+                                    <constraint firstAttribute="height" constant="300" id="Eol-OR-Eyp"/>
+                                    <constraint firstItem="Kgc-ec-C8b" firstAttribute="leading" secondItem="BhV-QF-vT3" secondAttribute="leading" constant="20" id="GB9-aZ-vem"/>
+                                    <constraint firstItem="nbk-x4-GKz" firstAttribute="top" secondItem="qcE-BT-oOu" secondAttribute="bottom" constant="20" id="Ltd-d5-S7b"/>
+                                    <constraint firstAttribute="trailing" secondItem="nbk-x4-GKz" secondAttribute="trailing" constant="20" id="WeU-Ed-Pz3"/>
+                                    <constraint firstItem="nbk-x4-GKz" firstAttribute="leading" secondItem="BhV-QF-vT3" secondAttribute="leading" constant="20" id="yFU-xc-8DC"/>
+                                    <constraint firstAttribute="trailing" secondItem="Kgc-ec-C8b" secondAttribute="trailing" constant="20" id="zhe-78-YBI"/>
+                                </constraints>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OZ9-dO-nxb">
+                                <rect key="frame" x="25" y="486" width="170" height="232"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NzH-HR-8NO">
+                                <rect key="frame" x="198" y="486" width="170" height="232"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="wJh-bG-zgA"/>
                         <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                        <constraints>
+                            <constraint firstItem="BhV-QF-vT3" firstAttribute="top" secondItem="wJh-bG-zgA" secondAttribute="top" constant="80" id="YjI-bZ-ZXr"/>
+                            <constraint firstItem="BhV-QF-vT3" firstAttribute="leading" secondItem="wJh-bG-zgA" secondAttribute="leading" constant="25" id="ma7-f4-Zf5"/>
+                            <constraint firstItem="wJh-bG-zgA" firstAttribute="trailing" secondItem="BhV-QF-vT3" secondAttribute="trailing" constant="25" id="xCm-Un-o0g"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="departmentLabel" destination="yu0-yz-0qf" id="Wqc-gU-nc5"/>
+                        <outlet property="diplomaImageView" destination="NzH-HR-8NO" id="SOA-5b-oz7"/>
+                        <outlet property="gradeLabel" destination="a8Y-xx-XMb" id="oX6-fX-k6Y"/>
+                        <outlet property="imageView" destination="OZ9-dO-nxb" id="IDi-Fd-Qu2"/>
+                        <outlet property="nameLabel" destination="I2x-YV-08L" id="YQy-96-S8o"/>
+                        <outlet property="studentIDLabel" destination="zhH-tA-fZx" id="84d-J3-qwR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Inv-g4-jbx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1150" y="1556"/>
+            <point key="canvasLocation" x="-1150.3816793893129" y="1555.6338028169014"/>
         </scene>
         <!--Create Wallet View Controller-->
         <scene sceneID="Mqi-UG-nzc">
