@@ -15,6 +15,7 @@ class MintDiplomaViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var diplomaImageView: UIImageView!
     
+    let diploma = DrawDiploma()
     var user = User()
     /*
      name
@@ -31,7 +32,18 @@ class MintDiplomaViewController: UIViewController {
         gradeLabel.text = user.grade
     }
     
+    // MARK: - 졸업증서 NFT Minting 순서: 1. NFT Token 민팅 -> transaction 받아와서 저장 2. GetTokenID 받아오기 3. 이미지 생성 및 업로드 4. metadata 생성 및 업로드
     @IBAction func didTapButton(_ sender: Any) {
+        diploma.mintDiploma(userInfo: user) { txHash in
+            guard let txHash = txHash else { return }
+            self.diploma.diplomaTxHash = txHash
+            // TODO: - Transaction이 완료 되었을 때 GetTokenID 받아오기 -> 가능?
+            self.diploma.getDiplomaTokenID(userInfo: self.user) { tokenID in
+                guard let tokenID = tokenID else { return }
+                print(tokenID)
+            }
+        }
+        
         let path = "DefaultDiploma.png"
         StorageManager.shared.downloadURL(for: path) { [weak self] result in
             switch result {

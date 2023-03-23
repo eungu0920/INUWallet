@@ -10,7 +10,7 @@ import UIKit
 
 public struct User {
     var uid: String = ""
-    var walletAddress: String = ""
+    var address: String = ""
     var email: String = ""
     var username: String = ""
     
@@ -42,10 +42,6 @@ struct NFTInfo {
         self.tokenID = tokenID
         self.imageName = imageName
     }
-}
-
-class nftABIModel {
-    let abiabi: String = "Hello World!"
 }
 
 class ABIModel {

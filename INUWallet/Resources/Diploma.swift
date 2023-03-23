@@ -5,12 +5,84 @@
 //  Created by Gray on 2023/03/18.
 //
 
-import Foundation
 import UIKit
+import Web3
+import Web3PromiseKit
+import Web3ContractABI
 
 public class DrawDiploma {
     
     var diplomaImage = UIImage()
+    var diplomaTxHash: String = ""
+    let abiModel = ABIModel()
+    
+    public func mintDiploma(userInfo: User, completion: @escaping (String?) -> Void) {
+        
+        // Mumbai testnet
+        let web3 = Web3(rpcURL: "https://rpc-mumbai.maticvigil.com")
+        
+        let contractAddress = try! EthereumAddress(hex: "NFT contract Address", eip55: true)
+        let abi = abiModel.diplomaNFTABI
+        
+        let contractJsonABI = abi.data(using: .utf8)!
+        let contract = try! web3.eth.Contract(json: contractJsonABI, abiKey: nil, address: contractAddress)
+        
+        firstly {
+            try web3.eth.getTransactionCount(address: EthereumAddress(hex: userInfo.address, eip55: true), block: .latest)
+        }.done { nonce in
+            guard let transaction = contract["safeMint"]?().createTransaction(
+                nonce: nonce,
+                gasPrice: EthereumQuantity(quantity: 150.gwei),
+                maxFeePerGas: EthereumQuantity(quantity: 150.gwei),
+                maxPriorityFeePerGas: EthereumQuantity(quantity: 150.gwei),
+                gasLimit: EthereumQuantity(quantity: 200000),
+                from: nil,
+                value: EthereumQuantity(quantity: 0),
+                accessList: [:],
+                transactionType: .legacy
+            ) else {
+                return
+            }
+            
+            let signedTx = try transaction.sign(with: EthereumPrivateKey(hexPrivateKey: userInfo.privateKey), chainId: 80001)
+            
+            firstly {
+                web3.eth.sendRawTransaction(transaction: signedTx)
+            }.done { txHash in
+                completion(txHash.hex())
+            }.catch { error in
+                print(error)
+                completion(nil)
+            }
+            
+        }.catch { error in
+            print(error)
+            completion(nil)
+        }
+        
+    }
+    
+    public func getDiplomaTokenID(userInfo: User, completion: @escaping (Int?) -> Void) {
+        let web3 = Web3(rpcURL: "https://rpc-mumbai.maticvigil.com")
+        
+        let contractAddress = try! EthereumAddress(hex: "NFT Contract Address", eip55: true)
+        let abi = abiModel.diplomaNFTABI
+        
+        let contractJsonABI = abi.data(using: .utf8)!
+        let contract = try! web3.eth.Contract(json: contractJsonABI, abiKey: nil, address: contractAddress)
+        
+        firstly {
+            try (contract["tokenOfOwnerByIndex"]?(EthereumAddress(hex: userInfo.address, eip55: true), 0).call())!
+        }.done { outputs in
+            guard let tokenID = outputs[""] as? BigUInt else {
+                return
+            }
+            completion(Int(tokenID))
+        }.catch { error in
+            print(error)
+            completion(nil)
+        }
+    }
     
     public func createDiploma(image: UIImage, userInfo: User) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(image.size, false, 0.0)
@@ -24,7 +96,7 @@ public class DrawDiploma {
         let dateTextField = dataFormatter.string(from: date)
         
         // MARK: - TxHash
-        let txHashTextField: String = "0x481b58d011920d7f34e800f0c28c7d82cc94deeafebc181301b9023dff459049"
+        let txHashTextField: String = diplomaTxHash
         
         // MARK: - 졸업증서 번호 (ex. 학사 제 xxx 호)
         let diplomaNumber: Int = 112356 // get tokenID

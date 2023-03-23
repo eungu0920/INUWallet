@@ -131,6 +131,39 @@ class NFTViewController: UIViewController {
         }
     }
     
+    // MARK: - 가지고 있는 토큰넘버를 차례로 보여주는 메소드
+    private func tokenOfOwnerByIndex() {
+        // Mumbai Testnet
+        let web3 = Web3(rpcURL: "https://rpc-mumbai.maticvigil.com")
+        
+        let contractAddress = try! EthereumAddress(hex: "0x1DB21eD8E466453D601603424bb561858B478c24", eip55: true)
+        let abi = abiModel.diplomaNFTABI
+
+        let contractJsonABI = abi.data(using: .utf8)!
+        let contract = try! web3.eth.Contract(json: contractJsonABI, abiKey: nil, address: contractAddress)
+    
+        firstly {
+            try (contract["tokenOfOwnerByIndex"]?(EthereumAddress(hex: "0x1d48aE7ab364767F32fEd28788Ec8B235CcF3d59", eip55: true), 0).call())!
+        }.done { outputs in
+            // MARK: - outputs 반환값은 [String: Any] 딕셔너리 타입으로 반환됨, Any값을 Int로 캐스팅이 안되길래 BigUInt로 캐스팅하니까 잘됨. Any -> BigUInt -> Int 이렇게 해야할 듯.
+            guard let tokenID = outputs[""] as? BigUInt else {
+                print("failed")
+                return
+            }
+            
+            print("tokenID: \(tokenID)")
+            print("tokenOfOwnerByIndex: \(outputs[""])")
+            print("tokenOfOwnerByIndex debugDescription: \(outputs.values.debugDescription)")
+            print("tokenOfOwnerByIndex description: \(outputs.values.description)")
+            
+            for i in outputs.values.description {
+                print(i)
+            }
+        }.catch { error in
+            print(error)
+        }
+    }
+    
     // MARK: - ERC1155 mint
     private func mint() {
         let web3 = Web3(rpcURL: "https://rpc-mumbai.maticvigil.com")
@@ -160,8 +193,11 @@ extension NFTViewController: UICollectionViewDelegate, UICollectionViewDataSourc
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //        getNFTInfo()
-        NFTMint()
-        print("NFT_safeMint")
+        
+//        NFTMint()
+//        print("NFT_safeMint")
+        
+        tokenOfOwnerByIndex()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

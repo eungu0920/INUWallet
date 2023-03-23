@@ -270,8 +270,8 @@
 				28CA2460298BBD20006F4242 /* LoginViewController.swift */,
 				28CA2463298BC390006F4242 /* AuthenticationViewController.swift */,
 				2810A7D029A8D12E00F5BCD1 /* RegistrationViewController.swift */,
-				280435E429AC7DEB009F090E /* CreateWalletViewController.swift */,
 				284F13FA29C467AF004D6410 /* RegisteUserInfoViewController.swift */,
+				280435E429AC7DEB009F090E /* CreateWalletViewController.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";

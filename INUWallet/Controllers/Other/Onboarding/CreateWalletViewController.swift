@@ -28,6 +28,8 @@ class CreateWalletViewController: UIViewController {
     @IBOutlet weak var bottomStackView: UIStackView!
     
     var textViewArr: [UITextView] = []
+    var userAddress = String()
+    var userPrivateKey = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -114,8 +116,6 @@ class CreateWalletViewController: UIViewController {
         bottomStackView.alpha = 0.0
     }
     
-    var userAddress: String = ""
-    
     @IBAction func didTapGenerateButton(_ sender: Any) {
         let mnemonic = Mnemonic.create()
         let mnemonicArr: [String] = mnemonic.components(separatedBy: " ")
@@ -143,13 +143,17 @@ class CreateWalletViewController: UIViewController {
         print("rawPublicKey: \(firstAccount.rawPublicKey)")
 
         userAddress = firstAccount.address
+        userPrivateKey = firstAccount.rawPrivateKey
+        
+        // TODO: - UserDefaults에 비밀번호 및 키같은 암호는 저장하면 안됨
         UserDefaults.standard.set(userAddress, forKey: "Address")
         UserDefaults.standard.set(privateKey, forKey: "PrivateKey")
         UserDefaults.standard.set(publicKey, forKey: "PublicKey")
     }
     
     @IBAction func didTapCreateButton(_ sender: Any) {
-        DatabaseManager.shared.saveWalletAddress(address: userAddress)
+//        DatabaseManager.shared.saveWalletAddress(address: userAddress.address)
+        DatabaseManager.shared.insertAddressInfo(address: userAddress, key: userPrivateKey)
         
         // TODO: - HomewViewController로 되돌아 갈 때 뷰 계층 구조가 꼬이는 것으로 확인 됨. 다른 방식으로 수정해야할 듯
         self.view.window?.rootViewController?.dismiss(animated: false, completion: {

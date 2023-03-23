@@ -13,6 +13,8 @@ public class DatabaseManager {
     
     private let database = Database.database().reference()
     
+    private let uid = AuthManager.shared.shareUid()
+    
     // MARK: - Public
     public func canCreateUser(with email: String, username: String, completion: (Bool) -> Void) {
         completion(true)
@@ -46,8 +48,25 @@ public class DatabaseManager {
         }
     }
     
+    public func insertUserInfo(name: String, studentID: String, department: String, grade: String) {
+//        let uid = AuthManager.shared.shareUid()
+        
+        database.child("users/\(uid)/name").setValue(name)
+        database.child("users/\(uid)/studentID").setValue(studentID)
+        database.child("users/\(uid)/department").setValue(department)
+        database.child("users/\(uid)/grade").setValue(grade)
+        database.child("users/\(uid)/graduate").setValue("false")
+        
+    }
+    
+    // TODO: - Key 암호화 작업
+    public func insertAddressInfo(address: String, key: String) {
+        database.child("users/\(uid)/address").setValue(address)
+        database.child("users/\(uid)/privatekey").setValue(key)
+    }
+    
     public func saveWalletAddress(address: String) {
-        let uid = AuthManager.shared.shareUid()
+//        let uid = AuthManager.shared.shareUid()
         
 //        database.child("users/\(uid)/address").setValue(address) { error, _ in
 //            if error == nil {
@@ -61,19 +80,9 @@ public class DatabaseManager {
         
     }
     
-    public func insertUserInfo(name: String, studentID: String, department: String, grade: String) {
-        let uid = AuthManager.shared.shareUid()
-    
-        database.child("users/\(uid)/name").setValue(name)
-        database.child("users/\(uid)/studentID").setValue(studentID)
-        database.child("users/\(uid)/department").setValue(department)
-        database.child("users/\(uid)/grade").setValue(grade)
-        database.child("users/\(uid)/graduate").setValue("false")
-        
-    }
     
     public func showWalletAddress(completion: @escaping (String?) -> Void) {
-        let uid = AuthManager.shared.shareUid()
+//        let uid = AuthManager.shared.shareUid()
         
         database.child("users/\(uid)/address").getData { error, snapshot in
             guard error == nil else {
@@ -90,7 +99,7 @@ public class DatabaseManager {
     }
     
     public func getGraduate(completion: @escaping (String?) -> Void) {
-        let uid = AuthManager.shared.shareUid()
+//        let uid = AuthManager.shared.shareUid()
         
         database.child("users/\(uid)/graduate").getData { error, snapshot in
             guard error == nil else {
