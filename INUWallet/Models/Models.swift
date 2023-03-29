@@ -18,6 +18,7 @@ public struct User {
     var birthdate: String = ""
     var studentID: String = ""
     var department: String = ""
+    var major: String = ""
     var grade: String = ""
     var graduate: Bool?
     
@@ -47,11 +48,7 @@ struct NFTInfo {
 class ABIModel {
     let diplomaNFTABI: String = """
         [
-          {
-            "inputs": [],
-            "stateMutability": "nonpayable",
-            "type": "constructor"
-          },
+          { "inputs": [], "stateMutability": "nonpayable", "type": "constructor" },
           {
             "anonymous": false,
             "inputs": [
@@ -107,18 +104,74 @@ class ABIModel {
             "inputs": [
               {
                 "indexed": true,
+                "internalType": "bytes32",
+                "name": "role",
+                "type": "bytes32"
+              },
+              {
+                "indexed": true,
+                "internalType": "bytes32",
+                "name": "previousAdminRole",
+                "type": "bytes32"
+              },
+              {
+                "indexed": true,
+                "internalType": "bytes32",
+                "name": "newAdminRole",
+                "type": "bytes32"
+              }
+            ],
+            "name": "RoleAdminChanged",
+            "type": "event"
+          },
+          {
+            "anonymous": false,
+            "inputs": [
+              {
+                "indexed": true,
+                "internalType": "bytes32",
+                "name": "role",
+                "type": "bytes32"
+              },
+              {
+                "indexed": true,
                 "internalType": "address",
-                "name": "previousOwner",
+                "name": "account",
                 "type": "address"
               },
               {
                 "indexed": true,
                 "internalType": "address",
-                "name": "newOwner",
+                "name": "sender",
                 "type": "address"
               }
             ],
-            "name": "OwnershipTransferred",
+            "name": "RoleGranted",
+            "type": "event"
+          },
+          {
+            "anonymous": false,
+            "inputs": [
+              {
+                "indexed": true,
+                "internalType": "bytes32",
+                "name": "role",
+                "type": "bytes32"
+              },
+              {
+                "indexed": true,
+                "internalType": "address",
+                "name": "account",
+                "type": "address"
+              },
+              {
+                "indexed": true,
+                "internalType": "address",
+                "name": "sender",
+                "type": "address"
+              }
+            ],
+            "name": "RoleRevoked",
             "type": "event"
           },
           {
@@ -145,6 +198,27 @@ class ABIModel {
             ],
             "name": "Transfer",
             "type": "event"
+          },
+          {
+            "inputs": [],
+            "name": "DEFAULT_ADMIN_ROLE",
+            "outputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }],
+            "stateMutability": "view",
+            "type": "function"
+          },
+          {
+            "inputs": [],
+            "name": "GRADUATE_ROLE",
+            "outputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }],
+            "stateMutability": "view",
+            "type": "function"
+          },
+          {
+            "inputs": [{ "internalType": "address", "name": "to", "type": "address" }],
+            "name": "addGraduatelist",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
           },
           {
             "inputs": [
@@ -176,6 +250,35 @@ class ABIModel {
           },
           {
             "inputs": [
+              { "internalType": "bytes32", "name": "role", "type": "bytes32" }
+            ],
+            "name": "getRoleAdmin",
+            "outputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }],
+            "stateMutability": "view",
+            "type": "function"
+          },
+          {
+            "inputs": [
+              { "internalType": "bytes32", "name": "role", "type": "bytes32" },
+              { "internalType": "address", "name": "account", "type": "address" }
+            ],
+            "name": "grantRole",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+          },
+          {
+            "inputs": [
+              { "internalType": "bytes32", "name": "role", "type": "bytes32" },
+              { "internalType": "address", "name": "account", "type": "address" }
+            ],
+            "name": "hasRole",
+            "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+            "stateMutability": "view",
+            "type": "function"
+          },
+          {
+            "inputs": [
               { "internalType": "address", "name": "owner", "type": "address" },
               { "internalType": "address", "name": "operator", "type": "address" }
             ],
@@ -185,16 +288,18 @@ class ABIModel {
             "type": "function"
           },
           {
-            "inputs": [],
-            "name": "name",
-            "outputs": [{ "internalType": "string", "name": "", "type": "string" }],
+            "inputs": [
+              { "internalType": "address", "name": "from", "type": "address" }
+            ],
+            "name": "isGraduate",
+            "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
             "stateMutability": "view",
             "type": "function"
           },
           {
             "inputs": [],
-            "name": "owner",
-            "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+            "name": "name",
+            "outputs": [{ "internalType": "string", "name": "", "type": "string" }],
             "stateMutability": "view",
             "type": "function"
           },
@@ -208,17 +313,27 @@ class ABIModel {
             "type": "function"
           },
           {
-            "inputs": [],
-            "name": "renounceOwnership",
+            "inputs": [
+              { "internalType": "bytes32", "name": "role", "type": "bytes32" },
+              { "internalType": "address", "name": "account", "type": "address" }
+            ],
+            "name": "renounceRole",
             "outputs": [],
             "stateMutability": "nonpayable",
             "type": "function"
           },
           {
             "inputs": [
-              { "internalType": "address", "name": "to", "type": "address" },
-              { "internalType": "uint256", "name": "tokenId", "type": "uint256" }
+              { "internalType": "bytes32", "name": "role", "type": "bytes32" },
+              { "internalType": "address", "name": "account", "type": "address" }
             ],
+            "name": "revokeRole",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+          },
+          {
+            "inputs": [],
             "name": "safeMint",
             "outputs": [],
             "stateMutability": "nonpayable",
@@ -315,15 +430,6 @@ class ABIModel {
               { "internalType": "uint256", "name": "tokenId", "type": "uint256" }
             ],
             "name": "transferFrom",
-            "outputs": [],
-            "stateMutability": "nonpayable",
-            "type": "function"
-          },
-          {
-            "inputs": [
-              { "internalType": "address", "name": "newOwner", "type": "address" }
-            ],
-            "name": "transferOwnership",
             "outputs": [],
             "stateMutability": "nonpayable",
             "type": "function"

@@ -19,6 +19,8 @@
 		284F13FB29C467AF004D6410 /* RegisteUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284F13FA29C467AF004D6410 /* RegisteUserInfoViewController.swift */; };
 		284F13FD29C5F4A6004D6410 /* Diploma.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284F13FC29C5F4A6004D6410 /* Diploma.swift */; };
 		28672F3629B634B1008D5732 /* TxResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28672F3529B634B1008D5732 /* TxResultViewController.swift */; };
+		289B9EB729D176E400683FAF /* DiplomaTxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289B9EB629D176E400683FAF /* DiplomaTxViewController.swift */; };
+		289B9EB929D1DE9800683FAF /* MetadataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289B9EB829D1DE9800683FAF /* MetadataModel.swift */; };
 		289CA57029B0BBA20045E006 /* Web3 in Frameworks */ = {isa = PBXBuildFile; productRef = 289CA56F29B0BBA20045E006 /* Web3 */; };
 		289CA57229B0BBA20045E006 /* Web3ContractABI in Frameworks */ = {isa = PBXBuildFile; productRef = 289CA57129B0BBA20045E006 /* Web3ContractABI */; };
 		289CA57429B0BBA20045E006 /* Web3PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 289CA57329B0BBA20045E006 /* Web3PromiseKit */; };
@@ -80,6 +82,8 @@
 		284F13FA29C467AF004D6410 /* RegisteUserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisteUserInfoViewController.swift; sourceTree = "<group>"; };
 		284F13FC29C5F4A6004D6410 /* Diploma.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diploma.swift; sourceTree = "<group>"; };
 		28672F3529B634B1008D5732 /* TxResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxResultViewController.swift; sourceTree = "<group>"; };
+		289B9EB629D176E400683FAF /* DiplomaTxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiplomaTxViewController.swift; sourceTree = "<group>"; };
+		289B9EB829D1DE9800683FAF /* MetadataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetadataModel.swift; sourceTree = "<group>"; };
 		28CA2417298AA4E6006F4242 /* INUWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = INUWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28CA241A298AA4E6006F4242 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28CA241C298AA4E6006F4242 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -222,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				28CA245C298BBC56006F4242 /* Models.swift */,
+				289B9EB829D1DE9800683FAF /* MetadataModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -296,6 +301,7 @@
 				28CA246B298BC419006F4242 /* SendTokenViewController.swift */,
 				284F13EF29C166F0004D6410 /* SendINUTokenViewController.swift */,
 				28F0EC7229C87330005D29F1 /* MintDiplomaViewController.swift */,
+				289B9EB629D176E400683FAF /* DiplomaTxViewController.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -619,10 +625,12 @@
 				28CA2461298BBD20006F4242 /* LoginViewController.swift in Sources */,
 				284F13F029C166F0004D6410 /* SendINUTokenViewController.swift in Sources */,
 				28F0EC7329C87330005D29F1 /* MintDiplomaViewController.swift in Sources */,
+				289B9EB729D176E400683FAF /* DiplomaTxViewController.swift in Sources */,
 				28CA246E298BC422006F4242 /* NFTSendViewController.swift in Sources */,
 				28CA2453298BBBA5006F4242 /* HomeViewController.swift in Sources */,
 				2810A7D129A8D12E00F5BCD1 /* RegistrationViewController.swift in Sources */,
 				2810A81D29AA56A400F5BCD1 /* Extension.swift in Sources */,
+				289B9EB929D1DE9800683FAF /* MetadataModel.swift in Sources */,
 				280435E529AC7DEB009F090E /* CreateWalletViewController.swift in Sources */,
 				28CA2466298BC39B006F4242 /* NFTInfoViewController.swift in Sources */,
 				28CA246A298BC3DB006F4242 /* TokenInfoViewController.swift in Sources */,

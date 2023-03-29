@@ -12,8 +12,6 @@ class MintDiplomaViewController: UIViewController {
     @IBOutlet weak var studentIDLabel: UILabel!
     @IBOutlet weak var departmentLabel: UILabel!
     @IBOutlet weak var gradeLabel: UILabel!
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var diplomaImageView: UIImageView!
     
     let diploma = DrawDiploma()
     var user = User()
@@ -33,39 +31,20 @@ class MintDiplomaViewController: UIViewController {
     }
     
     // MARK: - 졸업증서 NFT Minting 순서: 1. NFT Token 민팅 -> transaction 받아와서 저장 2. GetTokenID 받아오기 3. 이미지 생성 및 업로드 4. metadata 생성 및 업로드
+    // MARK: 추 후 한꺼번에 NFT 생성으로 가야할 듯?
+    // TODO: 1. 사용자 정보 확인, 2. Mint 버튼 클릭 -> 다음 화면으로 넘어감
+    
+    // MARK: - NFT Token 민팅 및 다음 화면으로.
     @IBAction func didTapButton(_ sender: Any) {
         diploma.mintDiploma(userInfo: user) { txHash in
             guard let txHash = txHash else { return }
             self.diploma.diplomaTxHash = txHash
-            // TODO: - Transaction이 완료 되었을 때 GetTokenID 받아오기 -> 가능?
-            self.diploma.getDiplomaTokenID(userInfo: self.user) { tokenID in
-                guard let tokenID = tokenID else { return }
-                print(tokenID)
-            }
-        }
-        
-        let path = "DefaultDiploma.png"
-        StorageManager.shared.downloadURL(for: path) { [weak self] result in
-            switch result {
-            case .success(let url):
-                self?.downloadImage(imageView: self!.imageView, url: url)
-            case .failure(let error):
-                print("Failed to get download url: \(error)")
-            }
-        }
-    }
-    
-    func downloadImage(imageView: UIImageView, url: URL) {
-        URLSession.shared.dataTask(with: url) { data, _, error in
-            guard let data = data, error == nil else {
-                return
-            }
-            DispatchQueue.main.async {
-                let image = UIImage(data: data)
-                imageView.image = image
-                self.diplomaImageView.image = DrawDiploma().createDiploma(image: image ?? UIImage(), userInfo: self.user)
-            }
-        }.resume()
-    }
+            
+            let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "DiplomaTxViewController") as! DiplomaTxViewController
+            nextVC.user = self.user
+            nextVC.diploma = self.diploma
+            self.navigationController?.pushViewController(nextVC, animated: true)
 
+        }
+    }
 }

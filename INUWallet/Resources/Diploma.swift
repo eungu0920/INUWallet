@@ -13,7 +13,8 @@ import Web3ContractABI
 public class DrawDiploma {
     
     var diplomaImage = UIImage()
-    var diplomaTxHash: String = ""
+    var diplomaTxHash: String = "testTxHash"
+    var tokenID = Int()
     let abiModel = ABIModel()
     
     public func mintDiploma(userInfo: User, completion: @escaping (String?) -> Void) {
@@ -21,7 +22,7 @@ public class DrawDiploma {
         // Mumbai testnet
         let web3 = Web3(rpcURL: "https://rpc-mumbai.maticvigil.com")
         
-        let contractAddress = try! EthereumAddress(hex: "NFT contract Address", eip55: true)
+        let contractAddress = try! EthereumAddress(hex: "0xF1B010D76FdF0C6aA20B2319D62c95Fa19382fd4", eip55: true)
         let abi = abiModel.diplomaNFTABI
         
         let contractJsonABI = abi.data(using: .utf8)!
@@ -65,7 +66,7 @@ public class DrawDiploma {
     public func getDiplomaTokenID(userInfo: User, completion: @escaping (Int?) -> Void) {
         let web3 = Web3(rpcURL: "https://rpc-mumbai.maticvigil.com")
         
-        let contractAddress = try! EthereumAddress(hex: "NFT Contract Address", eip55: true)
+        let contractAddress = try! EthereumAddress(hex: "0xF1B010D76FdF0C6aA20B2319D62c95Fa19382fd4", eip55: true)
         let abi = abiModel.diplomaNFTABI
         
         let contractJsonABI = abi.data(using: .utf8)!
@@ -80,11 +81,12 @@ public class DrawDiploma {
             completion(Int(tokenID))
         }.catch { error in
             print(error)
-            completion(nil)
+            // '0'은 아직 transaction이 완료 되지 않았을 때를 뜻함,
+            completion(0)
         }
     }
     
-    public func createDiploma(image: UIImage, userInfo: User) -> UIImage {
+    public func createDiploma(image: UIImage, userInfo: User) {
         UIGraphicsBeginImageContextWithOptions(image.size, false, 0.0)
         
         image.draw(in: CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height))
@@ -99,7 +101,7 @@ public class DrawDiploma {
         let txHashTextField: String = diplomaTxHash
         
         // MARK: - 졸업증서 번호 (ex. 학사 제 xxx 호)
-        let diplomaNumber: Int = 112356 // get tokenID
+        let diplomaNumber: Int = tokenID // get tokenID
         let diplomaNumberTextField: String = "학사 제 \(diplomaNumber) 호"
         
         // MARK: - Name
@@ -164,21 +166,18 @@ public class DrawDiploma {
         
         diplomaImage = newImage ?? UIImage()
         
-        StorageManager.shared.uploadDiploma(image: newImage ?? UIImage(), path: " ") { url in
+        // TODO: - metadata 만들어서 같이 업로드하기.
+        
+        let intToString = String(tokenID)
+        
+        // MARK: - 졸업증서 이미지 업로드
+        StorageManager.shared.uploadDiploma(image: newImage ?? UIImage(), path: intToString) { url in
             if let url = url {
                  print("url: \(url)")
             }
         }
         
-        return newImage ?? UIImage()
     }
     
-    public func uploadDiploma() {
-        StorageManager.shared.uploadDiploma(image: diplomaImage, path: " ") { url in
-            if let url = url {
-                print("url: \(url)")
-            }
-        }
-    }
     
 }

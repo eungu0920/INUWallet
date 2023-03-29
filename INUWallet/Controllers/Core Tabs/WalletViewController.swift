@@ -131,15 +131,18 @@ class WalletViewController: UIViewController {
 //        //Ethereum Network
 //        let web3 = Web3(rpcURL: "https://rpc.ankr.com/eth")
         
-        // Goerli Testnet
-        let web3 = Web3(rpcURL: "https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161")
+//        // Goerli Testnet
+//        let web3 = Web3(rpcURL: "https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161")
         
-//                // Polygon Network
-//                let web3 = Web3(rpcURL: "https://polygon-rpc.com/")
+//        // Polygon Network
+//        let web3 = Web3(rpcURL: "https://polygon-rpc.com/")
+        
+        // Mumbai testnet
+        let web3 = Web3(rpcURL: "https://rpc-mumbai.maticvigil.com")
         
         // INU Token Contract Address : 0xc5E38262b06B1dba1aE63D06F538Da0E51B59e10
-        let contractAddress = try! EthereumAddress(hex: "0xc5E38262b06B1dba1aE63D06F538Da0E51B59e10", eip55: true)
-        let contract = web3.eth.Contract(type: GenericERC20Contract.self, address: contractAddress)
+//        let contractAddress = try! EthereumAddress(hex: "0xc5E38262b06B1dba1aE63D06F538Da0E51B59e10", eip55: true)
+//        let contract = web3.eth.Contract(type: GenericERC20Contract.self, address: contractAddress)
         
         DatabaseManager.shared.showWalletAddress { address in
             guard let address = address else {
@@ -157,13 +160,13 @@ class WalletViewController: UIViewController {
             }
             
             // INU Token 수량 가져오기
-            firstly {
-                try contract.balanceOf(address: EthereumAddress(hex: address, eip55: true)).call()
-            }.done { outputs in
-                self.INUTokenBalanceLabel.text = "\(outputs["_balance"] as! BigUInt / BigUInt(self.wei_18)) INU"
-            }.catch { error in
-                print("ERROR: \(error)")
-            }
+//            firstly {
+//                try contract.balanceOf(address: EthereumAddress(hex: address, eip55: true)).call()
+//            }.done { outputs in
+//                self.INUTokenBalanceLabel.text = "\(outputs["_balance"] as! BigUInt / BigUInt(self.wei_18)) INU"
+//            }.catch { error in
+//                print("ERROR: \(error)")
+//            }
         }
     }
     

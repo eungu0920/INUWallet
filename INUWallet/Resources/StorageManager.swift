@@ -37,12 +37,22 @@ public class StorageManager {
         let metaData = StorageMetadata()
         metaData.contentType = "image/jpeg"
         
-        let imageName = "test"
+        let imageName = path
         
         print("uploaing...")
         let firebaseRefernce = storage.reference(forURL: "gs://inuwallet.appspot.com/Diploma/assets/").child("\(imageName)")
         
         firebaseRefernce.putData(imageData, metadata: metaData) { metadata, error in
+            firebaseRefernce.downloadURL { url, _ in
+                completion(url)
+            }
+        }
+    }
+    
+    public func uploadDiplomaMetadata(metadata: Data, path: Int, completion: @escaping (URL?) -> Void) {
+        let firebaseRefernce = storage.reference(forURL: "gs://inuwallet.appspot.com/Diploma/metadata/").child("\(path).json")
+        
+        firebaseRefernce.putData(metadata) { error in
             firebaseRefernce.downloadURL { url, _ in
                 completion(url)
             }

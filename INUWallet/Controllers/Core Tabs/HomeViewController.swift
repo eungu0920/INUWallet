@@ -91,7 +91,8 @@ class HomeViewController: UIViewController {
             guard let userInfo = userInfo else {
                 return
             }
-            
+            self.user.address = userInfo["address"] as! String
+            self.user.privateKey = userInfo["privatekey"] as! String
             self.user.name = userInfo["name"] as! String
             self.user.studentID = userInfo["studentID"] as! String
             self.user.department = userInfo["department"] as! String
