@@ -146,8 +146,6 @@ class RegistrationViewController: UIViewController {
             return
         }
         
-        UserDefaults.standard.set(username, forKey: "Username")
-        
         AuthManager.shared.registerNewUser(username: username, email: email, password: password) { registered in
             DispatchQueue.main.async {
                 if registered {
@@ -160,7 +158,7 @@ class RegistrationViewController: UIViewController {
                 }
             }
         }
-        print("Create an Account")
+        
     }
     
     // MARK: - 오른쪽으로 스와이프 했을 때 뒤로가기
