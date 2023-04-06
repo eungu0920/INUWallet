@@ -10,7 +10,7 @@ import Web3
 import Web3PromiseKit
 import Web3ContractABI
 
-public class DrawDiploma {
+public class Diploma {
     
     var diplomaImage = UIImage()
     var diplomaTxHash: String = "testTxHash"

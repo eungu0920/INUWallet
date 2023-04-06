@@ -15,6 +15,7 @@ class NFTViewController: UIViewController {
     
     let model = NFTInfoModel()
     let abiModel = ABIModel()
+    var user = User()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,53 +36,30 @@ class NFTViewController: UIViewController {
         tabBarController?.tabBar.shadowImage = UIImage()
         tabBarController?.tabBar.backgroundImage = UIImage(named: "effectView.png")
         tabBarController?.tabBar.isTranslucent = true
+        
+        getUserInfo()
     }
     
-    // MARK: - NFT safeMint
-    private func NFTMint() {
-        // Mumbai Testnet
-        let web3 = Web3(rpcURL: "https://rpc-mumbai.maticvigil.com")
+    private func configure() {
         
-        let contractAddress = try! EthereumAddress(hex: "0x1DB21eD8E466453D601603424bb561858B478c24", eip55: true)
-        let abi = abiModel.diplomaNFTABI
-
-        let contractJsonABI = abi.data(using: .utf8)!
-        let contract = try! web3.eth.Contract(json: contractJsonABI, abiKey: nil, address: contractAddress)
-        
-        firstly {
-            try web3.eth.getTransactionCount(address: EthereumAddress(hex: "0xEc2058c9AA75f370B6d12Caf5BE220bEe883D7Bf", eip55: true), block: .latest)
-        }.done { nonce in
-            guard let transaction = contract["safeMint"]?(try EthereumAddress(hex: "0x1d48aE7ab364767F32fEd28788Ec8B235CcF3d59", eip55: true), 5).createTransaction(
-                nonce: nonce,
-                gasPrice: EthereumQuantity(quantity: 150.gwei),
-                maxFeePerGas: EthereumQuantity(quantity: 150.gwei),
-                maxPriorityFeePerGas: EthereumQuantity(quantity: 150.gwei),
-                gasLimit: EthereumQuantity(quantity: 200000),
-                from: nil,
-                value: EthereumQuantity(quantity: 0),
-                accessList: [:],
-                transactionType: .legacy
-            ) else {
-                return
-            }
-            let signedTx = try transaction.sign(with: EthereumPrivateKey(hexPrivateKey: "b68c77757faf5580cf9037044fc5e3a6f1f5e18093cfb154e4938bedcf634ecf"), chainId: 80001)
-            
-            firstly {
-                web3.eth.sendRawTransaction(transaction: signedTx)
-            }.done { txHash in
-                print(txHash.hex())
-            }.catch { error in
-                print(error)
-            }
-            
-        }.catch { error in
-            print(error)
+        tokenOfOwnerByIndex { tokenID in
+            self.getNFTInfo(tokenID: tokenID)
         }
         
+        
     }
     
+    private func getUserInfo() {
+        DatabaseManager.shared.getUserInfo { userInfo in
+            guard let userInfo = userInfo else {
+                return
+            }
+            self.user.address = userInfo["address"] as! String
+        }
+    }
+        
     // MARK: - NFT metadata를 가져올 때 쓰는 방법
-    private func getNFTInfo() {
+    private func getNFTInfo(tokenID: BigUInt) {
 //        // Ethereum Network
 //        let web3 = Web3(rpcURL: "https://rpc.ankr.com/eth")
         
@@ -94,12 +72,11 @@ class NFTViewController: UIViewController {
         // Mumbai Testnet
         let web3 = Web3(rpcURL: "https://rpc-mumbai.maticvigil.com")
         
-        // MARK: - INU NFT Contract : 0x6A83BEc46edc16BE070b458b9ad2384323C3C52e
-        let contractAddress = try! EthereumAddress(hex: "0x1DB21eD8E466453D601603424bb561858B478c24", eip55: true)
+        let contractAddress = try! EthereumAddress(hex: "0xF1B010D76FdF0C6aA20B2319D62c95Fa19382fd4", eip55: true)
         let contract = web3.eth.Contract(type: GenericERC721cnt.self, address: contractAddress)
         
         firstly {
-            try contract.tokenURI(tokenId: 0).call()
+            contract.tokenURI(tokenId: tokenID).call()
         }.done { outputs in
             var jsonDataURL: String = String(describing: outputs["_tokenURI"] ?? "")
             
@@ -132,18 +109,18 @@ class NFTViewController: UIViewController {
     }
     
     // MARK: - 가지고 있는 토큰넘버를 차례로 보여주는 메소드
-    private func tokenOfOwnerByIndex() {
+    private func tokenOfOwnerByIndex(completion: @escaping (BigUInt) -> Void) {
         // Mumbai Testnet
         let web3 = Web3(rpcURL: "https://rpc-mumbai.maticvigil.com")
         
-        let contractAddress = try! EthereumAddress(hex: "0x1DB21eD8E466453D601603424bb561858B478c24", eip55: true)
+        let contractAddress = try! EthereumAddress(hex: "0xF1B010D76FdF0C6aA20B2319D62c95Fa19382fd4", eip55: true)
         let abi = abiModel.diplomaNFTABI
 
         let contractJsonABI = abi.data(using: .utf8)!
         let contract = try! web3.eth.Contract(json: contractJsonABI, abiKey: nil, address: contractAddress)
     
         firstly {
-            try (contract["tokenOfOwnerByIndex"]?(EthereumAddress(hex: "0x1d48aE7ab364767F32fEd28788Ec8B235CcF3d59", eip55: true), 0).call())!
+            try (contract["tokenOfOwnerByIndex"]?(EthereumAddress(hex: user.address, eip55: true), 0).call())!
         }.done { outputs in
             // MARK: - outputs 반환값은 [String: Any] 딕셔너리 타입으로 반환됨, Any값을 Int로 캐스팅이 안되길래 BigUInt로 캐스팅하니까 잘됨. Any -> BigUInt -> Int 이렇게 해야할 듯.
             guard let tokenID = outputs[""] as? BigUInt else {
@@ -156,21 +133,12 @@ class NFTViewController: UIViewController {
             print("tokenOfOwnerByIndex debugDescription: \(outputs.values.debugDescription)")
             print("tokenOfOwnerByIndex description: \(outputs.values.description)")
             
-            for i in outputs.values.description {
-                print(i)
-            }
+            completion(tokenID)
         }.catch { error in
             print(error)
+            completion(0)
         }
-    }
-    
-    // MARK: - ERC1155 mint
-    private func mint() {
-        let web3 = Web3(rpcURL: "https://rpc-mumbai.maticvigil.com")
         
-        let contractAddress = try! EthereumAddress(hex: "0x17e8b0fbcca5f42c20e672bd69553998569c83fe", eip55: true)
-        
-
     }
     
 }
@@ -192,12 +160,7 @@ extension NFTViewController: UICollectionViewDelegate, UICollectionViewDataSourc
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        getNFTInfo()
-        
-//        NFTMint()
-//        print("NFT_safeMint")
-        
-        tokenOfOwnerByIndex()
+
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

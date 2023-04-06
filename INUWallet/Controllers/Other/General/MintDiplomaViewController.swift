@@ -11,9 +11,11 @@ class MintDiplomaViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var studentIDLabel: UILabel!
     @IBOutlet weak var departmentLabel: UILabel!
+    @IBOutlet weak var majorLabel: UILabel!
     @IBOutlet weak var gradeLabel: UILabel!
+    @IBOutlet weak var getButton: UIButton!
     
-    let diploma = DrawDiploma()
+    let diploma = Diploma()
     var user = User()
     /*
      name
@@ -24,10 +26,14 @@ class MintDiplomaViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         nameLabel.text = user.name
         studentIDLabel.text = user.studentID
         departmentLabel.text = user.department
+        majorLabel.text = user.major
         gradeLabel.text = user.grade
+        
+        getButton.layer.cornerRadius = 8.0
     }
     
     // MARK: - 졸업증서 NFT Minting 순서: 1. NFT Token 민팅 -> transaction 받아와서 저장 2. GetTokenID 받아오기 3. 이미지 생성 및 업로드 4. metadata 생성 및 업로드

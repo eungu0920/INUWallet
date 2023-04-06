@@ -34,7 +34,6 @@ class HomeViewController: UIViewController {
         super.viewDidAppear(animated)
         // 로그인이 되어있는지 확인함
         handleNotAuthenticated()
-        print("vieDidAppear")
     }
     
     @IBAction func didTapButton(_ sender: Any) {
@@ -55,7 +54,7 @@ class HomeViewController: UIViewController {
                 self.present(alert, animated: true)
             } else {
                 let alert = UIAlertController(title: "정보 확인",
-                                              message: "이름: \(self.user.name)\n학번: \(self.user.studentID)\n학과: \(self.user.department)\n학년: \(self.user.grade)",
+                                              message: "이름: \(self.user.name)\n학번: \(self.user.studentID)\n학과: \(self.user.major)\n학년: \(self.user.grade)",
                                               preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "취소",
                                               style: .cancel,
@@ -73,7 +72,6 @@ class HomeViewController: UIViewController {
     }
     
     private func handleNotAuthenticated() {
-        print("Check")
         // Check auth status
         if Auth.auth().currentUser == nil {
             // Show log in
@@ -96,6 +94,7 @@ class HomeViewController: UIViewController {
             self.user.name = userInfo["name"] as! String
             self.user.studentID = userInfo["studentID"] as! String
             self.user.department = userInfo["department"] as! String
+            self.user.major = userInfo["major"] as! String
             self.user.grade = userInfo["grade"] as! String
             if userInfo["graduate"] as! String == "false" {
                 self.user.graduate = false

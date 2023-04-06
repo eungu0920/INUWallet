@@ -9,16 +9,20 @@ import UIKit
 
 class DiplomaTxViewController: UIViewController {
     @IBOutlet weak var txLabel: UILabel!
+    @IBOutlet weak var TokenIDLabel: UILabel!
     @IBOutlet weak var etherscanButton: UIButton!
+    @IBOutlet weak var backgroundView: UIView!
+    
     
     var user = User()
-    var diploma = DrawDiploma()
+    var diploma = Diploma()
 //    var metadata: metadataModel
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.txLabel.text = diploma.diplomaTxHash
+        backgroundView.layer.cornerRadius = 8.0
     }
     
     @IBAction func didTapButton(_ sender: Any) {
@@ -38,11 +42,16 @@ class DiplomaTxViewController: UIViewController {
             guard let tokenID = tokenID else { return }
             if tokenID == 0 {
                 // 아직 transaction이 confirm 되지 않았습니다. 조금만 기다려주세요.
+                self.TokenIDLabel.text = "아직 transaction이 confirm 되지 않았습니다."
+                self.TokenIDLabel.textColor = .red
             } else {
                 self.diploma.tokenID = tokenID
+                self.TokenIDLabel.text! = "졸업 증서 번호 : \(tokenID)"
+                self.TokenIDLabel.textColor = .black
                 
                 let encoder = JSONEncoder()
                 encoder.outputFormatting = .prettyPrinted
+                encoder.outputFormatting = .withoutEscapingSlashes
                 
                 var metadata = metadataModel(description: "INCHEON National University Diploma #\(tokenID)",
                                              image: "https://storage.googleapis.com/inuwallet.appspot.com/Diploma/assets/\(tokenID)",
@@ -64,6 +73,7 @@ class DiplomaTxViewController: UIViewController {
                 
                 do {
                     let jsonData = try encoder.encode(metadata)
+                    
                     // TODO: 업로드
                     StorageManager.shared.uploadDiplomaMetadata(metadata: jsonData, path: tokenID) { url in
                         if let url = url {
@@ -82,6 +92,7 @@ class DiplomaTxViewController: UIViewController {
     
     @IBAction func didTapCreateButton(_ sender: Any) {
         self.downloadDiplomaImage()
+        self.navigationController?.popToRootViewController(animated: false)
     }
     
     
