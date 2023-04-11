@@ -47,6 +47,8 @@
 		28CA246A298BC3DB006F4242 /* TokenInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CA2469298BC3DB006F4242 /* TokenInfoViewController.swift */; };
 		28CA246C298BC419006F4242 /* SendTokenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CA246B298BC419006F4242 /* SendTokenViewController.swift */; };
 		28CA246E298BC422006F4242 /* NFTSendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CA246D298BC422006F4242 /* NFTSendViewController.swift */; };
+		28D3547829E542AB00076447 /* NFTModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D3547729E542AB00076447 /* NFTModel.swift */; };
+		28D3547A29E5899A00076447 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D3547929E5899A00076447 /* TabBarViewController.swift */; };
 		28F0EC7329C87330005D29F1 /* MintDiplomaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F0EC7229C87330005D29F1 /* MintDiplomaViewController.swift */; };
 		28F0EC7829C9C4CE005D29F1 /* NanumMyeongjoExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 28F0EC7529C9C4CE005D29F1 /* NanumMyeongjoExtraBold.otf */; };
 		28F0EC7929C9C4CE005D29F1 /* NanumMyeongjo.otf in Resources */ = {isa = PBXBuildFile; fileRef = 28F0EC7629C9C4CE005D29F1 /* NanumMyeongjo.otf */; };
@@ -112,6 +114,8 @@
 		28CA2469298BC3DB006F4242 /* TokenInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenInfoViewController.swift; sourceTree = "<group>"; };
 		28CA246B298BC419006F4242 /* SendTokenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendTokenViewController.swift; sourceTree = "<group>"; };
 		28CA246D298BC422006F4242 /* NFTSendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTSendViewController.swift; sourceTree = "<group>"; };
+		28D3547729E542AB00076447 /* NFTModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTModel.swift; sourceTree = "<group>"; };
+		28D3547929E5899A00076447 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		28F0EC7229C87330005D29F1 /* MintDiplomaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MintDiplomaViewController.swift; sourceTree = "<group>"; };
 		28F0EC7529C9C4CE005D29F1 /* NanumMyeongjoExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumMyeongjoExtraBold.otf; sourceTree = "<group>"; };
 		28F0EC7629C9C4CE005D29F1 /* NanumMyeongjo.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumMyeongjo.otf; sourceTree = "<group>"; };
@@ -231,6 +235,7 @@
 			children = (
 				28CA245C298BBC56006F4242 /* Models.swift */,
 				289B9EB829D1DE9800683FAF /* MetadataModel.swift */,
+				28D3547729E542AB00076447 /* NFTModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -306,6 +311,7 @@
 				284F13EF29C166F0004D6410 /* SendINUTokenViewController.swift */,
 				28F0EC7229C87330005D29F1 /* MintDiplomaViewController.swift */,
 				289B9EB629D176E400683FAF /* DiplomaTxViewController.swift */,
+				28D3547929E5899A00076447 /* TabBarViewController.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -443,7 +449,7 @@
 			);
 			mainGroup = 28CA240E298AA4E6006F4242;
 			packageReferences = (
-				289CA56E29B0BBA20045E006 /* XCRemoteSwiftPackageReference "Web3.swift" */,
+				289CA56E29B0BBA20045E006 /* XCRemoteSwiftPackageReference "Web3" */,
 			);
 			productRefGroup = 28CA2418298AA4E6006F4242 /* Products */;
 			projectDirPath = "";
@@ -630,6 +636,7 @@
 				28F0EC7329C87330005D29F1 /* MintDiplomaViewController.swift in Sources */,
 				289B9EB729D176E400683FAF /* DiplomaTxViewController.swift in Sources */,
 				28CA246E298BC422006F4242 /* NFTSendViewController.swift in Sources */,
+				28D3547829E542AB00076447 /* NFTModel.swift in Sources */,
 				28CA2453298BBBA5006F4242 /* HomeViewController.swift in Sources */,
 				2810A7D129A8D12E00F5BCD1 /* RegistrationViewController.swift in Sources */,
 				2810A81D29AA56A400F5BCD1 /* Extension.swift in Sources */,
@@ -641,6 +648,7 @@
 				28CA245B298BBC02006F4242 /* WalletViewController.swift in Sources */,
 				28CA245D298BBC56006F4242 /* Models.swift in Sources */,
 				28CA2468298BC3BB006F4242 /* WalletInfoViewController.swift in Sources */,
+				28D3547A29E5899A00076447 /* TabBarViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -992,7 +1000,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		289CA56E29B0BBA20045E006 /* XCRemoteSwiftPackageReference "Web3.swift" */ = {
+		289CA56E29B0BBA20045E006 /* XCRemoteSwiftPackageReference "Web3" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Boilertalk/Web3.swift";
 			requirement = {
@@ -1005,17 +1013,17 @@
 /* Begin XCSwiftPackageProductDependency section */
 		289CA56F29B0BBA20045E006 /* Web3 */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 289CA56E29B0BBA20045E006 /* XCRemoteSwiftPackageReference "Web3.swift" */;
+			package = 289CA56E29B0BBA20045E006 /* XCRemoteSwiftPackageReference "Web3" */;
 			productName = Web3;
 		};
 		289CA57129B0BBA20045E006 /* Web3ContractABI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 289CA56E29B0BBA20045E006 /* XCRemoteSwiftPackageReference "Web3.swift" */;
+			package = 289CA56E29B0BBA20045E006 /* XCRemoteSwiftPackageReference "Web3" */;
 			productName = Web3ContractABI;
 		};
 		289CA57329B0BBA20045E006 /* Web3PromiseKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 289CA56E29B0BBA20045E006 /* XCRemoteSwiftPackageReference "Web3.swift" */;
+			package = 289CA56E29B0BBA20045E006 /* XCRemoteSwiftPackageReference "Web3" */;
 			productName = Web3PromiseKit;
 		};
 /* End XCSwiftPackageProductDependency section */

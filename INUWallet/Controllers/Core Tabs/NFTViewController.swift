@@ -16,12 +16,23 @@ class NFTViewController: UIViewController {
     let model = NFTInfoModel()
     let abiModel = ABIModel()
     var user = User()
+    var NFTList = NFTModelList(NFTList: [])
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         collectionView.delegate = self
         collectionView.dataSource = self
+        
+        getUserInfo { address in
+            self.tokenOfOwnerByIndex(address: address) { tokenID in
+                self.getNFTInfo(tokenID: tokenID) {
+                    self.collectionView.reloadData()
+                }
+            }
+        }
+        
+        
     }
     
     // MARK: - 스크롤 시에 탭바랑 네비게이션 뷰의 색깔이 의도적인 색이 아님... 블러를 약하게 주고싶음 나중에 방법 찾기
@@ -37,29 +48,45 @@ class NFTViewController: UIViewController {
         tabBarController?.tabBar.backgroundImage = UIImage(named: "effectView.png")
         tabBarController?.tabBar.isTranslucent = true
         
-        getUserInfo()
+//        getUserInfo { address in
+//            self.tokenOfOwnerByIndex(address: address) { tokenID in
+//                self.getNFTInfo(tokenID: tokenID)
+//            }
+//        }
+        
+        print(NFTList.NFTList.count)
+        
+        
     }
     
     private func configure() {
-        
-        tokenOfOwnerByIndex { tokenID in
-            self.getNFTInfo(tokenID: tokenID)
+        getUserInfo { address in
+            self.tokenOfOwnerByIndex(address: address) { tokenID in
+                self.getNFTInfo(tokenID: tokenID) {
+                    print("good")
+                }
+            }
         }
-        
-        
     }
     
-    private func getUserInfo() {
+    private func getUserInfo(completion: @escaping (String) -> Void) {
         DatabaseManager.shared.getUserInfo { userInfo in
             guard let userInfo = userInfo else {
                 return
             }
             self.user.address = userInfo["address"] as! String
+            completion(userInfo["address"] as! String)
         }
     }
         
     // MARK: - NFT metadata를 가져올 때 쓰는 방법
-    private func getNFTInfo(tokenID: BigUInt) {
+    private func getNFTInfo(tokenID: BigUInt, completion: @escaping () -> Void) {
+        var name: String = ""
+        var imageURL: String = ""
+        var description: String = ""
+        var attributes: Array<Dictionary<String, String>> = []
+        
+//        var NFT = NFTModel()
 //        // Ethereum Network
 //        let web3 = Web3(rpcURL: "https://rpc.ankr.com/eth")
         
@@ -72,7 +99,7 @@ class NFTViewController: UIViewController {
         // Mumbai Testnet
         let web3 = Web3(rpcURL: "https://rpc-mumbai.maticvigil.com")
         
-        let contractAddress = try! EthereumAddress(hex: "0xF1B010D76FdF0C6aA20B2319D62c95Fa19382fd4", eip55: true)
+        let contractAddress = try! EthereumAddress(hex: "0x7122AA809D51B3387771FCA4cFa1D14D57BcaE75", eip55: true)
         let contract = web3.eth.Contract(type: GenericERC721cnt.self, address: contractAddress)
         
         firstly {
@@ -88,10 +115,31 @@ class NFTViewController: UIViewController {
                         if let json = try JSONSerialization.jsonObject(with: JsonData, options: []) as? Dictionary<String, Any>
                         {
                             print(json)
-                            if let description = json["description"] as? String
+                            if let NFTDescription = json["description"] as? String
                             {
-                                print(description)
+                                description = NFTDescription
+                                print("description ----> \(description)")
                             }
+                            
+                            if let NFTName = json["name"] as? String
+                            {
+                                name = NFTName
+                            }
+                            
+                            if let NFTImageURL = json["image"] as? String
+                            {
+                                imageURL = NFTImageURL
+                            }
+                            
+                            if let NFTAttributes = json["attributes"] as? Array<Dictionary<String, String>>
+                            {
+                                attributes = NFTAttributes
+                            }
+                            
+                            let NFT = NFTModel(name: name, description: description, image: UIImage(), attributes: attributes, imageURL: imageURL)
+                            self.NFTList.NFTList.append(NFT)
+                            print("------->>>> \(NFT.name)")
+                            
                         }
                     }
                     catch {}
@@ -100,27 +148,33 @@ class NFTViewController: UIViewController {
             
             task.resume()
             
+//            NFT.imageLoad()
+            
+            
+            
             print(jsonDataURL)
             print(outputs.values)
 //            print("outputs ----> \(outputs["_tokenURL"])")
         }.catch { error in
             print(error)
         }
+        
+        
     }
     
     // MARK: - 가지고 있는 토큰넘버를 차례로 보여주는 메소드
-    private func tokenOfOwnerByIndex(completion: @escaping (BigUInt) -> Void) {
+    private func tokenOfOwnerByIndex(address: String, completion: @escaping (BigUInt) -> Void) {
         // Mumbai Testnet
         let web3 = Web3(rpcURL: "https://rpc-mumbai.maticvigil.com")
         
-        let contractAddress = try! EthereumAddress(hex: "0xF1B010D76FdF0C6aA20B2319D62c95Fa19382fd4", eip55: true)
+        let contractAddress = try! EthereumAddress(hex: "0x7122AA809D51B3387771FCA4cFa1D14D57BcaE75", eip55: true)
         let abi = abiModel.diplomaNFTABI
 
         let contractJsonABI = abi.data(using: .utf8)!
         let contract = try! web3.eth.Contract(json: contractJsonABI, abiKey: nil, address: contractAddress)
     
         firstly {
-            try (contract["tokenOfOwnerByIndex"]?(EthereumAddress(hex: user.address, eip55: true), 0).call())!
+            try (contract["tokenOfOwnerByIndex"]?(EthereumAddress(hex: address, eip55: true), 0).call())!
         }.done { outputs in
             // MARK: - outputs 반환값은 [String: Any] 딕셔너리 타입으로 반환됨, Any값을 Int로 캐스팅이 안되길래 BigUInt로 캐스팅하니까 잘됨. Any -> BigUInt -> Int 이렇게 해야할 듯.
             guard let tokenID = outputs[""] as? BigUInt else {
@@ -141,26 +195,35 @@ class NFTViewController: UIViewController {
         
     }
     
+    @IBAction func didTapButton(_ sender: Any) {
+        collectionView.reloadData()
+        print("\(NFTList)")
+    }
 }
 
 extension NFTViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return model.numOfNFTInfoList
+        print("Count : \(NFTList.numOfNFT)")
+        return NFTList.numOfNFT
+//        return model.numOfNFTInfoList
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GridCell", for: indexPath) as? GridCell else {
             return UICollectionViewCell()
         }
-        let NFTInfo = model.nftInfo(at: indexPath.item)
+        
+        let NFTInfo = NFTList.NFTInfo(at: indexPath.item)
+        
+//        let NFTInfo = model.nftInfo(at: indexPath.item)
         cell.imageView.layer.cornerRadius = 8.0
         cell.update(info: NFTInfo)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -230,11 +293,23 @@ class GridCell: UICollectionViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var tokenIDLabel: UILabel!
     
-    func update(info: NFTInfo) {
-//        imageView.image = UIImage(named: "Studying")
-        imageView.image = info.image
+    func update(info: NFTModel) {
+        DispatchQueue.global().async {
+            do {
+                let data = try Data(contentsOf: URL(string: info.imageURL)!)
+                if let NFTImage = UIImage(data: data) {
+                    DispatchQueue.main.sync {
+                        self.imageView.image = NFTImage
+                    }
+                }
+            } catch {
+                print("Error loading image: \(error)")
+            }
+        }
+        
         nameLabel.text = info.name
-        tokenIDLabel.text = info.tokenID
+        print("--------> \(info.name)")
+        tokenIDLabel.text = info.description
         self.layer.cornerRadius = 8.0
     }
 }

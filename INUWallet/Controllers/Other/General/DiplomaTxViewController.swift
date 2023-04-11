@@ -92,7 +92,7 @@ class DiplomaTxViewController: UIViewController {
     
     @IBAction func didTapCreateButton(_ sender: Any) {
         self.downloadDiplomaImage()
-        self.navigationController?.popToRootViewController(animated: false)
+//        self.navigationController?.popToRootViewController(animated: false)
     }
     
     

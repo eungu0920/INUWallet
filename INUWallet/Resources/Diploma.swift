@@ -22,7 +22,7 @@ public class Diploma {
         // Mumbai testnet
         let web3 = Web3(rpcURL: "https://rpc-mumbai.maticvigil.com")
         
-        let contractAddress = try! EthereumAddress(hex: "0xF1B010D76FdF0C6aA20B2319D62c95Fa19382fd4", eip55: true)
+        let contractAddress = try! EthereumAddress(hex: "0x7122AA809D51B3387771FCA4cFa1D14D57BcaE75", eip55: true)
         let abi = abiModel.diplomaNFTABI
         
         let contractJsonABI = abi.data(using: .utf8)!
@@ -31,7 +31,7 @@ public class Diploma {
         firstly {
             try web3.eth.getTransactionCount(address: EthereumAddress(hex: userInfo.address, eip55: true), block: .latest)
         }.done { nonce in
-            guard let transaction = contract["safeMint"]?().createTransaction(
+            guard let transaction = contract["claimDiploma"]?().createTransaction(
                 nonce: nonce,
                 gasPrice: EthereumQuantity(quantity: 150.gwei),
                 maxFeePerGas: EthereumQuantity(quantity: 150.gwei),
@@ -66,7 +66,7 @@ public class Diploma {
     public func getDiplomaTokenID(userInfo: User, completion: @escaping (Int?) -> Void) {
         let web3 = Web3(rpcURL: "https://rpc-mumbai.maticvigil.com")
         
-        let contractAddress = try! EthereumAddress(hex: "0xF1B010D76FdF0C6aA20B2319D62c95Fa19382fd4", eip55: true)
+        let contractAddress = try! EthereumAddress(hex: "0x7122AA809D51B3387771FCA4cFa1D14D57BcaE75", eip55: true)
         let abi = abiModel.diplomaNFTABI
         
         let contractJsonABI = abi.data(using: .utf8)!

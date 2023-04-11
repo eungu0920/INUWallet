@@ -32,10 +32,10 @@
             </objects>
             <point key="canvasLocation" x="1" y="179"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar View Controller-->
         <scene sceneID="pCF-Kd-qJO">
             <objects>
-                <tabBarController storyboardIdentifier="TabBarViewController" id="ReP-Ur-c2W" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarViewController" id="ReP-Ur-c2W" customClass="TabBarViewController" customModule="INUWallet" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FOR-TD-Fic">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -743,7 +743,19 @@
                             <constraint firstItem="GpF-5q-zcA" firstAttribute="top" secondItem="3Mo-Uk-6zI" secondAttribute="top" id="xvg-6P-aHG"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="NFT" id="Gno-Bz-Vxk"/>
+                    <navigationItem key="navigationItem" title="NFT" id="Gno-Bz-Vxk">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="pmX-xm-FuJ">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="XKc-MR-t2C">
+                                <rect key="frame" x="290" y="5" width="87" height="34.333333333333336"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="didTapButton:" destination="jyQ-F3-rjh" eventType="touchUpInside" id="INK-MA-ybt"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="GpF-5q-zcA" id="NPm-TZ-oZg"/>
                     </connections>
