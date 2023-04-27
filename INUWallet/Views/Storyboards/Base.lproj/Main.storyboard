@@ -230,6 +230,7 @@
                         <outlet property="greatingView" destination="KVG-lP-89P" id="uBP-sP-sgs"/>
                         <outlet property="myAddressButton" destination="cDt-Mo-MUW" id="88E-FI-Er8"/>
                         <outlet property="tokenListView" destination="QBk-lF-Ze0" id="Hga-yL-MlY"/>
+                        <outlet property="usernameLable" destination="NoS-ts-HS3" id="vz4-1r-0Be"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B8Y-wE-UDc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -745,7 +746,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="NFT" id="Gno-Bz-Vxk">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="pmX-xm-FuJ">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="XKc-MR-t2C">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="XKc-MR-t2C">
                                 <rect key="frame" x="290" y="5" width="87" height="34.333333333333336"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
@@ -1825,7 +1826,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pvc-6I-wm4">
                                         <rect key="frame" x="10" y="10" width="373" height="130"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Azuki #5558" translatesAutoresizingMaskIntoConstraints="NO" id="Y7d-Bu-BWv">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultProfile" translatesAutoresizingMaskIntoConstraints="NO" id="Y7d-Bu-BWv">
                                                 <rect key="frame" x="15" y="20" width="90" height="90"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="90" id="N83-8U-aDc"/>
@@ -1898,6 +1899,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="더보기" id="J0P-1J-Ba2"/>
                     <connections>
+                        <outlet property="addressLabel" destination="efF-Ej-858" id="nXI-W4-xFd"/>
+                        <outlet property="nameLabel" destination="bhF-Sr-UPo" id="AO5-UJ-Yvj"/>
                         <outlet property="profileView" destination="Pvc-6I-wm4" id="o9T-DQ-dfQ"/>
                         <outlet property="tableView" destination="7WS-Xg-dMj" id="NNd-ap-UAz"/>
                         <outlet property="userImageView" destination="Y7d-Bu-BWv" id="uPC-qu-pfw"/>
@@ -2054,7 +2057,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Azuki #5558" width="2000" height="2000"/>
         <image name="INUSignature" width="453" height="349"/>
         <image name="Studying" width="500" height="500"/>
         <image name="Torchligth" width="500" height="281"/>
@@ -2062,6 +2064,7 @@
         <image name="chevron.backward" catalog="system" width="97" height="128"/>
         <image name="cookie" width="500" height="500"/>
         <image name="crown" catalog="system" width="128" height="92"/>
+        <image name="defaultProfile" width="400" height="400"/>
         <image name="ellipsis" catalog="system" width="128" height="37"/>
         <image name="house.fill" catalog="system" width="128" height="104"/>
         <image name="insigniaH" width="371" height="371"/>

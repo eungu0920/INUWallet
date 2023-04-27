@@ -31,6 +31,8 @@ class CreateWalletViewController: UIViewController {
     var userAddress = String()
     var userPrivateKey = String()
     
+    var user = UserModel.shared
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -157,6 +159,7 @@ class CreateWalletViewController: UIViewController {
         
         // TODO: - HomewViewController로 되돌아 갈 때 뷰 계층 구조가 꼬이는 것으로 확인 됨. 다른 방식으로 수정해야할 듯
         self.view.window?.rootViewController?.dismiss(animated: false, completion: {
+            self.user.getUserModelInfo()
             let homeVC = HomeViewController()
             homeVC.modalPresentationStyle = .fullScreen
             self.present(homeVC, animated: true, completion: nil)

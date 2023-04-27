@@ -17,7 +17,9 @@ public class Diploma {
     var tokenID = Int()
     let abiModel = ABIModel()
     
-    public func mintDiploma(userInfo: User, completion: @escaping (String?) -> Void) {
+    var user = UserModel.shared
+    
+    public func mintDiploma(completion: @escaping (String?) -> Void) {
         
         // Mumbai testnet
         let web3 = Web3(rpcURL: "https://rpc-mumbai.maticvigil.com")
@@ -29,7 +31,7 @@ public class Diploma {
         let contract = try! web3.eth.Contract(json: contractJsonABI, abiKey: nil, address: contractAddress)
         
         firstly {
-            try web3.eth.getTransactionCount(address: EthereumAddress(hex: userInfo.address, eip55: true), block: .latest)
+            try web3.eth.getTransactionCount(address: EthereumAddress(hex: user.address, eip55: true), block: .latest)
         }.done { nonce in
             guard let transaction = contract["claimDiploma"]?().createTransaction(
                 nonce: nonce,
@@ -45,7 +47,7 @@ public class Diploma {
                 return
             }
             
-            let signedTx = try transaction.sign(with: EthereumPrivateKey(hexPrivateKey: userInfo.privateKey), chainId: 80001)
+            let signedTx = try transaction.sign(with: EthereumPrivateKey(hexPrivateKey: self.user.privateKey), chainId: 80001)
             
             firstly {
                 web3.eth.sendRawTransaction(transaction: signedTx)
@@ -63,7 +65,7 @@ public class Diploma {
         
     }
     
-    public func getDiplomaTokenID(userInfo: User, completion: @escaping (Int?) -> Void) {
+    public func getDiplomaTokenID(completion: @escaping (Int?) -> Void) {
         let web3 = Web3(rpcURL: "https://rpc-mumbai.maticvigil.com")
         
         let contractAddress = try! EthereumAddress(hex: "0x7122AA809D51B3387771FCA4cFa1D14D57BcaE75", eip55: true)
@@ -73,7 +75,7 @@ public class Diploma {
         let contract = try! web3.eth.Contract(json: contractJsonABI, abiKey: nil, address: contractAddress)
         
         firstly {
-            try (contract["tokenOfOwnerByIndex"]?(EthereumAddress(hex: userInfo.address, eip55: true), 0).call())!
+            try (contract["tokenOfOwnerByIndex"]?(EthereumAddress(hex: self.user.address, eip55: true), 0).call())!
         }.done { outputs in
             guard let tokenID = outputs[""] as? BigUInt else {
                 return
@@ -86,7 +88,7 @@ public class Diploma {
         }
     }
     
-    public func createDiploma(image: UIImage, userInfo: User) {
+    public func createDiploma(image: UIImage) {
         UIGraphicsBeginImageContextWithOptions(image.size, false, 0.0)
         
         image.draw(in: CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height))
@@ -106,7 +108,7 @@ public class Diploma {
         
         // MARK: - Name
 //        let nameTextField: String = "횃    불    이"
-        let name: String = userInfo.name
+        let name: String = user.name
         var nameTextField: String = ""
         
         let count: Int = name.count
@@ -161,6 +163,8 @@ public class Diploma {
         birthdateTextField.draw(in: CGRect(x: 1500, y: 800, width: birthdateTextFieldSize.width, height: birthdateTextFieldSize.height), withAttributes: diplomaNumberAttributes)
         
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        
+        user.diplomaImage = newImage ?? UIImage()
         
         UIGraphicsEndImageContext()
         

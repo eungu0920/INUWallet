@@ -5,9 +5,12 @@
 //  Created by Gray on 2023/04/11.
 //
 
+import FirebaseAuth
 import UIKit
 
 class TabBarViewController: UITabBarController {
+    
+    var user = UserModel.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +23,8 @@ class TabBarViewController: UITabBarController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        handleNotAuthenticated()
         print("TabBarViewDidAppear")
     }
     
@@ -30,15 +35,17 @@ class TabBarViewController: UITabBarController {
     override func viewDidDisappear(_ animated: Bool) {
         print("TabBarViewDidDisappear")
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    private func handleNotAuthenticated() {
+        if Auth.auth().currentUser == nil {
+            print("Open LoginVC")
+            guard let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") else { return }
+            loginVC.modalPresentationStyle = .fullScreen
+            self.present(loginVC, animated: false)
+        } else {
+            user.getUserModelInfo()
+            print("got User Information")
+        }
     }
-    */
-
+ 
 }

@@ -14,7 +14,7 @@ class DiplomaTxViewController: UIViewController {
     @IBOutlet weak var backgroundView: UIView!
     
     
-    var user = User()
+    var user = UserModel.shared
     var diploma = Diploma()
 //    var metadata: metadataModel
     
@@ -38,7 +38,7 @@ class DiplomaTxViewController: UIViewController {
     
     // MARK: - 졸업 증서 번호가 확인 되어야 밑에 졸업 증서 만들기 버튼이 뜸
     @IBAction func didTapCreatedCheckButton(_ sender: Any) {
-        self.diploma.getDiplomaTokenID(userInfo: self.user) { tokenID in
+        self.diploma.getDiplomaTokenID() { tokenID in
             guard let tokenID = tokenID else { return }
             if tokenID == 0 {
                 // 아직 transaction이 confirm 되지 않았습니다. 조금만 기다려주세요.
@@ -109,7 +109,7 @@ class DiplomaTxViewController: UIViewController {
                     DispatchQueue.main.async {
                         let image = UIImage(data: data)
                         // MARK: - 졸업증서 제작 및 업로드
-                        self!.diploma.createDiploma(image: image ?? UIImage(), userInfo: self!.user)
+                        self!.diploma.createDiploma(image: image ?? UIImage())
                     }
                 }.resume()
             case .failure(let error):

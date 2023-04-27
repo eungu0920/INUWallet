@@ -16,7 +16,7 @@ class MintDiplomaViewController: UIViewController {
     @IBOutlet weak var getButton: UIButton!
     
     let diploma = Diploma()
-    var user = User()
+    var user = UserModel.shared
     /*
      name
      studentID
@@ -42,12 +42,12 @@ class MintDiplomaViewController: UIViewController {
     
     // MARK: - NFT Token 민팅 및 다음 화면으로.
     @IBAction func didTapButton(_ sender: Any) {
-        diploma.mintDiploma(userInfo: user) { txHash in
+        diploma.mintDiploma() { txHash in
             guard let txHash = txHash else { return }
             self.diploma.diplomaTxHash = txHash
             
             let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "DiplomaTxViewController") as! DiplomaTxViewController
-            nextVC.user = self.user
+//            nextVC.user = self.user
             nextVC.diploma = self.diploma
             self.navigationController?.pushViewController(nextVC, animated: true)
 

@@ -53,6 +53,7 @@
 		28F0EC7829C9C4CE005D29F1 /* NanumMyeongjoExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 28F0EC7529C9C4CE005D29F1 /* NanumMyeongjoExtraBold.otf */; };
 		28F0EC7929C9C4CE005D29F1 /* NanumMyeongjo.otf in Resources */ = {isa = PBXBuildFile; fileRef = 28F0EC7629C9C4CE005D29F1 /* NanumMyeongjo.otf */; };
 		28F0EC7A29C9C4CE005D29F1 /* NanumMyeongjoBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 28F0EC7729C9C4CE005D29F1 /* NanumMyeongjoBold.otf */; };
+		28F3100829ED946100844F00 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F3100729ED946100844F00 /* UserModel.swift */; };
 		B8F112B2F94065885868859B /* Pods_INUWallet_INUWalletUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FA4B1450ABB734FCF4BFF69 /* Pods_INUWallet_INUWalletUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -120,6 +121,7 @@
 		28F0EC7529C9C4CE005D29F1 /* NanumMyeongjoExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumMyeongjoExtraBold.otf; sourceTree = "<group>"; };
 		28F0EC7629C9C4CE005D29F1 /* NanumMyeongjo.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumMyeongjo.otf; sourceTree = "<group>"; };
 		28F0EC7729C9C4CE005D29F1 /* NanumMyeongjoBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumMyeongjoBold.otf; sourceTree = "<group>"; };
+		28F3100729ED946100844F00 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		70FC0E0971C0CEBBA9652491 /* Pods-INUWallet-INUWalletUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-INUWallet-INUWalletUITests.debug.xcconfig"; path = "Target Support Files/Pods-INUWallet-INUWalletUITests/Pods-INUWallet-INUWalletUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		729085B23E0291383C3D7609 /* Pods-INUWallet-INUWalletUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-INUWallet-INUWalletUITests.release.xcconfig"; path = "Target Support Files/Pods-INUWallet-INUWalletUITests/Pods-INUWallet-INUWalletUITests.release.xcconfig"; sourceTree = "<group>"; };
 		8FA4B1450ABB734FCF4BFF69 /* Pods_INUWallet_INUWalletUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_INUWallet_INUWalletUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -236,6 +238,7 @@
 				28CA245C298BBC56006F4242 /* Models.swift */,
 				289B9EB829D1DE9800683FAF /* MetadataModel.swift */,
 				28D3547729E542AB00076447 /* NFTModel.swift */,
+				28F3100729ED946100844F00 /* UserModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -644,6 +647,7 @@
 				289B9EB929D1DE9800683FAF /* MetadataModel.swift in Sources */,
 				280435E529AC7DEB009F090E /* CreateWalletViewController.swift in Sources */,
 				28CA2466298BC39B006F4242 /* NFTInfoViewController.swift in Sources */,
+				28F3100829ED946100844F00 /* UserModel.swift in Sources */,
 				28CA246A298BC3DB006F4242 /* TokenInfoViewController.swift in Sources */,
 				28CA245B298BBC02006F4242 /* WalletViewController.swift in Sources */,
 				28CA245D298BBC56006F4242 /* Models.swift in Sources */,

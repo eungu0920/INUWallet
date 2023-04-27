@@ -58,4 +58,32 @@ public class StorageManager {
             }
         }
     }
+    
+    public func downloadDiploma(path: Int, completion: @escaping (Result<URL, Error>) -> Void) {
+        let reference = storage.reference(forURL: "gs://inuwallet.appspot.com/Diploma/assets/").child("\(path)")
+        reference.downloadURL { url, error in
+            guard let url = url, error == nil else {
+                completion(.failure(StorageErrors.failedToGetDownloadUrl))
+                return
+            }
+            completion(.success(url))
+        }
+//        storage.reference(forURL: "gs://inuwallet.appspot.com/Diploma/assets/").child("\(path)").downloadURL { url, error in
+//            let data = NSData(contentsOf: url!)
+//            let image = UIImage(data: data! as Data)
+//            completion(image)
+//        }
+        
+    }
+    
+    public func downloadDiplomaaa(path: String, completion: @escaping (Result<URL, Error>) -> Void) {
+        let reference = storage.reference(forURL: path)
+        reference.downloadURL { url, error in
+            guard let url = url, error == nil else {
+                completion(.failure(StorageErrors.failedToGetDownloadUrl))
+                return
+            }
+            completion(.success(url))
+        }
+    }
 }

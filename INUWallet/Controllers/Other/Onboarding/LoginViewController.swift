@@ -17,6 +17,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var termsButton: UIButton!
     @IBOutlet weak var privacyButton: UIButton!
     
+    var user = UserModel.shared
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -105,6 +107,7 @@ class LoginViewController: UIViewController {
         AuthManager.shared.loginUser(email: email, password: password) { success in
             DispatchQueue.main.async {
                 if success {
+                    self.user.getUserModelInfo()
                     self.dismiss(animated: true, completion: nil)
                 } else {
                     let alert = UIAlertController(title: "Sign in Error",

@@ -37,6 +37,10 @@ public class DatabaseManager {
 
     public func insertNewUser(with email: String, username: String, uid: String, completion: @escaping (Bool) -> Void) {
         
+        UserModel.shared.email = email
+        UserModel.shared.username = username
+        UserModel.shared.uid = uid
+        
         database.child("users").child(uid).setValue(["username": username, "email": email]) { error, _ in
             if error == nil {
                 completion(true)
@@ -58,6 +62,12 @@ public class DatabaseManager {
         database.child("users/\(uid)/grade").setValue(grade)
         database.child("users/\(uid)/graduate").setValue("false")
         
+        UserModel.shared.name = name
+        UserModel.shared.studentID = studentID
+        UserModel.shared.department = department
+        UserModel.shared.major = major
+        UserModel.shared.grade = grade
+        UserModel.shared.graduate = false
     }
     
     // TODO: - Key 암호화 작업
@@ -65,21 +75,18 @@ public class DatabaseManager {
         let uid = AuthManager.shared.shareUid()
         database.child("users/\(uid)/address").setValue(address)
         database.child("users/\(uid)/privatekey").setValue(key)
+        
+        UserModel.shared.address = address
+        UserModel.shared.privateKey = key
+    }
+    
+    public func insertDiplomaData() {
+        
     }
     
     public func saveWalletAddress(address: String) {
         let uid = AuthManager.shared.shareUid()
-        
-//        database.child("users/\(uid)/address").setValue(address) { error, _ in
-//            if error == nil {
-//                return
-//            } else {
-//                return
-//            }
-//        }
-        
         database.child("users/\(uid)/address").setValue(address)
-        
     }
     
     

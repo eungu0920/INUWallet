@@ -15,7 +15,7 @@ class NFTViewController: UIViewController {
     
     let model = NFTInfoModel()
     let abiModel = ABIModel()
-    var user = User()
+    var user = UserModel.shared
     var NFTList = NFTModelList(NFTList: [])
     
     override func viewDidLoad() {
@@ -23,15 +23,6 @@ class NFTViewController: UIViewController {
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        
-        getUserInfo { address in
-            self.tokenOfOwnerByIndex(address: address) { tokenID in
-                self.getNFTInfo(tokenID: tokenID) {
-                    self.collectionView.reloadData()
-                }
-            }
-        }
-        
         
     }
     
@@ -48,41 +39,53 @@ class NFTViewController: UIViewController {
         tabBarController?.tabBar.backgroundImage = UIImage(named: "effectView.png")
         tabBarController?.tabBar.isTranslucent = true
         
-//        getUserInfo { address in
-//            self.tokenOfOwnerByIndex(address: address) { tokenID in
-//                self.getNFTInfo(tokenID: tokenID)
-//            }
-//        }
-        
         print(NFTList.NFTList.count)
         
-        
+        configure()
     }
     
     private func configure() {
-        getUserInfo { address in
-            self.tokenOfOwnerByIndex(address: address) { tokenID in
+        if user.diplomaImage == nil {
+            print("실행")
+            tokenOfOwnerByIndex(address: user.address) { tokenID in
+                self.downloadDiplomaImage(tokenID: tokenID)
                 self.getNFTInfo(tokenID: tokenID) {
-                    print("good")
+                    self.collectionView.reloadData()
                 }
+            }
+        } else {
+            print("안실행")
+        }
+    }
+    
+    private func downloadDiplomaImage(tokenID: BigUInt) {
+        StorageManager.shared.downloadDiploma(path: Int(tokenID)) { [weak self] result in
+            switch result {
+            case .success(let url):
+                self?.downloadImage(url: url)
+            case .failure(let error):
+                print("Failed to get download url: \(error)")
             }
         }
     }
     
-    private func getUserInfo(completion: @escaping (String) -> Void) {
-        DatabaseManager.shared.getUserInfo { userInfo in
-            guard let userInfo = userInfo else {
+    private func downloadImage(url: URL) {
+        URLSession.shared.dataTask(with: url) { data, _, error in
+            guard let data = data, error == nil else {
                 return
             }
-            self.user.address = userInfo["address"] as! String
-            completion(userInfo["address"] as! String)
-        }
+            DispatchQueue.main.sync {
+                let image = UIImage(data: data)
+                self.user.diplomaImage = image
+            }
+        }.resume()
     }
-        
+    
     // MARK: - NFT metadata를 가져올 때 쓰는 방법
     private func getNFTInfo(tokenID: BigUInt, completion: @escaping () -> Void) {
         var name: String = ""
         var imageURL: String = ""
+        var image: UIImage = UIImage()
         var description: String = ""
         var attributes: Array<Dictionary<String, String>> = []
         
@@ -139,7 +142,7 @@ class NFTViewController: UIViewController {
                             let NFT = NFTModel(name: name, description: description, image: UIImage(), attributes: attributes, imageURL: imageURL)
                             self.NFTList.NFTList.append(NFT)
                             print("------->>>> \(NFT.name)")
-                            
+                            completion()
                         }
                     }
                     catch {}
@@ -155,11 +158,10 @@ class NFTViewController: UIViewController {
             print(jsonDataURL)
             print(outputs.values)
 //            print("outputs ----> \(outputs["_tokenURL"])")
+            
         }.catch { error in
             print(error)
         }
-        
-        
     }
     
     // MARK: - 가지고 있는 토큰넘버를 차례로 보여주는 메소드
@@ -202,6 +204,45 @@ class NFTViewController: UIViewController {
 }
 
 extension NFTViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if let cell = cell as? GridCell {
+//            cell.imageView.image = self.NFTList.NFTInfo(at: indexPath.item).image
+            
+//            if user.diplomaImage == nil {
+//                DispatchQueue.global().async {
+//                    do {
+//                        let data = try Data(contentsOf: URL(string: self.NFTList.NFTInfo(at: indexPath.item).imageURL)!)
+//                        if let NFTImage = UIImage(data: data) {
+//                            DispatchQueue.main.sync {
+//                                cell.imageView.image = NFTImage
+//                            }
+//                        }
+//                    } catch {
+//                        print("Error loading image: \(error)")
+//                    }
+//                }
+//            } else {
+//                cell.imageView.image = user.diplomaImage
+//            }
+            
+            StorageManager.shared.downloadDiplomaaa(path: "gs://inuwallet.appspot.com/Diploma/assets/3") { [weak self] result in
+                switch result {
+                case .success(let url):
+                    URLSession.shared.dataTask(with: url) { data, _, error in
+                        guard let data = data, error == nil else {
+                            return
+                        }
+                        DispatchQueue.main.sync {
+                            let image = UIImage(data: data)
+                            cell.imageView.image = image
+                        }
+                    }.resume()
+                case .failure(let error):
+                    print("Failed to get download url: \(error)")
+                }
+            }
+        }
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         print("Count : \(NFTList.numOfNFT)")
@@ -228,7 +269,7 @@ extension NFTViewController: UICollectionViewDelegate, UICollectionViewDataSourc
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.frame.width
-        let itemPerRow: CGFloat = 3
+        let itemPerRow: CGFloat = 2
         let itemSpacing: CGFloat = 5
         let sectionInset: CGFloat = 5
         
@@ -294,23 +335,28 @@ class GridCell: UICollectionViewCell {
     @IBOutlet weak var tokenIDLabel: UILabel!
     
     func update(info: NFTModel) {
-        DispatchQueue.global().async {
-            do {
-                let data = try Data(contentsOf: URL(string: info.imageURL)!)
-                if let NFTImage = UIImage(data: data) {
-                    DispatchQueue.main.sync {
-                        self.imageView.image = NFTImage
-                    }
-                }
-            } catch {
-                print("Error loading image: \(error)")
-            }
-        }
+//        DispatchQueue.global().async {
+//            do {
+//                let data = try Data(contentsOf: URL(string: info.imageURL)!)
+//                if let NFTImage = UIImage(data: data) {
+//                    DispatchQueue.main.sync {
+//                        self.imageView.image = NFTImage
+//                    }
+//                }
+//            } catch {
+//                print("Error loading image: \(error)")
+//            }
+//        }
         
         nameLabel.text = info.name
         print("--------> \(info.name)")
         tokenIDLabel.text = info.description
+        imageView.image = info.image
         self.layer.cornerRadius = 8.0
+    }
+    
+    func loadImage(image: UIImage) {
+        imageView.image = image
     }
 }
 

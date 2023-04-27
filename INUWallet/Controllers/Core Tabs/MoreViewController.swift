@@ -17,10 +17,15 @@ class MoreViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var profileView: UIView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
+    
+    var user = UserModel.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configure()
         configureModels()
         
         tableView.delegate = self
@@ -30,6 +35,27 @@ class MoreViewController: UIViewController {
         userImageView.layer.cornerRadius = 10.0 // userImageView.frame.height / 2 -> 원형 프로필
         
         profileView.layer.cornerRadius = 8.0
+    }
+    
+    private func configure() {
+        nameLabel.text = user.name
+        
+        let start = user.address.startIndex
+        let end = user.address.endIndex
+        
+        var reduceAddress = ""
+    
+        for i in 0...7 {
+            reduceAddress.append(user.address[user.address.index(start, offsetBy: i)])
+        }
+        
+        reduceAddress.append("...")
+        
+        for i in stride(from: -8, through: -1, by: 1) {
+            reduceAddress.append(user.address[user.address.index(end, offsetBy: i)])
+        }
+        
+        addressLabel.text = reduceAddress
     }
     
     private var data = [[SettingCellModel]]()

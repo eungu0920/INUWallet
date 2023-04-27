@@ -26,6 +26,7 @@ class WalletViewController: UIViewController {
     
     @IBOutlet weak var INUTokenBalanceLabel: UILabel!
     
+    let user = UserModel.shared
     let wei_18: Double = 1000000000000000000
     
 //    private let spinner: UIActivityIndicatorView = {
@@ -50,7 +51,8 @@ class WalletViewController: UIViewController {
         myTokenView.layer.shadowOpacity = 0.4
         myTokenView.layer.shadowRadius = 15.0
         
-        usernameLabel.text = UserDefaults.standard.value(forKey: "Username") as? String
+        usernameLabel.text = user.name
+        getWalletAddress()
         print("WalletViewDidLoad")
         
         // 이거 여백 TextView 여백 없애기
@@ -77,7 +79,8 @@ class WalletViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        getWalletAddress()
+//        getWalletAddress()
+        
         showWalletBalance()
     }
     
@@ -97,32 +100,29 @@ class WalletViewController: UIViewController {
     
     // 지갑주소를 받아와서 앞과 뒤 각각 8자리씩 가져옴
     private func getWalletAddress() {
-        DatabaseManager.shared.showWalletAddress { address in
-            guard let address = address else {
-                return
-            }
-            
-            let start = address.startIndex
-            let end = address.endIndex
-            
-            var reduceAddress = ""
+        let address = user.address
         
-            for i in 0...7 {
-                reduceAddress.append(address[address.index(start, offsetBy: i)])
-            }
-            
-            reduceAddress.append("...")
-            
-            for i in stride(from: -8, through: -1, by: 1) {
-                reduceAddress.append(address[address.index(end, offsetBy: i)])
-            }
-            
-            self.walletAddressButton.setTitle(reduceAddress, for: .normal)
-            let imageConfig = UIImage.SymbolConfiguration(scale: .small)
-            self.walletAddressButton.setImage(UIImage(systemName: "rectangle.on.rectangle", withConfiguration: imageConfig), for: .normal)
-            
-            self.walletAddressButton.setTitle(reduceAddress, for: .normal)
+        let start = address.startIndex
+        let end = address.endIndex
+        
+        var reduceAddress = ""
+        
+        for i in 0...7 {
+            reduceAddress.append(address[address.index(start, offsetBy: i)])
         }
+        
+        reduceAddress.append("...")
+        
+        for i in stride(from: -8, through: -1, by: 1) {
+            reduceAddress.append(address[address.index(end, offsetBy: i)])
+        }
+        
+//        self.walletAddressButton.setTitle(reduceAddress, for: .normal)
+//        let imageConfig = UIImage.SymbolConfiguration(scale: .small)
+//        self.walletAddressButton.setImage(UIImage(systemName: "rectangle.on.rectangle", withConfiguration: imageConfig), for: .normal)
+        
+        self.walletAddressButton.setTitle(reduceAddress, for: .normal)
+        
     }
     
     
