@@ -10,6 +10,7 @@ import FirebaseDatabase
 public class DatabaseManager {
     
     static let shared = DatabaseManager()
+    var user = UserModel.shared
     
     private let database = Database.database().reference()
     
@@ -37,9 +38,9 @@ public class DatabaseManager {
 
     public func insertNewUser(with email: String, username: String, uid: String, completion: @escaping (Bool) -> Void) {
         
-        UserModel.shared.email = email
-        UserModel.shared.username = username
-        UserModel.shared.uid = uid
+        user.email = email
+        user.username = username
+        user.uid = uid
         
         database.child("users").child(uid).setValue(["username": username, "email": email]) { error, _ in
             if error == nil {
@@ -61,13 +62,15 @@ public class DatabaseManager {
         database.child("users/\(uid)/major").setValue(major)
         database.child("users/\(uid)/grade").setValue(grade)
         database.child("users/\(uid)/graduate").setValue("false")
+        database.child("users/\(uid)/diplomaTokenID").setValue(0)
         
-        UserModel.shared.name = name
-        UserModel.shared.studentID = studentID
-        UserModel.shared.department = department
-        UserModel.shared.major = major
-        UserModel.shared.grade = grade
-        UserModel.shared.graduate = false
+        user.name = name
+        user.studentID = studentID
+        user.department = department
+        user.major = major
+        user.grade = grade
+        user.graduate = false
+        user.diplomaTokenID = "0"
     }
     
     // TODO: - Key 암호화 작업
@@ -76,8 +79,8 @@ public class DatabaseManager {
         database.child("users/\(uid)/address").setValue(address)
         database.child("users/\(uid)/privatekey").setValue(key)
         
-        UserModel.shared.address = address
-        UserModel.shared.privateKey = key
+        user.address = address
+        user.privateKey = key
     }
     
     public func insertDiplomaData() {

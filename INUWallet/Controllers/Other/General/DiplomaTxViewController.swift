@@ -46,12 +46,16 @@ class DiplomaTxViewController: UIViewController {
                 self.TokenIDLabel.textColor = .red
             } else {
                 self.diploma.tokenID = tokenID
+                self.user.diplomaTokenID = String(tokenID)
                 self.TokenIDLabel.text! = "졸업 증서 번호 : \(tokenID)"
                 self.TokenIDLabel.textColor = .black
                 
                 let encoder = JSONEncoder()
                 encoder.outputFormatting = .prettyPrinted
                 encoder.outputFormatting = .withoutEscapingSlashes
+                
+//                self.user.diplomaName = "INU DIPLOMA #\(tokenID)"
+//                self.user.diplomaDescription = "INCHEON National University Diploma #\(tokenID)"
                 
                 var metadata = metadataModel(description: "INCHEON National University Diploma #\(tokenID)",
                                              image: "https://storage.googleapis.com/inuwallet.appspot.com/Diploma/assets/\(tokenID)",
@@ -91,12 +95,13 @@ class DiplomaTxViewController: UIViewController {
     
     
     @IBAction func didTapCreateButton(_ sender: Any) {
-        self.downloadDiplomaImage()
-//        self.navigationController?.popToRootViewController(animated: false)
+        self.downloadDiplomaImage {
+            self.navigationController?.popToRootViewController(animated: false)
+        }
     }
     
     
-    func downloadDiplomaImage() {
+    func downloadDiplomaImage(completion: @escaping () -> Void) {
         // MARK: - 졸업 증서 다운로드
         let path = "DefaultDiploma.png"
         StorageManager.shared.downloadURL(for: path) { [weak self] result in
@@ -110,6 +115,7 @@ class DiplomaTxViewController: UIViewController {
                         let image = UIImage(data: data)
                         // MARK: - 졸업증서 제작 및 업로드
                         self!.diploma.createDiploma(image: image ?? UIImage())
+                        completion()
                     }
                 }.resume()
             case .failure(let error):

@@ -108,7 +108,7 @@ class SendTokenViewController: UIViewController {
                 try web3.eth.getBalance(address: EthereumAddress(hex: address, eip55: true), block: .latest)
             }.done { outputs in
                 let balance = Double(outputs.quantity) / self.wei_18
-                self.ethBalanceLabel.text = "\(balance) ETH"
+                self.ethBalanceLabel.text = "\(balance) MATIC"
             }.catch { error in
                 print("ERROR: \(error)")
             }

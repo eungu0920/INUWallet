@@ -23,8 +23,6 @@ class CreateWalletViewController: UIViewController {
     @IBOutlet weak var generateButton: UIButton!
     @IBOutlet weak var cautionLabel: UILabel!
     @IBOutlet weak var createButton: UIButton!
-    @IBOutlet weak var walletPasswordField: UITextField!
-    @IBOutlet weak var repeatPasswordField: UITextField!
     @IBOutlet weak var bottomStackView: UIStackView!
     
     var textViewArr: [UITextView] = []
@@ -99,21 +97,21 @@ class CreateWalletViewController: UIViewController {
         generateButton.setTitle("Generate", for: .normal)
         createButton.setTitle("Create", for: .normal)
         
-        walletPasswordField.layer.borderWidth = 1.0
-        walletPasswordField.layer.borderColor = UIColor.secondaryLabel.cgColor
-        walletPasswordField.layer.cornerRadius = 8.0
-        walletPasswordField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
-        walletPasswordField.leftViewMode = .always
-        walletPasswordField.borderStyle = .none
-        walletPasswordField.isSecureTextEntry = true
-        
-        repeatPasswordField.layer.borderWidth = 1.0
-        repeatPasswordField.layer.borderColor = UIColor.secondaryLabel.cgColor
-        repeatPasswordField.layer.cornerRadius = 8.0
-        repeatPasswordField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
-        repeatPasswordField.leftViewMode = .always
-        repeatPasswordField.borderStyle = .none
-        repeatPasswordField.isSecureTextEntry = true
+//        walletPasswordField.layer.borderWidth = 1.0
+//        walletPasswordField.layer.borderColor = UIColor.secondaryLabel.cgColor
+//        walletPasswordField.layer.cornerRadius = 8.0
+//        walletPasswordField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
+//        walletPasswordField.leftViewMode = .always
+//        walletPasswordField.borderStyle = .none
+//        walletPasswordField.isSecureTextEntry = true
+//
+//        repeatPasswordField.layer.borderWidth = 1.0
+//        repeatPasswordField.layer.borderColor = UIColor.secondaryLabel.cgColor
+//        repeatPasswordField.layer.cornerRadius = 8.0
+//        repeatPasswordField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
+//        repeatPasswordField.leftViewMode = .always
+//        repeatPasswordField.borderStyle = .none
+//        repeatPasswordField.isSecureTextEntry = true
         
         bottomStackView.alpha = 0.0
     }

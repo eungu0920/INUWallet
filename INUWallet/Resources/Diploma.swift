@@ -96,7 +96,8 @@ public class Diploma {
         // MARK: - 날짜
         let date: Date = Date()
         let dataFormatter = DateFormatter()
-        dataFormatter.dateFormat = "yyyy년 MM월 dd일"
+//        dataFormatter.dateFormat = "yyyy년 MM월 dd일"
+        dataFormatter.dateFormat = "2023년 8월 18일"
         let dateTextField = dataFormatter.string(from: date)
         
         // MARK: - TxHash

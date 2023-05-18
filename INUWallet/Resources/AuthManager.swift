@@ -10,10 +10,12 @@ import FirebaseAuth
 public class AuthManager {
     
     static let shared = AuthManager()
-    
+    var user = UserModel.shared
     // MARK: - Public
     
-    public func registerNewUser(username: String, email: String, password: String, completion: @escaping (Bool) -> Void) {
+    public func registerNewUser(username: String, email: String, password: String, completion: @escaping (Bool) -> Void) {        
+        user.username = username
+        user.email = email
         
         DatabaseManager.shared.canCreateUser(with: email, username: username) { canCreate in
             if canCreate {

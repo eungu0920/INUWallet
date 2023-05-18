@@ -14,6 +14,7 @@ class UserModel {
     var uid: String = ""
     var email: String = ""
     var username: String = ""
+    var emailVerification: Bool = false
     
     var name: String = ""
     var birthdate: String = ""
@@ -26,13 +27,12 @@ class UserModel {
     var address: String = ""
     var walletPassword: String = ""
     var privateKey: String = ""
-    var publicKey: String = ""
     
-    var diplomaImage: UIImage?// = UIImage()
+    var diplomaImage: UIImage?
+    var diplomaTokenID: String = ""
     
-    private func void() {
-        
-    }
+    var diplomaNFT: Bool?
+    var PFPNFT: Bool?
     
     public func getUserModelInfo() {
         DatabaseManager.shared.getUserInfo { userInfo in
@@ -51,7 +51,22 @@ class UserModel {
             } else {
                 UserModel.shared.graduate = true
             }
+            
+//            UserModel.shared.diplomaTokenID = userInfo["diplomaTokenID"] as! String
+//            self.downloadDiplomaImage(tokenID: Int(UserModel.shared.diplomaTokenID)!)
         }
+    }
+    
+    private func downloadDiplomaImage(tokenID: Int) {
+        DispatchQueue.main.async {
+//            StorageManager.shared.downloadDiploma(path: tokenID) { <#Result<URL, Error>#> in
+//                <#code#>
+//            }
+        }
+    }
+    
+    private func downloadImage(url: URL) {
+        
     }
     
 }

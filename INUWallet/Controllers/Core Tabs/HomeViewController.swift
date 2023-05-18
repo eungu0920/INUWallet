@@ -14,6 +14,8 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var tokenListView: UIView!
     @IBOutlet weak var myAddressButton: UIButton!
     @IBOutlet weak var usernameLable: UILabel!
+    @IBOutlet weak var newPFPNFTView: UIView!
+    @IBOutlet weak var getDiplomaNFTView: UIView!
     
 //    var user = User()
     var user = UserModel.shared
@@ -21,9 +23,6 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("HomeViewDidLoad")
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-            self.configuer()
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,7 +32,8 @@ class HomeViewController: UIViewController {
         announceView.layer.cornerRadius = 8.0
         tokenListView.layer.cornerRadius = 8.0
         myAddressButton.layer.cornerRadius = 8.0
-    
+        
+        configure()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -41,8 +41,24 @@ class HomeViewController: UIViewController {
         
     }
     
-    private func configuer() {
-        usernameLable.text = "\(UserModel.shared.name)님,"
+    private func configure() {
+        usernameLable.text = "\(user.name)님,"
+        
+        guard let diplomaNFT = user.diplomaNFT else {
+            return
+        }
+        
+        if diplomaNFT {
+            getDiplomaNFTView.alpha = 0
+        }
+        
+        guard let PFPNFT = user.PFPNFT else {
+            return
+        }
+        
+        if PFPNFT {
+            newPFPNFTView.alpha = 0
+        }
     }
     
     @IBAction func didTapButton(_ sender: Any) {

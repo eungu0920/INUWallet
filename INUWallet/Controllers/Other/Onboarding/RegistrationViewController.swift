@@ -18,6 +18,7 @@ class RegistrationViewController: UIViewController {
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var repeatPasswordField: UITextField!
     @IBOutlet weak var signupButton: UIButton!
+    @IBOutlet weak var verificationButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,6 +65,7 @@ class RegistrationViewController: UIViewController {
         
         signupButton.layer.cornerRadius = 8.0
         signupButton.setTitle("Sign Up", for: .normal)
+        signupButton.alpha = 0
         
         backButton.setTitle("", for: .normal)
         
@@ -72,6 +74,33 @@ class RegistrationViewController: UIViewController {
     
     @IBAction func didTapBackButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: - 이메일 인증
+    @IBAction func didTapEmailAuthentication(_ sender: Any) {
+        guard let email = emailField.text, !email.isEmpty
+        else {
+            return
+        }
+        
+        user_email = email
+        smtp.send(mail) { [weak self] error in
+            guard let self = self else { return }
+            if let err = error {
+                print("Error: \(err)")
+            } else {
+                print("전송완료")
+                signupButton.alpha = 1.0
+                verificationButton.alpha = 0
+            }
+        }
+        
+        print(mail)
+        
+        let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "EmailAuthenticaionViewController") as! EmailAuthenticaionViewController
+        nextVC.modalPresentationStyle = .formSheet
+        self.present(nextVC, animated: true)
+        
     }
     
     // MARK: - 회원가입

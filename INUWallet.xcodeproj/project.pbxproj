@@ -20,6 +20,10 @@
 		284F13FB29C467AF004D6410 /* RegisteUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284F13FA29C467AF004D6410 /* RegisteUserInfoViewController.swift */; };
 		284F13FD29C5F4A6004D6410 /* Diploma.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284F13FC29C5F4A6004D6410 /* Diploma.swift */; };
 		28672F3629B634B1008D5732 /* TxResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28672F3529B634B1008D5732 /* TxResultViewController.swift */; };
+		286B442729FCF56100036121 /* NFTDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286B442629FCF56100036121 /* NFTDetailViewController.swift */; };
+		286B44292A02CD9A00036121 /* EmailAuthenticaionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286B44282A02CD9A00036121 /* EmailAuthenticaionViewController.swift */; };
+		286B442C2A02D11A00036121 /* SwiftSMTP in Frameworks */ = {isa = PBXBuildFile; productRef = 286B442B2A02D11A00036121 /* SwiftSMTP */; };
+		286B44302A02D85900036121 /* EmailSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286B442F2A02D85900036121 /* EmailSender.swift */; };
 		289B9EB729D176E400683FAF /* DiplomaTxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289B9EB629D176E400683FAF /* DiplomaTxViewController.swift */; };
 		289B9EB929D1DE9800683FAF /* MetadataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289B9EB829D1DE9800683FAF /* MetadataModel.swift */; };
 		289B9EBB29D3C60A00683FAF /* Polygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289B9EBA29D3C60A00683FAF /* Polygon.swift */; };
@@ -87,6 +91,9 @@
 		284F13FA29C467AF004D6410 /* RegisteUserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisteUserInfoViewController.swift; sourceTree = "<group>"; };
 		284F13FC29C5F4A6004D6410 /* Diploma.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diploma.swift; sourceTree = "<group>"; };
 		28672F3529B634B1008D5732 /* TxResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxResultViewController.swift; sourceTree = "<group>"; };
+		286B442629FCF56100036121 /* NFTDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTDetailViewController.swift; sourceTree = "<group>"; };
+		286B44282A02CD9A00036121 /* EmailAuthenticaionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailAuthenticaionViewController.swift; sourceTree = "<group>"; };
+		286B442F2A02D85900036121 /* EmailSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSender.swift; sourceTree = "<group>"; };
 		289B9EB629D176E400683FAF /* DiplomaTxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiplomaTxViewController.swift; sourceTree = "<group>"; };
 		289B9EB829D1DE9800683FAF /* MetadataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetadataModel.swift; sourceTree = "<group>"; };
 		289B9EBA29D3C60A00683FAF /* Polygon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Polygon.swift; sourceTree = "<group>"; };
@@ -139,6 +146,7 @@
 			files = (
 				289CA57229B0BBA20045E006 /* Web3ContractABI in Frameworks */,
 				289CA57429B0BBA20045E006 /* Web3PromiseKit in Frameworks */,
+				286B442C2A02D11A00036121 /* SwiftSMTP in Frameworks */,
 				289CA57029B0BBA20045E006 /* Web3 in Frameworks */,
 				009FD0886DA12ADF57D59B8A /* Pods_INUWallet.framework in Frameworks */,
 			);
@@ -228,6 +236,7 @@
 				284F13FC29C5F4A6004D6410 /* Diploma.swift */,
 				289B9EBA29D3C60A00683FAF /* Polygon.swift */,
 				289B9EBC29D5DF1100683FAF /* DepartmentsData.swift */,
+				286B442F2A02D85900036121 /* EmailSender.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -289,6 +298,7 @@
 				2810A7D029A8D12E00F5BCD1 /* RegistrationViewController.swift */,
 				284F13FA29C467AF004D6410 /* RegisteUserInfoViewController.swift */,
 				280435E429AC7DEB009F090E /* CreateWalletViewController.swift */,
+				286B44282A02CD9A00036121 /* EmailAuthenticaionViewController.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -315,6 +325,7 @@
 				28F0EC7229C87330005D29F1 /* MintDiplomaViewController.swift */,
 				289B9EB629D176E400683FAF /* DiplomaTxViewController.swift */,
 				28D3547929E5899A00076447 /* TabBarViewController.swift */,
+				286B442629FCF56100036121 /* NFTDetailViewController.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -374,6 +385,7 @@
 				289CA56F29B0BBA20045E006 /* Web3 */,
 				289CA57129B0BBA20045E006 /* Web3ContractABI */,
 				289CA57329B0BBA20045E006 /* Web3PromiseKit */,
+				286B442B2A02D11A00036121 /* SwiftSMTP */,
 			);
 			productName = INUWallet;
 			productReference = 28CA2417298AA4E6006F4242 /* INUWallet.app */;
@@ -453,6 +465,7 @@
 			mainGroup = 28CA240E298AA4E6006F4242;
 			packageReferences = (
 				289CA56E29B0BBA20045E006 /* XCRemoteSwiftPackageReference "Web3" */,
+				286B442A2A02D11A00036121 /* XCRemoteSwiftPackageReference "Swift-SMTP" */,
 			);
 			productRefGroup = 28CA2418298AA4E6006F4242 /* Products */;
 			projectDirPath = "";
@@ -627,6 +640,7 @@
 				284F13FB29C467AF004D6410 /* RegisteUserInfoViewController.swift in Sources */,
 				289B9EBD29D5DF1100683FAF /* DepartmentsData.swift in Sources */,
 				28CA2457298BBBBD006F4242 /* NFTViewController.swift in Sources */,
+				286B44292A02CD9A00036121 /* EmailAuthenticaionViewController.swift in Sources */,
 				2810A7D729A8D7AA00F5BCD1 /* StorageManager.swift in Sources */,
 				284F13FD29C5F4A6004D6410 /* Diploma.swift in Sources */,
 				28CA241B298AA4E6006F4242 /* AppDelegate.swift in Sources */,
@@ -642,6 +656,7 @@
 				28D3547829E542AB00076447 /* NFTModel.swift in Sources */,
 				28CA2453298BBBA5006F4242 /* HomeViewController.swift in Sources */,
 				2810A7D129A8D12E00F5BCD1 /* RegistrationViewController.swift in Sources */,
+				286B442729FCF56100036121 /* NFTDetailViewController.swift in Sources */,
 				2810A81D29AA56A400F5BCD1 /* Extension.swift in Sources */,
 				289B9EBB29D3C60A00683FAF /* Polygon.swift in Sources */,
 				289B9EB929D1DE9800683FAF /* MetadataModel.swift in Sources */,
@@ -649,6 +664,7 @@
 				28CA2466298BC39B006F4242 /* NFTInfoViewController.swift in Sources */,
 				28F3100829ED946100844F00 /* UserModel.swift in Sources */,
 				28CA246A298BC3DB006F4242 /* TokenInfoViewController.swift in Sources */,
+				286B44302A02D85900036121 /* EmailSender.swift in Sources */,
 				28CA245B298BBC02006F4242 /* WalletViewController.swift in Sources */,
 				28CA245D298BBC56006F4242 /* Models.swift in Sources */,
 				28CA2468298BC3BB006F4242 /* WalletInfoViewController.swift in Sources */,
@@ -1004,6 +1020,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		286B442A2A02D11A00036121 /* XCRemoteSwiftPackageReference "Swift-SMTP" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/IBM-Swift/Swift-SMTP";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
 		289CA56E29B0BBA20045E006 /* XCRemoteSwiftPackageReference "Web3" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Boilertalk/Web3.swift";
@@ -1015,6 +1039,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		286B442B2A02D11A00036121 /* SwiftSMTP */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 286B442A2A02D11A00036121 /* XCRemoteSwiftPackageReference "Swift-SMTP" */;
+			productName = SwiftSMTP;
+		};
 		289CA56F29B0BBA20045E006 /* Web3 */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 289CA56E29B0BBA20045E006 /* XCRemoteSwiftPackageReference "Web3" */;

@@ -75,15 +75,4 @@ public class StorageManager {
 //        }
         
     }
-    
-    public func downloadDiplomaaa(path: String, completion: @escaping (Result<URL, Error>) -> Void) {
-        let reference = storage.reference(forURL: path)
-        reference.downloadURL { url, error in
-            guard let url = url, error == nil else {
-                completion(.failure(StorageErrors.failedToGetDownloadUrl))
-                return
-            }
-            completion(.success(url))
-        }
-    }
 }
